@@ -501,13 +501,13 @@
         @if($_SERVER['REQUEST_URI']!="/post_ad")
         <a href="{{url('post_ad')}}" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
                             <i class="fas fa-plus-circle mr-2"></i> Post your ad </a>
-                            <?php
+                            @php
 
 use Illuminate\Support\Facades\DB;
 
 $languages = DB::table('languages')->get();
 
-?>
+@endphp
 <li class="onhover-dropdown">
 
     <select class="form-control lang-change" name="lang">
