@@ -548,11 +548,7 @@
             </div>
         </div>
 @else
-<div class="nav-icons">
-                                <a href="#" data-toggle="modal" data-target="#staticBackdrop" class="searchmodal">
-                                    <i id="search-modal-icon" class="fas fa-search text-clipped"></i>
-                                </a>
-                            </div>
+
 <div class="nav-icons">
                                 <div class="dropdown sign">
                                     <a href="#" data-toggle="modal" data-target="#signup" class="signup">
