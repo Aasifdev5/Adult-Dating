@@ -471,33 +471,7 @@
                         <img src="{{asset('css/images/DatingLogo.jpg')}}" alt="Adult Dating" height="90">
 
                     </a>
-                    @php
-    use Illuminate\Support\Facades\DB;
 
-    $languages = DB::table('languages')->get();
-@endphp
-
-<li class="onhover-dropdown">
-    <select class="form-control lang-change" name="lang">
-        @if(count($languages) > 0)
-            @foreach($languages as $row)
-                <option @if($row->code == session()->get('ar')) selected @endif value="{{ $row->code }}">
-                    {{ $row->name }}
-                </option>
-            @endforeach
-        @endif
-    </select>
-</li>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-    var url = "{{ url('lang.change') }}"; // Assuming you have a named route 'lang.change'
-
-    $('.lang-change').change(function() {
-        let lang_code = $(this).val();
-        window.location.href = `${url}?lang=${lang_code}`;
-    });
-</script>
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="nav-icons-container d-flex">
 
