@@ -499,49 +499,40 @@
             </div>
         </div>
         @if($_SERVER['REQUEST_URI']!="/post_ad")
-        <a href="{{url('post_ad')}}" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
-                            <i class="fas fa-plus-circle mr-2"></i> Post your ad </a>
-                            @php
+        <a href="{{ url('post_ad') }}" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
+    <i class="fas fa-plus-circle mr-2"></i> Post your ad
+</a>
 
-use Illuminate\Support\Facades\DB;
+@php
+    use Illuminate\Support\Facades\DB;
 
-$languages = DB::table('languages')->get();
-
+    $languages = DB::table('languages')->get();
 @endphp
+
 <li class="onhover-dropdown">
-
     <select class="form-control lang-change" name="lang">
-
-        @if(count($languages)> 0)
-        @foreach($languages as $row)
-        <option @if($row->code==session()->get('lang_code'))
-            selected
-            @endif
-            value="{{$row->code}}"
-            {{ session()->get('lang_code')=='$row->code' ? 'selected' : '' }}>
-            {{$row->name}}
-        </option>
-        @endforeach
+        @if(count($languages) > 0)
+            @foreach($languages as $row)
+                <option @if($row->code == session()->get('lang_code')) selected @endif value="{{ $row->code }}">
+                    {{ $row->name }}
+                </option>
+            @endforeach
         @endif
-
     </select>
-
-
-
 </li>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     var url = "{{ url('admin/lang/change') }}";
 
     $('.lang-change').change(function() {
-        1
         let lang_code = $(this).val();
         let main = url + "?lang=" + lang_code;
         console.log(main);
-        window.location.href = url + "?lang=" + lang_code;
-
+        window.location.href = main; // corrected this line
     });
 </script>
+
                             @endif
 
         <div class="modal fade" id="loggedin" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
