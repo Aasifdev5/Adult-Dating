@@ -250,9 +250,7 @@ Route::get('callback/google', [GoogleController::class, 'handleGoogleCallback'])
 
 
 
-// Route::get('/', function () {
-//     return view('home.index');
-// });
+
 
 Auth::routes();
 Route::get('activate', [AuthController::class, 'verifyAccount']);
