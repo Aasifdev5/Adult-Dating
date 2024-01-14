@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
-
+use Illuminate\Support\Facades\App;
 
 
 class LanguageTranslationController extends Controller
@@ -145,5 +145,13 @@ class LanguageTranslationController extends Controller
 
 
         return response()->json(['success' => 'Done!']);
+    }
+    public function lang_change(Request $request)
+    {
+
+
+        App::setLocale($request->lang);
+        session()->put('lang_code', $request->lang);
+        return redirect()->back();
     }
 }

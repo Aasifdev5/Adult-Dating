@@ -119,7 +119,7 @@ Route::get('/Userlogin', [UserController::class, 'Userlogin'])->name('Userlogin'
 Route::get('/ads_list/{category}', [UserController::class, 'ads_list'])->name('ads_list');
 Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verifyEmail'])->name('verification.verify');
 
-
+Route::get('lang/change', [LanguageTranslationController::class, 'lang_change'])->name('lang_change');
 
 
 
