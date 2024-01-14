@@ -247,11 +247,6 @@ Route::get('google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleController::class, 'handleGoogleCallback']);
 
 
-
-
-
-
-
 Auth::routes();
 Route::get('activate', [AuthController::class, 'verifyAccount']);
 
