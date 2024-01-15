@@ -830,10 +830,10 @@ class UserController extends AppBaseController
             session()->put('search_tag__ethnicity', $search_tag__ethnicity);
         }
 
-        if (!empty($request->search_tag__nationality)) {
-            $search_tag__nationality = implode(',', $request->search_tag__nationality);
-            session()->put('search_tag__nationality', $search_tag__nationality);
-        }
+
+
+            session()->put('search_tag__nationality', $request->search_tag__nationality);
+
         if (!empty($request->search_tag__breast)) {
             $search_tag__breast = implode(',', $request->search_tag__breast);
             session()->put('search_tag__ethnicity', $search_tag__breast);
