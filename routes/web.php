@@ -121,7 +121,8 @@ Route::get('/verify-email/{id}/{hash}', [VerificationController::class, 'verifyE
 
 Route::get('lang/change', [LanguageTranslationController::class, 'lang_change'])->name('lang_change');
 
-
+Route::get('/get-states', [UserController::class, 'getStates'])->name('get-states');
+Route::get('/get-cities', [UserController::class, 'getCities'])->name('get-cities');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 

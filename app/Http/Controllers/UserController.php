@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Queries\UserDataTable;
+use Illuminate\Support\Facades\DB;
 use App\Repositories\UserRepository;
 use Carbon\Carbon;
 use DataTables;
@@ -23,7 +24,8 @@ use Illuminate\View\View;
 use Response;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\Country;
+use App\Models\City;
 use App\Models\CourseCategory;
 use App\Models\Course;
 use Notification;
@@ -41,6 +43,7 @@ use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Password;
 use App\Models\PasswordReset;
 use App\Models\PostingAds;
+use App\Models\States;
 use App\Models\Task;
 use Illuminate\Support\Facades\Mail;
 
@@ -328,14 +331,14 @@ class UserController extends AppBaseController
 
         $category = Course::all();
         $services = CourseCategory::all();
-        return view('index',compact('category'));
+        return view('index', compact('category'));
     }
     public function ads_list($category)
     {
 
-        $ads = PostingAds::where('category',$category)->paginate(10);
+        $ads = PostingAds::where('category', $category)->paginate(10);
         $category = Course::all();
-        return view('ads_list',compact('ads','category'));
+        return view('ads_list', compact('ads', 'category'));
     }
     public function Userlogin()
     {
@@ -676,9 +679,51 @@ class UserController extends AppBaseController
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $category = Course::all();
+            $countries = Country::all();
+            $states = States::all();
+
+            $cities = City::all();
             $services = CourseCategory::all();
-            return view('Post_add', compact('user_session', 'category', 'services'));
+            return view('Post_add', compact('user_session', 'category', 'services', 'countries', 'states', 'cities'));
         }
+    }
+    public function getStates(Request $request)
+    {
+        $country = $request->input('code');
+
+        $states = States::where('country_code', $country)->pluck('name', 'code');
+
+        $options = [];
+
+        foreach ($states as $key => $state) {
+
+            $stateData = json_decode($state, true);
+            $englishValue = isset($stateData['en']) ? $stateData['en'] : '';
+
+            $options[] = ['value' => $key, 'text' => $englishValue];
+        }
+
+        // Use dd for debugging if needed
+
+
+        return response()->json($options);
+    }
+
+    public function getCities(Request $request)
+    {
+        $code = $request->input('code');
+        $cities = City::where('subadmin1_code', $code)->pluck('name');
+        // dd($cities);
+        $options = [];
+
+        foreach ($cities as $key => $city) {
+
+            $cityData = json_decode($city, true);
+            $englishValue = isset($cityData['en']) ? $cityData['en'] : '';
+
+            $options[] = ['value' => $englishValue, 'text' => $englishValue];
+        }
+        return response()->json($options);
     }
     public function ad_photo()
     {
@@ -713,7 +758,7 @@ class UserController extends AppBaseController
     {
         $ads = PostingAds::orderBy('id', 'DESC')->paginate(2);
         $category = Course::all();
-        return view('post', compact('ads','category'));
+        return view('post', compact('ads', 'category'));
     }
     public function search(Request $request)
     {
@@ -734,14 +779,28 @@ class UserController extends AppBaseController
 
         $results = $query->paginate(10);
         // dd($results);
-        return view('search_results', compact('results','category'));
+        return view('search_results', compact('results', 'category'));
     }
     public function Ad_insert(Request $request)
     {
 
+        if(!empty($request->country)){
+            $country=Country::where('code',$request->country)->first();
+        }
+        if(!empty($request->state)){
+            $state=Country::where('code',$request->state)->first();
+        }
+        if (empty($request->city)) {
+            $city = $request->state;
+        }else{
+            $city =  $request->city;
+        }
         session()->put('category', $request->category);
         session()->put('user_id', $request->user_id);
-        session()->put('city', $request->city);
+        session()->put('country', $country);
+        session()->put('state', $state);
+        session()->put('city', $city);
+
         session()->put('address', $request->address);
         session()->put('postal_code', $request->postal_code);
         session()->put('place', $request->place);
@@ -771,6 +830,8 @@ class UserController extends AppBaseController
 
         if ($images) {
             $ads = new PostingAds();
+            $ads->country = session()->get('country');
+            $ads->state = session()->get('state');
             $ads->city = session()->get('city');
             $ads->category = session()->get('category');
             $ads->user_id = $request->user_id;

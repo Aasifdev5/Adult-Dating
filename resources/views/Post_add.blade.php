@@ -81,16 +81,88 @@ POST AD
                             </div>
                             <div class="col-12 form-group">
                                 <label class="">
-                                    <i class="fa fa-asterisk"></i> Select city </label>
-                                <select name="city" class="browser-default custom-select">
-                                    <!---->
-                                    <option value="Agra"> Agra </option>
-                                    <option value="Ahmedabad"> Ahmedabad </option>
-                                    <option value="Ajmer"> Ajmer </option>
-                                    <option value="Alappuzha"> Alappuzha </option>
+                                    </i>Select Country </label>
+                                @if ($countries->isNotEmpty())
+                                <select class="browser-default custom-select select2" id="countrySelect" name="country">
+                                    @foreach ($countries as $country)
+                                    @php
+                                    $countryData = json_decode($country['name'], true);
+                                    $englishValue = isset($countryData['en']) ? $countryData['en'] : '';
+                                    @endphp
+                                    <option value="{{ $country->code }}">{{ $englishValue }}</option>
+                                    @endforeach
                                 </select>
-                                <!---->
+                                @else
+                                <strong>{{ __('countries_not_found') }}</strong>
+                                @endif
                             </div>
+
+                            <div class="col-12 form-group">
+                                <label class="">
+                                    </i>Select State </label>
+                                <select class="browser-default custom-select select2" id="states" name="state">
+                                    <!-- Options will be populated dynamically using jQuery Ajax -->
+                                </select>
+                            </div>
+
+                            <div class="col-12 form-group">
+                                <label class="">
+                                    </i>Select City </label>
+                                <select class="form-control select2" id="city" name="city">
+                                    <!-- Options will be populated dynamically using jQuery Ajax -->
+                                </select>
+                            </div>
+
+                            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                            <script>
+                                // jQuery script for handling onchange event and fetching states and cities dynamically
+                                $(document).ready(function() {
+                                    // On change of the countrySelect dropdown
+                                    $('#countrySelect').change(function() {
+                                        var code = $(this).val();
+
+                                        // Make an Ajax request to get states based on the selected country
+                                        $.ajax({
+                                            url: "{{ url('get-states') }}", // Replace with your route for getting states
+                                            type: 'GET',
+                                            data: {
+                                                code: code
+                                            },
+                                            success: function(data) {
+                                                // Clear existing options
+                                                $('#states').empty();
+
+                                                $.each(data, function(index, option) {
+                                                    $('#states').append('<option value="' + option.value + '">' + option.text + '</option>');
+                                                });
+                                            }
+                                        });
+                                    });
+
+                                    $('#states').change(function() {
+                                        var code = $(this).val();
+
+                                        // Make an Ajax request to get cities based on the selected state
+                                        $.ajax({
+                                            url: "{{ url('get-cities') }}", // Replace with your route for getting cities
+                                            type: 'GET',
+                                            data: {
+                                                code: code
+                                            },
+                                            success: function(data) {
+                                                // Clear existing options
+                                                $('#city').empty();
+
+                                                // Populate options for cities
+                                                $.each(data, function(index, option) {
+                                                    $('#city').append('<option value="' + option.value + '">' + option.text + '</option>');
+                                                });
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+
                             <!---->
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                 <label class="">Address</label>

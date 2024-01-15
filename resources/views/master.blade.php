@@ -787,6 +787,7 @@
         </div>
     </div>
     </div>
+
     <script>
         window.addEventListener("DOMContentLoaded", () => {
             $(".open-menu-icon").on("click", function() {
@@ -801,8 +802,9 @@
                 $(".main-nav-outer").removeClass("open-menu");
             });
         })
+
     </script>
-    <script src="{{asset('js/bundle.js')}}" defer=""></script>
+
     <script src="{{asset('js/vendors~chunk-pica.48c160a010746ad5f05b.js')}}" defer=""></script>
     <script src="{{asset('js/chunck-signup-form.96dda844e6d6b7cae628.js')}}" defer=""></script>
 </body>
