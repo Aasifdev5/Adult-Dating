@@ -803,7 +803,7 @@ class UserController extends AppBaseController
             $state = $englishValue;
         }
         if (empty($request->city)) {
-            $city = $request->state;
+            $city = $state;
         } else {
             $city =  $request->city;
         }
