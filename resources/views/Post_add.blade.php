@@ -80,8 +80,10 @@ POST AD
                                 <!---->
                             </div>
                             <div class="col-12 form-group">
-                                <label class="">
-                                    </i>Select Country </label>
+                            <h6 class="mb-4">
+                                        <strong>
+                                            <i aria-hidden="true" class="fab fa-font-awesome-flag mr-2"></i> Nationality </strong>
+                                    </h6>
                                 @if ($countries->isNotEmpty())
                                 <select class="browser-default custom-select select2" id="countrySelect" name="country">
                                     @foreach ($countries as $country)
@@ -290,93 +292,8 @@ POST AD
                                     <!---->
                                 </div>
                                 <div id="nationality-section" class="tag-container">
-                                    <h6 class="mb-4">
-                                        <strong>
-                                            <i aria-hidden="true" class="fab fa-font-awesome-flag mr-2"></i> Nationality </strong>
-                                    </h6>
-                                    <!---->
-                                    <div class="form-row">
-                                        <div class="col-12 form-group">
-                                            <select name="search_tag__nationality" class="browser-default custom-select">
-                                                <option selected="selected" value=""> Select nationality</option>
-                                                <option id="tag-button-nationality_albanian" value="nationality_albanian">🇦🇱 Albanian</option>
-                                                <option id="tag-button-nationality_american" value="nationality_american">🇺🇸 American</option>
-                                                <option id="tag-button-nationality_arabic" value="nationality_arabic">🇸🇦 Arabic</option>
-                                                <option id="tag-button-nationality_argentinian" value="nationality_argentinian">🇦🇷 Argentinian</option>
-                                                <option id="tag-button-nationality_australian" value="nationality_australian">🇦🇺 Australian</option>
-                                                <option id="tag-button-nationality_austrian" value="nationality_austrian">🇦🇹 Austrian</option>
-                                                <option id="tag-button-nationality_bangladeshi" value="nationality_bangladeshi">🇧🇩 Bangladeshi</option>
-                                                <option id="tag-button-nationality_belgian" value="nationality_belgian">🇧🇪 Belgian</option>
-                                                <option id="tag-button-nationality_bolivian" value="nationality_bolivian">🇧🇴 Bolivian</option>
-                                                <option id="tag-button-nationality_bosnian" value="nationality_bosnian">🇧🇦 Bosnian</option>
-                                                <option id="tag-button-nationality_brazilian" value="nationality_brazilian">🇧🇷 Brazilian</option>
-                                                <option id="tag-button-nationality_bulgarian" value="nationality_bulgarian">🇧🇬 Bulgarian</option>
-                                                <option id="tag-button-nationality_canadian" value="nationality_canadian">🇨🇦 Canadian</option>
-                                                <option id="tag-button-nationality_chilean" value="nationality_chilean">🇨🇱 Chilean</option>
-                                                <option id="tag-button-nationality_chinese" value="nationality_chinese">🇨🇳 Chinese</option>
-                                                <option id="tag-button-nationality_colombian" value="nationality_colombian">🇨🇴 Colombian</option>
-                                                <option id="tag-button-nationality_costa_rican" value="nationality_costa_rican">🇨🇷 Costa Rican</option>
-                                                <option id="tag-button-nationality_croatian" value="nationality_croatian">🇭🇷 Croatian</option>
-                                                <option id="tag-button-nationality_cuban" value="nationality_cuban">🇨🇺 Cuban</option>
-                                                <option id="tag-button-nationality_czech" value="nationality_czech">🇨🇿 Czech</option>
-                                                <option id="tag-button-nationality_danish" value="nationality_danish">🇩🇰 Danish</option>
-                                                <option id="tag-button-nationality_dominican" value="nationality_dominican">🇩🇴 Dominican</option>
-                                                <option id="tag-button-nationality_dutch" value="nationality_dutch">🇳🇱 Dutch</option>
-                                                <option id="tag-button-nationality_ecuadorian" value="nationality_ecuadorian">🇪🇨 Ecuadorian</option>
-                                                <option id="tag-button-nationality_english" value="nationality_english">🇬🇧 English</option>
-                                                <option id="tag-button-nationality_estonian" value="nationality_estonian">🇪🇪 Estonian</option>
-                                                <option id="tag-button-nationality_filipino" value="nationality_filipino">🇵🇭 Filipino</option>
-                                                <option id="tag-button-nationality_finnish" value="nationality_finnish">🇫🇮 Finnish</option>
-                                                <option id="tag-button-nationality_french" value="nationality_french">🇫🇷 French</option>
-                                                <option id="tag-button-nationality_german" value="nationality_german">🇩🇪 German</option>
-                                                <option id="tag-button-nationality_greek" value="nationality_greek">🇬🇷 Greek</option>
-                                                <option id="tag-button-nationality_guatemalan" value="nationality_guatemalan">🇬🇹 Guatemalan</option>
-                                                <option id="tag-button-nationality_haitian" value="nationality_haitian">🇭🇹 Haitian</option>
-                                                <option id="tag-button-nationality_honduran" value="nationality_honduran">🇭🇳 Honduran</option>
-                                                <option id="tag-button-nationality_hungarian" value="nationality_hungarian">🇭🇺 Hungarian</option>
-                                                <option id="tag-button-nationality_indian" value="nationality_indian">🇮🇳 Indian</option>
-                                                <option id="tag-button-nationality_indonesian" value="nationality_indonesian">🇮🇩 Indonesian</option>
-                                                <option id="tag-button-nationality_irish" value="nationality_irish">🇮🇪 Irish</option>
-                                                <option id="tag-button-nationality_italian" value="nationality_italian">🇮🇹 Italian</option>
-                                                <option id="tag-button-nationality_jamaican" value="nationality_jamaican">🇯🇲 Jamaican</option>
-                                                <option id="tag-button-nationality_japanese" value="nationality_japanese">🇯🇵 Japanese</option>
-                                                <option id="tag-button-nationality_kenyan" value="nationality_kenyan">🇰🇪 Kenyan</option>
-                                                <option id="tag-button-nationality_latvian" value="nationality_latvian">🇱🇻 Latvian</option>
-                                                <option id="tag-button-nationality_lithuanian" value="nationality_lithuanian">🇱🇹 Lithuanian</option>
-                                                <option id="tag-button-nationality_malaysian" value="nationality_malaysian">🇲🇾 Malaysian</option>
-                                                <option id="tag-button-nationality_maldivian" value="nationality_maldivian">🇲🇻 Maldivian</option>
-                                                <option id="tag-button-nationality_mexican" value="nationality_mexican">🇲🇽 Mexican</option>
-                                                <option id="tag-button-nationality_moldovan" value="nationality_moldovan">🇲🇩 Moldovan</option>
-                                                <option id="tag-button-nationality_moroccan" value="nationality_moroccan">🇲🇦 Moroccan</option>
-                                                <option id="tag-button-nationality_new_zealander" value="nationality_new_zealander">🇳🇿 New Zealander</option>
-                                                <option id="tag-button-nationality_nicaraguan" value="nationality_nicaraguan">🇳🇮 Nicaraguan</option>
-                                                <option id="tag-button-nationality_nigerian" value="nationality_nigerian">🇳🇬 Nigerian</option>
-                                                <option id="tag-button-nationality_norwegian" value="nationality_norwegian">🇳🇴 Norwegian</option>
-                                                <option id="tag-button-nationality_pakistani" value="nationality_pakistani">🇵🇰 Pakistani</option>
-                                                <option id="tag-button-nationality_panamanian" value="nationality_panamanian">🇵🇦 Panamanian</option>
-                                                <option id="tag-button-nationality_paraguayan" value="nationality_paraguayan">🇵🇾 Paraguayan</option>
-                                                <option id="tag-button-nationality_peruvian" value="nationality_peruvian">🇵🇪 Peruvian</option>
-                                                <option id="tag-button-nationality_polish" value="nationality_polish">🇵🇱 Polish</option>
-                                                <option id="tag-button-nationality_portuguese" value="nationality_portuguese">🇵🇹 Portuguese</option>
-                                                <option id="tag-button-nationality_romanian" value="nationality_romanian">🇷🇴 Romanian</option>
-                                                <option id="tag-button-nationality_russian" value="nationality_russian">🇷🇺 Russian</option>
-                                                <option id="tag-button-nationality_senegalese" value="nationality_senegalese">🇸🇳 Senegalese</option>
-                                                <option id="tag-button-nationality_serbian" value="nationality_serbian">🇷🇸 Serbian</option>
-                                                <option id="tag-button-nationality_singaporean" value="nationality_singaporean">🇸🇬 Singaporean</option>
-                                                <option id="tag-button-nationality_south_african" value="nationality_south_african">🇿🇦 South African</option>
-                                                <option id="tag-button-nationality_spanish" value="nationality_spanish">🇪🇸 Spanish</option>
-                                                <option id="tag-button-nationality_swedish" value="nationality_swedish">🇸🇪 Swedish</option>
-                                                <option id="tag-button-nationality_swiss" value="nationality_swiss">🇨🇭 Swiss</option>
-                                                <option id="tag-button-nationality_thai" value="nationality_thai">🇹🇭 Thai</option>
-                                                <option id="tag-button-nationality_tunisian" value="nationality_tunisian">🇹🇳 Tunisian</option>
-                                                <option id="tag-button-nationality_turkish" value="nationality_turkish">🇹🇷 Turkish</option>
-                                                <option id="tag-button-nationality_ukrainian" value="nationality_ukrainian">🇺🇦 Ukrainian</option>
-                                                <option id="tag-button-nationality_uruguayan" value="nationality_uruguayan">🇺🇾 Uruguayan</option>
-                                                <option id="tag-button-nationality_venezuelan" value="nationality_venezuelan">🇻🇪 Venezuelan</option>
-                                                <option id="tag-button-nationality_vietnamese" value="nationality_vietnamese">🇻🇳 Vietnamese</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
+
                                 </div>
                                 <div id="breast-section" class="tag-container">
                                     <h6 class="mb-4">
