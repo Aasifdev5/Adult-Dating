@@ -13,7 +13,7 @@ Ads List
                         <span class="">
                             <span class="icon-map-pin mr-2"></span>
 
-            Search by city, Category...
+                            Search by city, Category...
 
                         </span>
                         <i class="fas fa-search text-clipped d-flex justify-content-end"></i>
@@ -42,9 +42,16 @@ Ads List
                         <form id="vue-search" action="{{ url('search') }}" method="get">
                             @csrf
                             <div class="form-row">
+                                <div class="col-sm-12 col-12 form-group">
+                                    <input type="text" name="keyword" autocomplete="off" id="search-input" placeholder="Search here..." class="form-control">
+                                </div>
+
+
+                            </div>
+                            <div class="form-row">
                                 <div class="col-sm-6 col-12 form-group">
                                     <div class="category-select">
-                                    <select name="category" class="browser-default custom-select" autocomplete="off">
+                                        <select name="category" class="browser-default custom-select" autocomplete="off">
                                             <option value="">Please Category</option>
                                             @foreach($category as $row)
                                             <option value="{{$row->category_id}}">{{$row->category_id}}</option>
@@ -52,66 +59,58 @@ Ads List
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-12 form-group">
-                                    <input type="text" name="keyword" autocomplete="off" id="search-input" placeholder="Search here..." class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-row">
                                 <div id="regions-filter" class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                     <div class="region-select">
-                                        <select name="state" class="browser-default custom-select" autocomplete="off">
-                                            <option value="">All the regions</option>
-
-                                            <option value="Andhra Pradesh"> Andhra Pradesh </option>
-                                            <option value="Assam"> Assam </option>
-                                            <option value="Bihar"> Bihar </option>
-                                            <option value="Chandigarh"> Chandigarh </option>
-                                            <option value="Chhattisgarh"> Chhattisgarh </option>
-                                            <option value="Dadra and Nagar Haveli"> Dadra and Nagar Haveli </option>
-                                            <option value="Delhi"> Delhi </option>
-                                            <option value="Goa"> Goa </option>
-                                            <option value="Gujarat"> Gujarat </option>
-                                            <option value="Haryana"> Haryana </option>
-                                            <option value="Jharkhand"> Jharkhand </option>
-                                            <option value="Karnataka"> Karnataka </option>
-                                            <option value="Kerala"> Kerala </option>
-                                            <option value="Madhya Pradesh"> Madhya Pradesh </option>
-                                            <option value="Maharashtra"> Maharashtra </option>
-                                            <option value="Nagaland"> Nagaland </option>
-                                            <option value="Odisha"> Odisha </option>
-                                            <option value="Punjab"> Punjab </option>
-                                            <option value="Rajasthan"> Rajasthan </option>
-                                            <option value="Tamil Nadu"> Tamil Nadu </option>
-                                            <option value="Telangana"> Telangana </option>
-                                            <option value="Uttar Pradesh"> Uttar Pradesh </option>
-                                            <option value="Uttarakhand"> Uttarakhand </option>
-                                            <option value="West Bengal"> West Bengal </option>
+                                        @if ($countries->isNotEmpty())
+                                        <select class="form-control select2" id="countrySelect" name="country">
+                                            <option value="">Please Select Country</option>
+                                            @foreach ($countries as $country)
+                                            @php
+                                            $countryData = json_decode($country['name'], true);
+                                            $englishValue = isset($countryData['en']) ? $countryData['en'] : '';
+                                            @endphp
+                                            <option value="{{ $englishValue }}">{{ $englishValue }}</option>
+                                            @endforeach
                                         </select>
+                                        @else
+                                        <strong>{{ __('countries_not_found') }}</strong>
+                                        @endif
                                     </div>
                                 </div>
+
+
+
                                 <div id="cities-filter" class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                     <div class="city-select">
-                                        <select name="city" class="browser-default custom-select" autocomplete="off">
-                                            <option disabled selected>Select City</option>
 
-                                            <optgroup label="Cities in India">
-                                                <option value="Hyderabad">Hyderabad</option>
-                                                <option value="Agra">Agra</option>
-                                                <option value="Ahmedabad">Ahmedabad</option>
-                                                <option value="Ajmer">Ajmer</option>
-                                                <option value="Alappuzha">Alappuzha</option>
-                                                <!-- Add more cities here -->
-                                                <option value="Vadodara">Vadodara</option>
-                                                <option value="Vapi">Vapi</option>
-                                                <option value="Varanasi">Varanasi</option>
-                                                <option value="Vijayawada">Vijayawada</option>
-                                                <option value="Visakhapatnam">Visakhapatnam</option>
-                                            </optgroup>
-
+                                        <select class="browser-default custom-select select2" id="states" name="state">
+                                            <option value="">Please Select State</option>
+                                            @foreach ($states as $state)
+                                            @php
+                                            $stateData = json_decode($state['name'], true);
+                                            $englishValue = isset($stateData['en']) ? $stateData['en'] : '';
+                                            @endphp
+                                            <option value="{{ $englishValue }}">{{ $englishValue }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-6 form-group">
+
+                                    <select class="form-control select2" id="city" name="city">
+                                        <option value="">Please Select City</option>
+                                        @foreach ($cities as $city)
+                                        @php
+                                        $cityData = json_decode($city['name'], true);
+                                        $englishValue = isset($cityData['en']) ? $cityData['en'] : '';
+                                        @endphp
+                                        <option value="{{ $englishValue }}">{{ $englishValue }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>
@@ -132,27 +131,27 @@ Ads List
 <nav class="breadcrumb">
     <div class="container">
         <ol itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList" id="bc1" class="btn-group btn-breadcrumb list-inline">
-            <li itemprop="itemListElement" itemscope="itemscope" >
+            <li itemprop="itemListElement" itemscope="itemscope">
                 <a itemscope="itemscope" itemid="" itemtype="http://schema.org/Service" itemprop="item" href="/" class="btn btn-outline-primary">
                     <i itemprop="name" class="fa fa-home">
-                        <span class="bcseo-text">  India </span>
+                        <span class="bcseo-text"> India </span>
                     </i>
                 </a>
                 <meta itemprop="position" content="1">
             </li>
-            <li itemprop="itemListElement" itemscope="itemscope"  class="list-bcseo">
+            <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
                 <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="massages/" class="btn btn-outline-primary ">
                     <div itemprop="name">Massages</div>
                 </a>
                 <meta itemprop="position" content="2">
             </li>
-            <li itemprop="itemListElement" itemscope="itemscope"  class="list-bcseo">
+            <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
                 <a itemscope="itemscope" itemid="massages/karnataka/" itemtype="http://schema.org/Place" itemprop="item" href="massages/karnataka/" class="btn btn-outline-primary ">
                     <div itemprop="name">Karnataka Massages</div>
                 </a>
                 <meta itemprop="position" content="3">
             </li>
-            <li itemprop="itemListElement" itemscope="itemscope"  class="list-bcseo">
+            <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
                 <a itemscope="itemscope" itemid="massages/bangalore/" itemtype="http://schema.org/Place" itemprop="item" href="massages/bangalore/" class="btn btn-outline-primary ">
                     <div itemprop="name">Bangalore Massages</div>
                 </a>

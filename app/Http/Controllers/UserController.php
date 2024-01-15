@@ -338,7 +338,12 @@ class UserController extends AppBaseController
 
         $ads = PostingAds::where('category', $category)->paginate(10);
         $category = Course::all();
-        return view('ads_list', compact('ads', 'category'));
+        $countries = Country::all();
+        $states = States::all();
+
+        $cities = City::all();
+
+        return view('ads_list', compact('ads', 'category','countries','cities','states'));
     }
     public function Userlogin()
     {
@@ -764,6 +769,10 @@ class UserController extends AppBaseController
     {
         $query = PostingAds::query();
         $category = Course::all();
+        $countries = Country::all();
+        $states = States::all();
+
+        $cities = City::all();
         if ($request->filled('keyword')) {
             $query->where('title', 'LIKE', '%' . $request->input('keyword') . '%');
         }
@@ -774,12 +783,17 @@ class UserController extends AppBaseController
         if ($request->filled('city')) {
             $query->where('city', $request->input('city'));
         }
-
+        if ($request->filled('state')) {
+            $query->where('state', $request->input('city'));
+        }
+        if ($request->filled('country')) {
+            $query->where('country', $request->input('country'));
+        }
         // Add more conditions for other parameters (state, city, service, nationality)
 
         $results = $query->paginate(10);
         // dd($results);
-        return view('search_results', compact('results', 'category'));
+        return view('search_results', compact('results', 'category','countries','states','cities'));
     }
     public function Ad_insert(Request $request)
     {
