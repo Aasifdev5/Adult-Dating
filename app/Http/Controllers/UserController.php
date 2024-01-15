@@ -784,15 +784,27 @@ class UserController extends AppBaseController
     public function Ad_insert(Request $request)
     {
 
-        if(!empty($request->country)){
-            $country=Country::where('code',$request->country)->first();
+        if (!empty($request->country)) {
+            $country = Country::where('code', $request->country)->first();
+            // Decode JSON string into a PHP associative array
+            $data = json_decode($country->name, true);
+
+            // Access the value of 'en'
+            $englishValue = isset($data['en']) ? $data['en'] : null;
+            $country = $englishValue;
         }
-        if(!empty($request->state)){
-            $state=Country::where('code',$request->state)->first();
+        if (!empty($request->state)) {
+            $state = Country::where('code', $request->state)->first();
+            // Decode JSON string into a PHP associative array
+            $data = json_decode($state->name, true);
+
+            // Access the value of 'en'
+            $englishValue = isset($data['en']) ? $data['en'] : null;
+            $state = $englishValue;
         }
         if (empty($request->city)) {
             $city = $request->state;
-        }else{
+        } else {
             $city =  $request->city;
         }
         session()->put('category', $request->category);
