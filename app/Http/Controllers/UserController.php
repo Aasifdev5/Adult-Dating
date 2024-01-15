@@ -794,7 +794,7 @@ class UserController extends AppBaseController
             $country = $englishValue;
         }
         if (!empty($request->state)) {
-            $state = Country::where('code', $request->state)->first();
+            $state = States::where('code', $request->state)->first();
             // Decode JSON string into a PHP associative array
             $data = json_decode($state->name, true);
 
