@@ -783,6 +783,11 @@ class UserController extends AppBaseController
     }
     public function Ad_insert(Request $request)
     {
+        $request->validate([
+
+            'title' => 'required',
+            'description' => 'required'
+        ]);
 
         if (!empty($request->country)) {
             $country = Country::where('code', $request->country)->first();
@@ -819,20 +824,54 @@ class UserController extends AppBaseController
         session()->put('age', $request->age);
         session()->put('title', $request->title);
         session()->put('description', $request->description);
-        session()->put('search_tag__ethnicity', implode(',', $request->search_tag__ethnicity));
-        // dd($request->all());
-        session()->put('search_tag__nationality', $request->search_tag__nationality);
-        session()->put('search_tag__breast', implode(',', $request->search_tag__breast));
-        session()->put('search_tag__hair', implode(',', $request->search_tag__hair));
-        session()->put('third_model_name', implode(',', $request->search_tag__body_type));
-        session()->put('search_tag__services', implode(',', $request->search_tag__services));
-        session()->put('search_tag__attention_to', implode(',', $request->search_tag__attention_to));
-        session()->put('search_tag__place_of_service', implode(',', $request->search_tag__place_of_service));
+
+        if (!empty($request->search_tag__ethnicity)) {
+            $search_tag__ethnicity = implode(',', $request->search_tag__ethnicity);
+            session()->put('search_tag__ethnicity', $search_tag__ethnicity);
+        }
+
+        if (!empty($request->search_tag__nationality)) {
+            $search_tag__nationality = implode(',', $request->search_tag__nationality);
+            session()->put('search_tag__nationality', $search_tag__nationality);
+        }
+        if (!empty($request->search_tag__breast)) {
+            $search_tag__breast = implode(',', $request->search_tag__breast);
+            session()->put('search_tag__ethnicity', $search_tag__breast);
+        }
+        if (!empty($request->search_tag__hair)) {
+            $search_tag__hair = implode(',', $request->search_tag__hair);
+            session()->put('search_tag__hair', $search_tag__hair);
+        }
+        if (!empty($request->search_tag__body_type)) {
+            $search_tag__body_type = implode(',', $request->search_tag__body_type);
+            session()->put('search_tag__body_type', $search_tag__body_type);
+        }
+        if (!empty($request->search_tag__services)) {
+            $search_tag__services = implode(',', $request->search_tag__services);
+            session()->put('search_tag__services', $search_tag__services);
+        }
+
+        if (!empty($request->search_tag__attention_to)) {
+            $search_tag__attention_to = implode(',', $request->search_tag__attention_to);
+            session()->put('search_tag__attention_to', $search_tag__attention_to);
+        }
+        if (!empty($request->search_tag__place_of_service)) {
+            $search_tag__place_of_service = implode(',', $request->search_tag__place_of_service);
+            session()->put('search_tag__place_of_service', $search_tag__place_of_service);
+        }
+        if (!empty($request->search_tag__payment_methods)) {
+            $search_tag__payment_methods = implode(',', $request->search_tag__payment_methods);
+            session()->put('search_tag__payment_methods', $search_tag__payment_methods);
+        }
+        if (!empty($request->contact_method)) {
+            $contact_method = implode(',', $request->contact_method);
+            session()->put('contact_method', $contact_method);
+        }
+
         session()->put('hourly_price', $request->hourly_price);
-        session()->put('search_tag__payment_methods', implode(',', $request->search_tag__payment_methods));
-        session()->put('contact_method', implode(',', $request->contact_method));
         session()->put('email', $request->email);
         session()->put('telephone', $request->telephone);
+        dd($request->all());
         return redirect()->route('ad_photo');
     }
     public function ads_photos_upload(Request $request)
