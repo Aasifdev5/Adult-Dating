@@ -80,10 +80,10 @@ POST AD
                                 <!---->
                             </div>
                             <div class="col-12 form-group">
-                            <h6 class="mb-4">
-                                        <strong>
-                                            <i aria-hidden="true" class="fab fa-font-awesome-flag mr-2"></i> Nationality </strong>
-                                    </h6>
+                                <h6 class="mb-4">
+                                    <strong>
+                                        <i aria-hidden="true" class="fab fa-font-awesome-flag mr-2"></i> Nationality </strong>
+                                </h6>
                                 @if ($countries->isNotEmpty())
                                 <select class="browser-default custom-select select2" id="countrySelect" name="country">
                                     @foreach ($countries as $country)
@@ -409,118 +409,18 @@ POST AD
                                             <i aria-hidden="true" class="far fa-heart mr-2"></i> Services </strong>
                                     </h6>
                                     <div class="form-row">
+                                        @foreach($services as $row)
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-oral" name="search_tag__services[]" value="oral">
-                                                <label for="tag-button-oral" class="contactad">
-                                                    <div class="card-body mx-2"> Oral </div>
+                                                <input type="checkbox" id="tag-button-{{$row->category_name}}" name="search_tag__services[]" value="{{$row->category_name}}">
+                                                <label for="tag-button-{{$row->category_name}}" class="contactad">
+                                                    <div class="card-body mx-2"> {{$row->category_name}} </div>
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-anal" name="search_tag__services[]" value="anal">
-                                                <label for="tag-button-anal" class="contactad">
-                                                    <div class="card-body mx-2"> Anal </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-bdsm" name="search_tag__services[]" value="bdsm">
-                                                <label for="tag-button-bdsm" class="contactad">
-                                                    <div class="card-body mx-2"> BDSM </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-girlfriend_experience" name="search_tag__services[]" value="girlfriend_experience">
-                                                <label for="tag-button-girlfriend_experience" class="contactad">
-                                                    <div class="card-body mx-2"> Girlfriend experience </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-porn_actresses" name="search_tag__services[]" value="porn_actresses">
-                                                <label for="tag-button-porn_actresses" class="contactad">
-                                                    <div class="card-body mx-2"> Porn actresses </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-body_ejaculation" name="search_tag__services[]" value="body_ejaculation">
-                                                <label for="tag-button-body_ejaculation" class="contactad">
-                                                    <div class="card-body mx-2"> Body ejaculation </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-erotic_massage" name="search_tag__services[]" value="erotic_massage">
-                                                <label for="tag-button-erotic_massage" class="contactad">
-                                                    <div class="card-body mx-2"> Erotic massage </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-tantric_massage" name="search_tag__services[]" value="tantric_massage">
-                                                <label for="tag-button-tantric_massage" class="contactad">
-                                                    <div class="card-body mx-2"> Tantric massage </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-fetish" name="search_tag__services[]" value="fetish">
-                                                <label for="tag-button-fetish" class="contactad">
-                                                    <div class="card-body mx-2"> Fetish </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-french_kiss" name="search_tag__services[]" value="french_kiss">
-                                                <label for="tag-button-french_kiss" class="contactad">
-                                                    <div class="card-body mx-2"> French kiss </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-role_play" name="search_tag__services[]" value="role_play">
-                                                <label for="tag-button-role_play" class="contactad">
-                                                    <div class="card-body mx-2"> Role play </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-threesome" name="search_tag__services[]" value="threesome">
-                                                <label for="tag-button-threesome" class="contactad">
-                                                    <div class="card-body mx-2"> Threesome </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-sexting" name="search_tag__services[]" value="sexting">
-                                                <label for="tag-button-sexting" class="contactad">
-                                                    <div class="card-body mx-2"> Sexting </div>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="boxservice form-group">
-                                            <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-videocall" name="search_tag__services[]" value="videocall">
-                                                <label for="tag-button-videocall" class="contactad">
-                                                    <div class="card-body mx-2"> Videocall </div>
-                                                </label>
-                                            </div>
-                                        </div>
+                                        @endforeach
+
+
                                     </div>
                                     <!---->
                                 </div>
