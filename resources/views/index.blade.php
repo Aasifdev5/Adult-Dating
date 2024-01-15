@@ -25,7 +25,7 @@ Home
                     min-height: 201px;
                     ">
                         <div class="profile-name">
-                            <span class="{{$row->category_icon}}"></span> {{$row->category_id}}
+                           <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
                         </div>
                     </div>
                     <div class="card-body home">
