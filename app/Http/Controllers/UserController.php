@@ -871,7 +871,7 @@ class UserController extends AppBaseController
         session()->put('hourly_price', $request->hourly_price);
         session()->put('email', $request->email);
         session()->put('telephone', $request->telephone);
-        dd($request->all());
+        // dd($request->all());
         return redirect()->route('ad_photo');
     }
     public function ads_photos_upload(Request $request)
