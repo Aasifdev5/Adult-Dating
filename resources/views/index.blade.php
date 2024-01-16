@@ -13,43 +13,48 @@ Home
     </div>
     <div class="container">
         <div class="row">
-            @foreach($category as $row)
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card shadow border-0 mb-4">
-                    <div data-href="{{url('ads_list/')}}<?php echo '/' . $row->category_id; ?>" class="cursor-pointer" style="
-                    background: url(product_photo/<?php echo $row->course_photo?>) no-repeat 50%;
-                    background-size: cover;
-                    min-height: 201px;
-                    ">
-                        <div class="profile-name">
-                           <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
-                        </div>
-                    </div>
-                    <div class="card-body home">
-                        <p class="card-text">{!!stripslashes($row->description)!!}</p>
-                        <ul class="list-unstyled">
-                            <li class="list-unstyled">
-                                <a href="{{url('ads_list/')}}<?php echo '/' . $row->category_id; ?>">
-                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore </a>
-                            </li>
-                            <li class="list-unstyled">
-                                <a href="{{url('ads_list/')}}<?php echo '/' . $row->category_id; ?>">
-                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Hyderabad </a>
-                            </li>
-                            <li class="list-unstyled">
-                                <a href="{{url('ads_list/')}}<?php echo '/' . $row->category_id; ?>">
-                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Delhi </a>
-                            </li>
-                            <li class="list-unstyled">
-                                <a href="{{url('ads_list/')}}<?php echo '/' . $row->category_id; ?>">
-                                    <i class="fa fa-video-camera mr-1"></i> Videochat </a>
-                            </li>
-                        </ul>
-                    </div>
+        @foreach($category as $row)
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow border-0 mb-4">
+            <div data-href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>" class="cursor-pointer rounded-top position-relative" style="
+                background: url(product_photo/<?php echo $row->course_photo?>) no-repeat 50%;
+                background-size: cover;
+                min-height: 201px;
+                border-radius: 0.25rem 0.25rem 0 0;
+            ">
+                <div class="profile-name position-absolute bottom-0 left-0 p-3">
+                    <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
                 </div>
             </div>
-            @endforeach
+            <div class="card-body home">
+                <p class="card-text">{!!stripslashes($row->description)!!}</p>
+                <ul class="list-unstyled">
+                    <li class="list-unstyled">
+                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                            <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore
+                        </a>
+                    </li>
+                    <li class="list-unstyled">
+                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                            <span class="homecategory notranslate">{{$row->category_id}}</span> Hyderabad
+                        </a>
+                    </li>
+                    <li class="list-unstyled">
+                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                            <span class="homecategory notranslate">{{$row->category_id}}</span> Delhi
+                        </a>
+                    </li>
+                    <li class="list-unstyled">
+                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                            <i class="fa fa-video-camera mr-1"></i> Videochat
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+@endforeach
+
         </div>
     </div>
 </main>
