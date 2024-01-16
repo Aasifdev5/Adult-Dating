@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{asset('admin/images/favicon.png')}}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('admin/images/favicon.png')}}" type="image/x-icon">
-    <title>Adult Dating - @yield('title')</title>
+    <link rel="icon" href="{{asset('icon-removebg-preview.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('icon-removebg-preview.png')}}" type="image/x-icon">
+    <title>Social Citas - @yield('title')</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -117,7 +117,7 @@
         <div class="page-main-header">
             <div class="main-header-right row">
                 <div class="main-header-left col-auto px-0 d-lg-none">
-                    <div class="logo-wrapper"><a href="{{url('admin/dashboard')}}"><img src="{{asset('admin/images/logo-light-removebg-preview.png')}}" alt=""></a>
+                    <div class="logo-wrapper"><a href="{{url('admin/dashboard')}}"><img src="{{asset('icon-removebg-preview.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="vertical-mobile-sidebar col-auto ps-3 d-none"><i class="fa fa-bars sidebar-bar"></i></div>
