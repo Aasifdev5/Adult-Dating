@@ -132,7 +132,7 @@ Ads List
     <div class="container">
         <ol itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList" id="bc1" class="btn-group btn-breadcrumb list-inline">
             <li itemprop="itemListElement" itemscope="itemscope">
-                <a itemscope="itemscope" itemid="" itemtype="http://schema.org/Service" itemprop="item" href="" class="btn btn-outline-primary">
+                <a itemscope="itemscope" itemid="" itemtype="http://schema.org/Service" itemprop="item" href="/" class="btn btn-outline-primary">
                     <i itemprop="name" class="fa fa-home">
                         <span class="bcseo-text"> India </span>
                     </i>
@@ -140,23 +140,13 @@ Ads List
                 <meta itemprop="position" content="1">
             </li>
             <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
-                <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="massages/" class="btn btn-outline-primary ">
-                    <div itemprop="name">Massages</div>
+                <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="{{url('ads_list/')}}/<?php echo $id; ?>" class="btn btn-outline-primary ">
+                    <div itemprop="name">{{$id}}</div>
                 </a>
                 <meta itemprop="position" content="2">
             </li>
-            <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
-                <a itemscope="itemscope" itemid="massages/karnataka/" itemtype="http://schema.org/Place" itemprop="item" href="massages/karnataka/" class="btn btn-outline-primary ">
-                    <div itemprop="name">Karnataka Massages</div>
-                </a>
-                <meta itemprop="position" content="3">
-            </li>
-            <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
-                <a itemscope="itemscope" itemid="massages/bangalore/" itemtype="http://schema.org/Place" itemprop="item" href="massages/bangalore/" class="btn btn-outline-primary ">
-                    <div itemprop="name">Bangalore Massages</div>
-                </a>
-                <meta itemprop="position" content="4">
-            </li>
+
+
         </ol>
     </div>
 </nav>

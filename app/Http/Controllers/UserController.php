@@ -793,7 +793,8 @@ class UserController extends AppBaseController
 
         $results = $query->paginate(10);
         // dd($results);
-        return view('search_results', compact('results', 'category','countries','states','cities'));
+        $id=$request->input('category');
+        return view('search_results', compact('results','id', 'category','countries','states','cities'));
     }
     public function Ad_insert(Request $request)
     {
