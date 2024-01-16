@@ -13,90 +13,77 @@ Home
     </div>
     <div class="container">
         <div class="row">
-        @foreach($category as $row)
-    <div class="col-md-6 col-lg-4">
-        <div class="card shadow border-0 mb-4">
-            <div data-href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>" class="cursor-pointer rounded-top position-relative" style="
-                background: url(product_photo/<?php echo $row->course_photo?>) no-repeat 50%;
+            @foreach($category as $row)
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow border-0 mb-4">
+                    <div data-href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>" class="cursor-pointer rounded-top position-relative" style="
+                background: url(product_photo/<?php echo $row->course_photo ?>) no-repeat 50%;
                 background-size: cover;
                 min-height: 201px;
                 border-radius: 0.25rem 0.25rem 0 0;
             ">
-                <div class="profile-name position-absolute bottom-0 left-0 p-3">
-                    <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
+                        <div class="profile-name position-absolute bottom-0 left-0 p-3">
+                            <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
+                        </div>
+                    </div>
+                    <div class="card-body home">
+                        <p class="card-text">{!!stripslashes($row->description)!!}</p>
+                        <ul class="list-unstyled">
+                            <li class="list-unstyled">
+                                <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore
+                                </a>
+                            </li>
+                            <li class="list-unstyled">
+                                <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Hyderabad
+                                </a>
+                            </li>
+                            <li class="list-unstyled">
+                                <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Delhi
+                                </a>
+                            </li>
+                            <li class="list-unstyled">
+                                <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
+                                    <i class="fa fa-video-camera mr-1"></i> Videochat
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="card-body home">
-                <p class="card-text">{!!stripslashes($row->description)!!}</p>
-                <ul class="list-unstyled">
-                    <li class="list-unstyled">
-                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                            <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore
-                        </a>
-                    </li>
-                    <li class="list-unstyled">
-                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                            <span class="homecategory notranslate">{{$row->category_id}}</span> Hyderabad
-                        </a>
-                    </li>
-                    <li class="list-unstyled">
-                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                            <span class="homecategory notranslate">{{$row->category_id}}</span> Delhi
-                        </a>
-                    </li>
-                    <li class="list-unstyled">
-                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                            <i class="fa fa-video-camera mr-1"></i> Videochat
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-@endforeach
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-    .profile-container {
-      text-align: center;
-    }
+            @endforeach
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <style>
+                .profile-container {
+                    text-align: center;
+                }
 
-    .profile-image {
-      width: 150px; /* Adjust the size as needed */
-      height: 150px; /* Adjust the size as needed */
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-  </style>
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="profile-container">
-        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;
-    width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
-        <h5 class="mb-1">Title</h5>
-        <h3 class="mb-3">Name</h3>
-        <p class="text-muted">Company Name</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="profile-container">
-        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" alt="Profile Image" class="profile-image rounded-circle">
-        <h5 class="mb-1">Title</h5>
-        <h3 class="mb-3">Name</h3>
-        <p class="text-muted">Company Name</p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="profile-container">
-        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" alt="Profile Image" class="profile-image rounded-circle">
-        <h5 class="mb-1">Title</h5>
-        <h3 class="mb-3">Name</h3>
-        <p class="text-muted">Company Name</p>
-      </div>
-    </div>
-  </div>
-</div>
+                .profile-image {
+                    width: 150px;
+                    /* Adjust the size as needed */
+                    height: 150px;
+                    /* Adjust the size as needed */
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin-bottom: 15px;
+                }
+            </style>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="profile-container">
+                            <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
+                            <h5 class="mb-1 text-center">Title</h5>
+                            <h3 class="mb-3 text-center">Name</h3>
+                            <p class="text-muted text-center">Company Name</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     </div>
 </main>
