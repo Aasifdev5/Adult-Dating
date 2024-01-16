@@ -656,64 +656,20 @@
             </header>
         </header>
 
-        <div id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" class="modal modal-vm18 fade" style="display: none; padding-left: 0px;">
-            <div role="document" class="modal-dialog modal-dialog-centered">
-                <div class="modal-content py-md-5 px-md-4 p-sm-3 p-4 text-center">
-                    <svg width="90px" height="82px" viewBox="0 0 90 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="m-auto">
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g id="Group-2" transform="translate(1.000000, 1.000000)">
-                                <g id="Group-Copy">
-                                    <path d="M40,80 C62.09139,80 80,62.09139 80,40 C80,29.442469 75.9098379,19.8402466 69.2276681,12.6914872 C61.9275517,4.8816324 51.533859,0 40,0 C17.90861,0 0,17.90861 0,40 C0,62.09139 17.90861,80 40,80 Z" id="Combined-Shape" stroke="#ECECEC" stroke-width="2" fill="#FFFFFF"></path>
-                                    <g id="Group-9-Copy" transform="translate(16.000000, 25.000000)">
-                                        <path d="M37.5396067,9.52112676 C33.4542563,9.52112676 28.2517062,14.0492182 24.5790503,19.6417324 C24.0851168,20.3931271 23.2577781,25.6338028 37.5396067,25.6338028 C48.1487794,25.6338028 51.9013746,22.6924839 49.1100001,18.742731 C46.2874298,14.7484415 42.7376074,9.52112676 37.5396067,9.52112676" id="Fill-1" fill="#448BC6"></path>
-                                        <path d="M40.4788732,3.66197183 C40.4788732,1.63940992 38.8382778,3.10862447e-15 36.8172351,3.10862447e-15 C34.7935226,3.10862447e-15 33.1549296,1.63940992 33.1549296,3.66197183 C33.1549296,5.68453374 34.7935226,7.32394366 36.8172351,7.32394366 C38.8382778,7.32394366 40.4788732,5.68453374 40.4788732,3.66197183" id="Fill-3" fill="#448BC6"></path>
-                                        <path d="M9.39438725,6.4875509 C10.0022322,7.00220279 10.7697652,7.32394366 11.6164984,7.32394366 C12.4078559,7.32394366 13.1309596,7.04425606 13.7201313,6.58834524 C15.3543585,6.8713704 17.2590252,6.51358387 16.7657951,6.38608905 C16.2468089,6.2519191 15.6795298,4.84613844 15.1251289,3.41298979 C15.0684654,2.56524932 14.7413624,1.79961284 14.2223761,1.20752954 C13.5758969,0.471263601 12.6525392,3.10862447e-15 11.6164984,3.10862447e-15 C10.7021554,3.10862447e-15 9.87602711,0.369801749 9.24950895,0.96055003 L9.24628944,0.958547493 C9.24435773,0.96055003 9.24242602,0.963887591 9.24242602,0.965890127 C8.62556641,1.54996329 8.21926327,2.35364795 8.12332164,3.26146452 C7.31007145,4.76002937 6.35645029,6.2519191 5.91859588,6.38608905 C5.46078045,6.5262666 7.74599416,6.94079167 9.39438725,6.4875509" id="Fill-5" fill="#BE206B"></path>
-                                        <path d="M21.6259713,18.4436516 C18.8693535,14.4493353 16.248536,11.8522025 15.8500194,11.4526436 C15.5796881,11.1816053 13.6448521,9.43003584 11.3521127,9.52483564 C9.05937326,9.43003584 7.12453725,11.1816053 6.85357137,11.4526436 C6.45568939,11.8522025 3.83487184,14.4493353 1.07825406,18.4436516 C-1.64663469,22.3927949 0.503958689,25.6338028 10.8628511,25.6338028 C10.9415391,25.6338028 11.2746939,25.6338028 11.3521127,25.6338028 C11.4295315,25.6338028 11.7626863,25.6338028 11.8413743,25.6338028 C22.2002667,25.6338028 24.35086,22.3927949 21.6259713,18.4436516" id="Fill-7" fill="#BE206B"></path>
-                                    </g>
-                                    <circle id="Oval" fill="#BE206B" cx="74.5" cy="15.5" r="14.5"></circle>
-                                    <text id="18" font-family="ProductSans-Black, Product Sans Black" font-size="15" font-weight="800" letter-spacing="-0.338498824" fill="#FFFFFF">
-                                        <tspan x="63.5684988" y="20">18</tspan>
-                                    </text>
-                                </g>
-                                <text id="+" font-family="ProductSans-Black, Product Sans Black" font-size="14" font-weight="800" letter-spacing="0.095832625" fill="#FFFFFF">
-                                    <tspan x="78.9060837" y="19">+</tspan>
-                                </text>
-                            </g>
-                        </g>
-                    </svg>
-                    <h5 class="mt-4">
-                        <b>Please read the following warning before continuing</b>
-                    </h5>
-                    <p class="r3 px-md-5 px-sm-1">
-                        <b>I am over 18 years old</b> and I accept the viewing of explicit texts and images intended for an <b>adult audience</b>. <br>
-                    </p>
-                    <hr class="my-1">
-                    <span>I have read and accept the <br>
-                        <a data-href="/terms-and-conditions/">Terms and Conditions</a>
-                    </span>
-                    <p></p>
-                    <div class="text-center mb-3">
-                        <button class="btn btn-primary w-50 rounded-pill b1">Accept</button>
-                    </div>
-                    <a data-href="/" data-dismiss="modal" class="text-center">Decline</a>
-                </div>
-            </div>
-        </div>
+
         @yield('content')
         <div class="container">
-            <footer class="page-footer font-small white pt-4">
+            <footer class="page-footer font-small grey pt-4">
                 <div class="container-fluid text-center text-md-left">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-sm-3">
+                            <img src="{{asset('footerlogo-removebg-preview.png')}}" alt="">
+                        </div>
+                        <div class="col-sm-3">
                             <p class="pt-md-1 pl-md-1"></p>
                             <hr>
                             <p class="pt-md-2 pl-md-1"></p>
-                            <a data-href="/terms-and-conditions/">
-                                <span>Terms and conditions</span>
-                            </a>
-                            <a data-href="/privacy-policy/">
-                                <span>Privacy policy</span>
-                            </a>
+
                             <a data-href="/contact-us/">
                                 <span>Contact us</span>
                             </a>
@@ -726,46 +682,26 @@
 
 
                         </div>
-                    </div>
-                    <p class="pt-md-1 pl-md-1"></p>
-                    <div class="row">
-                        <div class="col-sm">
-                            <p class="social">Follow us:</p>
-                            <ul class="list-unstyled list-inline">
-                                <li class="list-inline-item">
-                                    <a target="_blank" data-href="https://www.youtube.com/" class="btn-floating btn-sm btn-yt mx-1">
-                                        <i class="fa fa-youtube-play"></i>
+                        <div class="col-sm-3">
+                            <h5>Information</h5>
+                            <ul>
+                                <li><a data-href="/terms-and-conditions/">
+                                        <span>Terms and conditions</span>
                                     </a>
                                 </li>
-                                <li class="list-inline-item">
-                                    <a target="_blank" data-href="https://www.instagram.com/" class="btn-floating btn-sm btn-ins mx-1">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a target="_blank" data-href="" class="btn-floating btn-sm bg-dark mx-1">
-                                        <i class="icon-twitter-x"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a target="_blank" data-href="https://www.tiktok.com/" class="btn-floating btn-sm bg-dark mx-1">
-                                        <i class="fab fa-tiktok text-light"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a target="_blank" data-href="https://www.facebook.com/" class="btn-floating btn-sm btn-fb mx-1">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-
+                                <li> <a data-href="/privacy-policy/">
+                                        <span>Privacy policy</span>
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <ul>
+                                <li>Email : hola@socialcitas.com</li>
+                                <li>Phone : (+591) 947 002 963</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="rta"></div>
-                        </div>
-                    </div>
+
 
                 </div>
             </footer>
