@@ -309,13 +309,13 @@
                                 <li><a href="email-compose" data-bs-original-title="" title=""><i class="fa fa-circle"></i>Email Compose</a></li>
                             </ul>
                         </li> -->
-                        <li><a class="sidebar-header" href="#"><span class="fa fa-language"></span> &nbsp;&nbsp;<span>Multi Languages</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <!-- <li><a class="sidebar-header" href="#"><span class="fa fa-language"></span> &nbsp;&nbsp;<span>Multi Languages</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="{{url('admin/language')}}"><i class="fa fa-circle"></i>Languages</a></li>
                                 <li><a href="{{url('admin/languages')}}"><i class="fa fa-circle"></i>Add Transaltion </a></li>
 
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li><a class="sidebar-header" href="#"><i data-feather="home"></i><span>Content
                                     Management</span></a>
 
