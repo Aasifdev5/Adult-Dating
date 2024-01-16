@@ -549,10 +549,16 @@
                                             <a class="nav-link" href="/">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('about')}}">About</a>
+                                            <a class="nav-link" href="{{url('ads_list/Call Girls')}}">Female Escort</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('contact')}}">Contact Us</a>
+                                            <a class="nav-link" href="{{url('ads_list/Male Escorts')}}">Male Escort</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url('ads_list/Transsexual')}}">Casual encounter</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{url('ads_list/Live sex cam')}}">Live Camera</a>
                                         </li>
                                         <li class="nav-item d-none d-lg-block">
                                             <a href="#" class="btn btn-secondary new-ad btn-block" data-toggle="modal" data-target="#signup">
