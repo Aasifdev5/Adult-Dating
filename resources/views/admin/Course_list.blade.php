@@ -52,7 +52,7 @@ Category List
                                         <th class="">#</th>
                                         <!-- <th>id</th> -->
                                         <th> Category </th>
-                                        <th> Icon </th>
+
                                         <th> Image</th>
 
                                         <!-- <th>description</th> -->
@@ -67,10 +67,7 @@ Category List
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{ $row->category_id}}</td>
-                                        <td>@if(!empty($row->category_icon))
-                                            <img src="{{ asset('category_icon/' . $row->category_icon) }}" class="personal-avatar" alt="avatar" id="profileIconPreview">
-                                            @endif
-                                        </td>
+
                                         <td> @if(!empty($row->course_photo))
                                             <img src="{{asset('product_photo/')}}<?php echo '/' . $row->course_photo; ?>" class="personal-avatar" alt="avatar" id="profileImagePreview">
                                             @endif

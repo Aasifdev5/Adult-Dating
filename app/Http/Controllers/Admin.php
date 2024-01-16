@@ -502,13 +502,13 @@ class Admin extends Controller
     public function dashboard(Request $request)
     {
         if (Session::has('LoggedIn')) {
-           $total_sale = Payment::all();
-$total_earning = Payment::sum('amount');
+            $total_sale = Payment::all();
+            $total_earning = Payment::sum('amount');
 
-            $usersData = DB::table("users")->where('is_super_admin', '0')->orderby('id','desc')->get();
+            $usersData = DB::table("users")->where('is_super_admin', '0')->orderby('id', 'desc')->get();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
-            return view('admin/dashboard', compact('user_session','usersData','total_sale','total_earning'));
+            return view('admin/dashboard', compact('user_session', 'usersData', 'total_sale', 'total_earning'));
         }
     }
     public function users(Request $request)
@@ -523,7 +523,7 @@ $total_earning = Payment::sum('amount');
     public function country(Request $request)
     {
         if (Session::has('LoggedIn')) {
-            $countries =Country::all();
+            $countries = Country::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
             return view('admin.country', compact('user_session', 'countries'));
@@ -532,7 +532,7 @@ $total_earning = Payment::sum('amount');
     public function city(Request $request)
     {
         if (Session::has('LoggedIn')) {
-            $countries =City::all();
+            $countries = City::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
             return view('admin.city', compact('user_session', 'countries'));
@@ -676,14 +676,14 @@ $total_earning = Payment::sum('amount');
     public function delete_user($id)
     {
 
-    $user = User::where('id','=',$id)->first();
+        $user = User::where('id', '=', $id)->first();
 
-    if ($user) {
-        $user->delete();
-        return back()->with('success', 'Deleted Successfully');
-    } else {
-        return back()->with('error', 'User not found');
-    }
+        if ($user) {
+            $user->delete();
+            return back()->with('success', 'Deleted Successfully');
+        } else {
+            return back()->with('error', 'User not found');
+        }
     }
     public function add_transaction()
     {
@@ -1253,8 +1253,6 @@ $total_earning = Payment::sum('amount');
         $request->validate([
             'category_id' => 'required',
             'course_name' => 'required',
-
-
         ]);
         $data = Course::find($request->id);
         if (!empty($request->product_photo)) {
@@ -1265,12 +1263,11 @@ $total_earning = Payment::sum('amount');
 
         $check = Course::find($request->id);
 
-        if (empty($request->product_photo) ||empty($request->category_icon)) {
+        if (empty($request->product_photo)) {
 
             $profile = $check->course_photo;
         } else {
             $profile = $_FILES['product_photo']['name'];
-
         }
         $data->category_id = $request->category_id;
         $data->category_icon = $request->category_icon;
@@ -1280,7 +1277,7 @@ $total_earning = Payment::sum('amount');
 
         $update = $data->update();
         if ($update) {
-            return redirect('admin/Course_list')->with('success', 'Product Updated Successfully');
+            return redirect('admin/Course_list')->with('success', 'Category Updated Successfully');
         } else {
             return back()->with('fail', 'Something went wrong');
         }

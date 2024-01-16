@@ -44,11 +44,7 @@ Home
                                     <span class="homecategory notranslate">{{$row->category_id}}</span> Delhi
                                 </a>
                             </li>
-                            <li class="list-unstyled">
-                                <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                                    <i class="fa fa-video-camera mr-1"></i> Videochat
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -124,12 +120,7 @@ Home
 
         </div>
         @endforeach
-        <div class="card shadow text-center">
-            <div class="card-header" style="padding: 10px 0px;">
-                <a href="/call-girls/tag/video-sex-service/" class="h4">
-                    <span class="mr-2 fa fa-video-camera"></span> Videochat </a>
-            </div>
-        </div>
+
     </div>
 </div>
 @endsection
