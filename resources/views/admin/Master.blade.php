@@ -253,7 +253,7 @@
             <!-- Page Sidebar Start-->
             <div class="page-sidebar">
                 <div class="main-header-left d-none d-lg-block">
-                    <div class="logo-wrapper"><a href="{{url('admin/dashboard')}}"><img src="{{asset('logo.jpg')}}" style="width: 200px;" alt=""></a>
+                    <div class="logo-wrapper"><a href="{{url('admin/dashboard')}}"><img src="{{asset('logo-removebg-preview.png')}}" style="width: 200px;" alt=""></a>
                     </div>
                 </div>
                 <div class="sidebar custom-scrollbar">
