@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-in">
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta charset="utf-8">
-    <meta name="content-language" content="en-in">
-    <meta name="language" content="en-in">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
 
@@ -450,19 +450,14 @@
     </style>
 </head>
 
-<body class="Adult Dating" data-new-gr-c-s-check-loaded="14.1148.0" data-gr-ext-installed="" cz-shortcut-listen="true">
+<body class="Social Citas" data-new-gr-c-s-check-loaded="14.1148.0" data-gr-ext-installed="" cz-shortcut-listen="true">
 
     <div id="app">
         <header>
             <header class="container">
-                <div class="cusotm-nav-container d-flex justify-content-between align-items-center
-
-            noscrolling-navbar-navheight
-
-
-       ">
+                <div class="cusotm-nav-container d-flex justify-content-between align-items-center noscrolling-navbar-navheight ">
                     <a href="/" class="navbar-brand logo-header logo">
-                        <img src="{{asset('css/images/DatingLogo.jpg')}}" alt="Adult Dating" height="90">
+                        <img src="{{asset('logo.jpg')}}" alt="Social Citas" height="90">
 
                     </a>
 
@@ -559,7 +554,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 id="staticBackdropLabel" class="modal-title">
-                                                <i class="icon icon-Adult Dating signup pr-2"></i> Get into Adult Dating!
+                                                <i class="icon icon-Social Citas signup pr-2"></i> Get into Social Citas!
                                             </h5>
                                             <button type="button" data-dismiss="modal" aria-label="Close" class="close">
                                                 <span aria-hidden="true">×</span>
@@ -768,7 +763,7 @@
                     <div>
                         <div class="modal-body">
                             <div class="d-flex flex-column bd-highlight mb-3">
-                                <div class="p-2 bd-highlight">This ad was prevented from insertion due to violations of <a data-href="/terms-and-conditions/">Terms and conditions</a>. <br>For more information send an email to: <a href="mailto:support@Adult Dating.in">support@Adult Dating.in</a>
+                                <div class="p-2 bd-highlight">This ad was prevented from insertion due to violations of <a data-href="/terms-and-conditions/">Terms and conditions</a>. <br>For more information send an email to: <a href="mailto:support@Social Citas.in">support@Social Citas.in</a>
                                 </div>
                             </div>
                         </div>
