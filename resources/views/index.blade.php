@@ -69,9 +69,6 @@ Home
   </style>
 <div class="container mt-5">
   <div class="row justify-content-center">
-@foreach($category as $row)
-
-
     <div class="col-md-4">
       <div class="profile-container">
         <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" alt="Profile Image" class="profile-image">
@@ -80,12 +77,8 @@ Home
         <p class="text-muted">Company Name</p>
       </div>
     </div>
-
-@endforeach
+  </div>
 </div>
-</div>
-
-
         </div>
     </div>
 </main>
