@@ -10,7 +10,7 @@ Home
     <div class="container mt-5">
         <div class="text-center">
             <h1 class="main-title home">Hot meetings in your city</h1>
-            <h2 class="h2 home">Find your favourite Escort in Adult Dating</h2>
+            <h2 class="h2 home">Find your favourite Escort in Social Citas</h2>
         </div>
     </div>
     <div class="container">
@@ -56,7 +56,7 @@ Home
     </div>
 </main>
 <div class="container mt-5">
-    <p class="col-lg txt_seo mt-5">Welcome to Adult Dating, #1 Adult Classifieds in India. Are you looking for escort service? In Adult Dating you will find massages, sexual meetings, escorts service, independent escorts... Browse among all categories. Independent Girls, Call boys, Transsexual, Gay escorts, swinger meetings and the new one Adult Meetings. Looking for paid sex? Find it on Adult Dating. Can not find what you're looking for? POST YOUR AD absolutely FREE!</p>
+    <p class="col-lg txt_seo mt-5">Welcome to Social Citas, #1 Adult Classifieds in India. Are you looking for escort service? In Social Citas you will find massages, sexual meetings, escorts service, independent escorts... Browse among all categories. Independent Girls, Call boys, Transsexual, Gay escorts, swinger meetings and the new one Adult Meetings. Looking for paid sex? Find it on Social Citas. Can not find what you're looking for? POST YOUR AD absolutely FREE!</p>
     <hr class="mt-5">
     <p class="h4 mt-5 text-center"> Find ads in <span class="notranslate">India</span>
     </p>

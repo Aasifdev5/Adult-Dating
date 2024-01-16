@@ -15,7 +15,7 @@
     <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js">
     <link rel="preload" href="{{asset('css/app.css')}}" as="style">
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('icon.jpg')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('icon-removebg-preview.png')}}">
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/chunck-private-area.be138ac0ae29dcf8a826.css')}}" rel="stylesheet">
@@ -538,7 +538,7 @@
                             </div>
                             @else
 
-                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <nav class="navbar navbar-expand-lg navbar-light">
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -549,10 +549,10 @@
                                             <a class="nav-link" href="/">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/">About</a>
+                                            <a class="nav-link" href="{{url('about')}}">About</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/">Contact Us</a>
+                                            <a class="nav-link" href="{{url('contact')}}">Contact Us</a>
                                         </li>
                                         <li class="nav-item d-none d-lg-block">
                                             <a href="#" class="btn btn-secondary new-ad btn-block" data-toggle="modal" data-target="#signup">
