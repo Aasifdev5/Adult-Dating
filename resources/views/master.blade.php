@@ -15,7 +15,7 @@
     <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js">
     <link rel="preload" href="{{asset('css/app.css')}}" as="style">
 
-    <link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('icon.jpg')}}">
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/chunck-private-area.be138ac0ae29dcf8a826.css')}}" rel="stylesheet">
