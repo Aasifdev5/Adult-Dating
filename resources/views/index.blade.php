@@ -60,10 +60,10 @@ Home
                 <div class="row">
                     <div class="col-sm-4 text-center">
 
-                            <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
-                            <h5 class="mb-1 text-center">Title</h5>
-                            <h3 class="mb-3 text-center">Name</h3>
-                            <p class="text-muted text-center">Company Name</p>
+                        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
+                        <h5 class="mb-1 text-center">Title</h5>
+                        <h3 class="mb-3 text-center">Name</h3>
+                        <p class="text-muted text-center">Company Name</p>
 
                     </div>
 
@@ -117,9 +117,10 @@ Home
                 </div>
             </div>
             @php
-            $ads = DB::table('posting_ads')->where(['category'=>$row->category_id)-limit(3);
+            $ads = DB::table('posting_ads')->where(['category' => $row->category_id])->limit(3)->get();
             dd($ads);
             @endphp
+
         </div>
         @endforeach
         <div class="card shadow text-center">
