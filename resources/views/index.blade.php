@@ -54,29 +54,7 @@ Home
         </div>
     </div>
 @endforeach
-@foreach($category as $row)
-    <div class="col-md-6 col-lg-4">
-        <div class="card shadow border-0 mb-4">
 
-            <img src="{{asset('product_photo/')}}<?php echo '/'.$row->course_photo?>" alt="">
-                <div class="profile-name position-absolute bottom-0 left-0 p-3">
-                    <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
-                </div>
-            </div>
-            <div class="card-body home">
-                <p class="card-text">{!!stripslashes($row->description)!!}</p>
-                <ul class="list-unstyled">
-                    <li class="list-unstyled">
-                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                            <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-@endforeach
 <style>
     .profile-container {
       text-align: center;
@@ -100,6 +78,23 @@ Home
         <p class="text-muted">Company Name</p>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="profile-container">
+        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" alt="Profile Image" class="profile-image">
+        <h5 class="mb-1">Title</h5>
+        <h3 class="mb-3">Name</h3>
+        <p class="text-muted">Company Name</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="profile-container">
+        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" alt="Profile Image" class="profile-image">
+        <h5 class="mb-1">Title</h5>
+        <h3 class="mb-3">Name</h3>
+        <p class="text-muted">Company Name</p>
+      </div>
+    </div>
+
   </div>
 </div>
         </div>
