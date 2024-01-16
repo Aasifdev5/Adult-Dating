@@ -140,7 +140,7 @@ Ads List
                 <meta itemprop="position" content="1">
             </li>
             <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
-                <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="{{url(ads_list/$id)}}" class="btn btn-outline-primary ">
+                <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="{{url('ads_list/')}}/<?php echo $id; ?>" class="btn btn-outline-primary ">
                     <div itemprop="name">{{$id}}</div>
                 </a>
                 <meta itemprop="position" content="2">
