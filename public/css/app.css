@@ -184,7 +184,9 @@
   figure {
     margin: 0 0 1rem;
   }
-
+  img {
+    border-style: none;
+  }
   img,
   svg {
     vertical-align: middle;
@@ -8799,8 +8801,11 @@
   .btn-phone.btn-block {
     width: 96%;
   }
-
-
+  img,
+  video {
+    max-width: 100%;
+    vertical-align: middle;
+  }
   .modal-header.detailphoto {
     background-color: #fff;
   }
