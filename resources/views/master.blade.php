@@ -538,14 +538,30 @@
                             </div>
                             @else
 
-                            <div class="nav-icons">
-
-                                    <a href="/">
-                                        Home
-                                    </a>
-                                    <a href="#" data-toggle="modal" data-target="#signup" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
-                                <i class="fas fa-plus-circle mr-2"></i> Post your ad </a>
-                            </div>
+                            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                                <a class="navbar-brand" href="/">Your Logo</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNav">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/">About</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/">Contact Us</a>
+                                        </li>
+                                        <li class="nav-item d-none d-lg-block">
+                                            <a href="#" class="btn btn-secondary new-ad btn-block" data-toggle="modal" data-target="#signup">
+                                                <i class="fas fa-plus-circle mr-2"></i> Post your ad
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
 
                             @endif
 
