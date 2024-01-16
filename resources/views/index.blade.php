@@ -67,21 +67,23 @@ Home
       margin-bottom: 15px;
     }
   </style>
+<div class="container mt-5">
+  <div class="row justify-content-center">
 @foreach($category as $row)
 
-    <div class="container mt-5">
-  <div class="row justify-content-center">
+
     <div class="col-md-4">
       <div class="profile-container">
-        <img src="{{asset('product_photo/')}}<?php echo '/'.$row->course_photo?>" alt="{{$row->category_id}}" class="profile-image">
-        <h5 class="mb-1">{{$row->category_id}}</h5>
-        <h3 class="mb-3">{{$row->category_id}}</h3>
-        <p class="text-muted">{!!stripslashes($row->description)!!}</p>
+        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" alt="Profile Image" class="profile-image">
+        <h5 class="mb-1">Title</h5>
+        <h3 class="mb-3">Name</h3>
+        <p class="text-muted">Company Name</p>
       </div>
     </div>
-  </div>
-</div>
+
 @endforeach
+</div>
+</div>
 
 
         </div>
