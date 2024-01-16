@@ -116,6 +116,10 @@ Home
                     </div>
                 </div>
             </div>
+            @php
+            $ads = DB::table('posting_ads')->where(['category'=>$row->category_id)-limit(3);
+            dd($ads);
+            @endphp
         </div>
         @endforeach
         <div class="card shadow text-center">
