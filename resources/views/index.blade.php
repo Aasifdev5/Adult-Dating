@@ -114,7 +114,7 @@ Home
                     <div class="col-sm-3 text-center">
                         <img src="{{ asset('avatar.jpg') }}" style="height: 200px; width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
                         <p class="mb-1 text-center">{{ $ad->title }}</p>
-                        <h3 class="mb-3 text-center">{{$ad->name}}</h3>
+                        <a href="{{url('ad_details/')}}<?php echo '/' . $ad->id; ?>" target="_self" data-pck="272144">   <h3 class="mb-3 text-center">{{$ad->name}}</h3></a>
                         <p class="mb-3 text-center">{{$ad->age}} Years</p>
                         <p class="text-muted text-center"><i class="icon icon-map-pin mr-1"></i>{{ $ad->city }}</p>
                     </div>
