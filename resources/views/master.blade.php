@@ -678,6 +678,9 @@
                                 <li>
                                     <h5>Main</h5>
                                 </li>
+                                <li> <a data-href="{{url('about')}}">
+                                        <span>About us</span>
+                                    </a></li>
                                 <li> <a data-href="/contact-us/">
                                         <span>Contact us</span>
                                     </a></li>
