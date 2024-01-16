@@ -60,15 +60,7 @@ Home
                     text-align: center;
                 }
 
-                .profile-image {
-                    width: 150px;
-                    /* Adjust the size as needed */
-                    height: 150px;
-                    /* Adjust the size as needed */
-                    border-radius: 50%;
-                    object-fit: cover;
-                    margin-bottom: 15px;
-                }
+
             </style>
             <div class="container mt-5">
                 <div class="row">
