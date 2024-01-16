@@ -9,8 +9,8 @@
    <meta name="keywords"
       content="admin template, endless admin template, dashboard template, flat admin template, responsive admin template, web app">
    <meta name="author" content="pixelstrap">
-   <link rel="icon" href="{{asset('icon.png')}}" type="image/x-icon">
-   <link rel="shortcut icon" href="{{asset('icon.png')}}" type="image/x-icon">
+   <link rel="icon" href="{{asset('icon-removebg-preview.png')}}" type="image/x-icon">
+   <link rel="shortcut icon" href="{{asset('icon-removebg-preview.png')}}" type="image/x-icon">
    <title>Social Citas - Admin Login</title>
    <!-- Google font-->
    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -55,7 +55,7 @@
                <source src="{{asset('admin/video/auth-bg.mp4')}}" type="video/mp4">
             </video>
             <div class="authentication-box">
-               <div class="text-center"><h1 style="font-weight: 700;"><img src="{{asset('admin/images/favicon.png')}}" alt=""> Social Citas</h1></div>
+               <div class="text-center"><h1 style="font-weight: 700;"><img src="{{asset('icon-removebg-preview.png')}}" alt=""> Social Citas</h1></div>
                <div class="card mt-4">
                   <div class="card-body">
                      <div class="text-center">
