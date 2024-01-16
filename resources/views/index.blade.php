@@ -105,27 +105,23 @@ Home
             </div>
             @php
             $ads = DB::table('posting_ads')->where(['category' => $row->category_id])->limit(3)->get();
+            @endphp
+
             @if(!empty($ads))
             <div class="container mt-5">
                 <div class="row">
-                    @foreach($ads as $row)
-
+                    @foreach($ads as $ad)
                     <div class="col-sm-4 text-center">
-
-                        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
-                        <h5 class="mb-1 text-center">{{$row->title}}</h5>
-                        <h3 class="mb-3 text-center">Name</h3>
-                        <p class="text-muted text-center">{{$row->city}}</p>
-
+                        <img src="{{ asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg') }}" style="height: 200px; width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
+                        <h5 class="mb-1 text-center">{{ $ad->title }}</h5>
+                        <h3 class="mb-3 text-center">{{ $ad->name }}</h3>
+                        <p class="text-muted text-center">{{ $ad->city }}</p>
                     </div>
-
-
-
                     @endforeach
                 </div>
             </div>
-            endif
-            @endphp
+            @endif
+
 
         </div>
         @endforeach
