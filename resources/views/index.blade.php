@@ -56,20 +56,7 @@ Home
             @endforeach
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-sm-4 text-center">
 
-                        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
-                        <h5 class="mb-1 text-center">Title</h5>
-                        <h3 class="mb-3 text-center">Name</h3>
-                        <p class="text-muted text-center">Company Name</p>
-
-                    </div>
-
-
-                </div>
-            </div>
         </div>
     </div>
 </main>
@@ -118,7 +105,26 @@ Home
             </div>
             @php
             $ads = DB::table('posting_ads')->where(['category' => $row->category_id])->limit(3)->get();
+            @if(!empty($ads))
+            <div class="container mt-5">
+                <div class="row">
+                    @foreach($ads as $row)
 
+                    <div class="col-sm-4 text-center">
+
+                        <img src="{{asset('e29d6fb82c4a45e1b0eeb41d7b11577f.jpg')}}" style="height: 200px;width: 250px;" alt="Profile Image" class="profile-image rounded-circle">
+                        <h5 class="mb-1 text-center">{{$row->title}}</h5>
+                        <h3 class="mb-3 text-center">Name</h3>
+                        <p class="text-muted text-center">{{$row->city}}</p>
+
+                    </div>
+
+
+
+                    @endforeach
+                </div>
+            </div>
+            endif
             @endphp
 
         </div>
