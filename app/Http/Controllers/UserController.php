@@ -333,17 +333,17 @@ class UserController extends AppBaseController
         $services = CourseCategory::all();
         return view('index', compact('category'));
     }
-    public function ads_list($category)
+    public function ads_list($id)
     {
 
-        $ads = PostingAds::where('category', $category)->paginate(10);
+        $ads = PostingAds::where('category', $id)->paginate(10);
         $category = Course::all();
         $countries = Country::all();
         $states = States::all();
 
         $cities = City::all();
 
-        return view('ads_list', compact('ads', 'category','countries','cities','states'));
+        return view('ads_list', compact('ads', 'category','id','countries','cities','states'));
     }
     public function Userlogin()
     {
