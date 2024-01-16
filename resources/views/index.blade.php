@@ -118,7 +118,7 @@ Home
             </div>
             @php
             $ads = DB::table('posting_ads')->where(['category' => $row->category_id])->limit(3)->get();
-            dd($ads);
+
             @endphp
 
         </div>
