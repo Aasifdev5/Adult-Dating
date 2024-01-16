@@ -666,25 +666,20 @@
                             <img src="{{asset('footerlogo-removebg-preview.png')}}" alt="">
                         </div>
                         <div class="col-sm-3">
-                            <p class="pt-md-1 pl-md-1"></p>
-                            <hr>
-                            <p class="pt-md-2 pl-md-1"></p>
+                            <h5>Main</h5>
 
-                            <a data-href="/contact-us/">
-                                <span>Contact us</span>
-                            </a>
-                            <a style="display: none;">
-                                <span>Manage your ads</span>
-                            </a>
-                            <a data-href="/promote-your-ads/">
-                                <span>Promote your ads</span>
-                            </a>
-
-
+                            <ul style="list-style-type: none;">
+                                <li> <a data-href="/contact-us/">
+                                        <span>Contact us</span>
+                                    </a></li>
+                                <li> <a data-href="/promote-your-ads/">
+                                        <span>Promote your ads</span>
+                                    </a></li>
+                            </ul>
                         </div>
                         <div class="col-sm-3">
                             <h5>Information</h5>
-                            <ul>
+                            <ul style="list-style-type: none;">
                                 <li><a data-href="/terms-and-conditions/">
                                         <span>Terms and conditions</span>
                                     </a>
@@ -695,7 +690,8 @@
                             </ul>
                         </div>
                         <div class="col-sm-3">
-                            <ul>
+                            <h5>Contact</h5>
+                            <ul style="list-style-type: none;">
                                 <li>Email : hola@socialcitas.com</li>
                                 <li>Phone : (+591) 947 002 963</li>
                             </ul>
