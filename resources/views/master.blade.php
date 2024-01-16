@@ -543,10 +543,10 @@
                                     <a href="/">
                                         Home
                                     </a>
-
-                            </div>
-                            <a href="#" data-toggle="modal" data-target="#signup" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
+                                    <a href="#" data-toggle="modal" data-target="#signup" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
                                 <i class="fas fa-plus-circle mr-2"></i> Post your ad </a>
+                            </div>
+
                             @endif
 
                             <div id="signup" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" class="modal fade menu">
