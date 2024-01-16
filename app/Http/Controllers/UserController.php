@@ -757,7 +757,8 @@ class UserController extends AppBaseController
     public function ad_details($id)
     {
         $ads_details = PostingAds::where('id', $id)->first();
-        return view('ad_details', compact('ads_details'));
+        $id=$ads_details->category;
+        return view('ad_details', compact('ads_details','id'));
     }
     public function post_list()
     {

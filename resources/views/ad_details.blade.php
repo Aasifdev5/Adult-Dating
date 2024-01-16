@@ -5,36 +5,23 @@ Ad Details
 @section('content')
 <nav class="breadcrumb">
     <div class="container">
-        <div class="goback">
-            <a href="javascript:void(0)" onclick="window.$skokka.goToLastListing('call-girls/hyderabad/')"> &lt; Back to search</a>
-        </div>
         <ol itemscope="itemscope" itemtype="http://schema.org/BreadcrumbList" id="bc1" class="btn-group btn-breadcrumb list-inline">
-            <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem">
-                <a itemscope="itemscope" itemid="https://www.skokka.in" itemtype="http://schema.org/Service" itemprop="item" href="https://www.skokka.in" class="btn btn-outline-primary">
+            <li itemprop="itemListElement" itemscope="itemscope">
+                <a itemscope="itemscope" itemid="" itemtype="http://schema.org/Service" itemprop="item" href="/" class="btn btn-outline-primary">
                     <i itemprop="name" class="fa fa-home">
-                        <span class="bcseo-text"> Skokka India </span>
+                        <span class="bcseo-text"> India </span>
                     </i>
                 </a>
                 <meta itemprop="position" content="1">
             </li>
-            <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem" class="list-bcseo">
-                <a itemscope="itemscope" itemid="call-girls/" itemtype="http://schema.org/Service" itemprop="item" href="call-girls/" class="btn btn-outline-primary ">
-                    <div itemprop="name" translate="no" class="notranslate">Call Girls</div>
+            <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
+                <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="{{url('ads_list/')}}/<?php echo $id; ?>" class="btn btn-outline-primary ">
+                    <div itemprop="name">{{$id}}</div>
                 </a>
                 <meta itemprop="position" content="2">
             </li>
-            <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem" class="list-bcseo">
-                <a itemscope="itemscope" itemid="call-girls/telangana/" itemtype="http://schema.org/Place" itemprop="item" href="call-girls/telangana/" class="btn btn-outline-primary ">
-                    <div itemprop="name" translate="no" class="notranslate">Telangana Call Girls</div>
-                </a>
-                <meta itemprop="position" content="3">
-            </li>
-            <li itemprop="itemListElement" itemscope="itemscope" itemtype="http://schema.org/ListItem" class="list-bcseo">
-                <a itemscope="itemscope" itemid="call-girls/hyderabad/" itemtype="http://schema.org/Place" itemprop="item" href="call-girls/hyderabad/" class="btn btn-outline-primary ">
-                    <div itemprop="name" translate="no" class="notranslate">Hyderabad Call Girls</div>
-                </a>
-                <meta itemprop="position" content="4">
-            </li>
+
+
         </ol>
     </div>
 </nav>
