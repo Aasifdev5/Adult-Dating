@@ -57,26 +57,26 @@ Home
 @foreach($category as $row)
     <div class="col-md-6 col-lg-4">
         <div class="card shadow border-0 mb-4">
-            <div class="position-relative">
-                <img src="{{asset('product_photo/')}}<?php echo '/'.$row->course_photo?>" class="rounded-circle" alt="{{$row->category_id}}">
+
+            <img src="{{asset('product_photo/')}}<?php echo '/'.$row->course_photo?>" class="rounded-circle" alt="{{$row->category_id}}">
                 <div class="profile-name position-absolute bottom-0 left-0 p-3">
-                    <h2 class="text-light"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
+                    <h2 style="color: #fff;"><span class="{{$row->category_icon}}"></span> {{$row->category_id}}</h2>
                 </div>
             </div>
             <div class="card-body home">
                 <p class="card-text">{!!stripslashes($row->description)!!}</p>
                 <ul class="list-unstyled">
                     <li class="list-unstyled">
-                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>" class="text-decoration-none">
+                        <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
                             <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore
                         </a>
                     </li>
+
                 </ul>
             </div>
         </div>
     </div>
 @endforeach
-
         </div>
     </div>
 </main>
