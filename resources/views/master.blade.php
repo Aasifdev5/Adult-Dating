@@ -666,9 +666,12 @@
                             <img src="{{asset('footerlogo-removebg-preview.png')}}" alt="">
                         </div>
                         <div class="col-sm-3">
-                            <h5>Main</h5>
+
 
                             <ul style="list-style-type: none;">
+                                <li>
+                                    <h5>Main</h5>
+                                </li>
                                 <li> <a data-href="/contact-us/">
                                         <span>Contact us</span>
                                     </a></li>
@@ -678,8 +681,11 @@
                             </ul>
                         </div>
                         <div class="col-sm-3">
-                            <h5>Information</h5>
+
                             <ul style="list-style-type: none;">
+                                <li>
+                                    <h5>Information</h5>
+                                </li>
                                 <li><a data-href="/terms-and-conditions/">
                                         <span>Terms and conditions</span>
                                     </a>
@@ -690,8 +696,11 @@
                             </ul>
                         </div>
                         <div class="col-sm-3">
-                            <h5>Contact</h5>
+
                             <ul style="list-style-type: none;">
+                                <li>
+                                    <h5>Contact</h5>
+                                </li>
                                 <li>Email : hola@socialcitas.com</li>
                                 <li>Phone : (+591) 947 002 963</li>
                             </ul>
