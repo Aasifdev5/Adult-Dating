@@ -500,7 +500,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel"><link rel="shortcut icon" type="image/x-icon" href="{{asset('icon-removebg-preview.png')}}">Your Private Area</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel"><img  src="{{asset('icon-removebg-preview.png')}}">Your Private Area</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
