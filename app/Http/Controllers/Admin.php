@@ -1252,7 +1252,7 @@ class Admin extends Controller
 
         $request->validate([
             'category_id' => 'required',
-            'course_name' => 'required',
+
         ]);
         $data = Course::find($request->id);
         if (!empty($request->product_photo)) {
