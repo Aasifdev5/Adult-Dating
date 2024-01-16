@@ -540,12 +540,12 @@
 
                             <div class="nav-icons">
                                 <div class="dropdown sign">
-                                    <a href="#" data-toggle="modal" data-target="#signup" class="signup">
-                                        <i class="text-clipped fas fa-user"></i>
+                                    <a href="/">
+                                        Home
                                     </a>
                                 </div>
                             </div>
-                            <a href="{{url('Userlogin')}}" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
+                            <a href="#" data-toggle="modal" data-target="#signup" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
                                 <i class="fas fa-plus-circle mr-2"></i> Post your ad </a>
                             @endif
 
