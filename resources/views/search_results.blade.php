@@ -139,13 +139,14 @@ Ads List
                 </a>
                 <meta itemprop="position" content="1">
             </li>
+            @if(!empty($id))
             <li itemprop="itemListElement" itemscope="itemscope" class="list-bcseo">
                 <a itemscope="itemscope" itemid="massages/" itemtype="http://schema.org/Service" itemprop="item" href="@if(!empty($id)){{url('ads_list/')}}/<?php echo $id; ?>@endif" class="btn btn-outline-primary ">
-                    <div itemprop="name">@if(!empty($id)){{$id}}@endif</div>
+                    <div itemprop="name">{{$id}}</div>
                 </a>
                 <meta itemprop="position" content="2">
             </li>
-
+            @endif
 
         </ol>
     </div>
