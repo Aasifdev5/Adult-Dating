@@ -4,9 +4,7 @@ Home
 @endsection
 @section('content')
 <main>
-    <div class="container">
 
-    </div>
     <div class="container mt-5">
         <div class="text-center">
             <h1 class="main-title home">Hot meetings in your city</h1>
