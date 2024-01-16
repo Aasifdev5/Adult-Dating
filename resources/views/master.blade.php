@@ -663,7 +663,7 @@
                 <div class="container-fluid text-center text-md-left">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="{{asset('footerlogo-removebg-preview.png')}}" alt="">
+                            <img src="{{asset('footerlogo-removebg-preview.png')}}" alt="Social Citas">
                         </div>
                         <div class="col-sm-3">
 

@@ -6,7 +6,7 @@ SignUp
 <main>
     <div class="container mt-5 mb-5">
         <div class="text-center">
-            <h1 class="main-title home">Join Adult Dating </h1>
+            <h1 class="main-title home">Join Social Citas </h1>
         </div>
         <div class="d-flex justify-content-center tipsaccount">
             <div id="skokkaPromoCarousel" data-ride="carousel" class="carousel slide">

@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Adult Dating
+Social Citas
 @endsection
 @section('content')
 <main>
