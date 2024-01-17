@@ -276,9 +276,9 @@
                         <li><a class="sidebar-header" href="{{url('admin/dashboard')}}"><i data-feather="home"></i><span>{{ trans('dashboard') }}</span></a>
 
                         </li>
-                        <li><a class="sidebar-header" href="{{url('conversations')}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle right_side_toggle">
+                        <!-- <li><a class="sidebar-header" href="{{url('conversations')}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle right_side_toggle">
                                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                                </svg><span>{{ trans('Chat') }}</span></a>
+                                </svg><span>{{ trans('Chat') }}</span></a> -->
 
                         </li>
                         <li><a class="sidebar-header" href="#"><i data-feather="settings"></i><span>{{__('settings')}}</span><i class="fa fa-angle-right pull-right"></i></a>
@@ -291,7 +291,19 @@
                                 <li><a href="{{url('admin/website_setting')}}"><i class="fa fa-circle"></i>General Seting</a></li>
                             </ul>
                         </li>
+                        <li><a class="sidebar-header" href="{{ url('admin/banners') }}"><i data-feather="book"></i><span>Banner</span></a></li>
+                        <li><a class="sidebar-header" href="{{ url('admin/ads') }}"><i data-feather="book"></i><span>Top Ads</span></a></li>
+                        <li><a class="sidebar-header" href="{{ url('admin/calendars') }}"><i data-feather="book"></i><span>Calender Profile</span></a></li>
+                        <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Payment Management</span><i class="fa fa-angle-right pull-right"></i></a>
+                            <ul class="sidebar-submenu">
+                                <li><a href="{{url('admin/qrcode')}}"><i class="fa fa-circle"></i> Manual Payment Method</a></li>
+                                <li><a href="{{url('admin/credit_reloads')}}"><i class="fa fa-circle"></i> Credit Reload</a></li>
+                                <li><a href="{{url('admin/subscription/payment_reports')}}"><i class="fa fa-circle"></i> Payment Report  </a></li>
+                            </ul>
+                        </li>
+                        <li><a class="sidebar-header" href="{{url('admin/credit_reload_promotions')}}"><i data-feather="book"></i><span>Credits</span></a>
 
+                        </li>
                         <li><a class="sidebar-header" href="{{url('admin/pages')}}"><i data-feather="book"></i><span>Pages</span></a>
 
                         </li>

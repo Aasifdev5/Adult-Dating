@@ -26,6 +26,15 @@ use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\FundController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\AdController;
+use App\Http\Controllers\Admin\CalendarController;
+use App\Http\Controllers\QRCodeController;
+use App\Http\Controllers\CreditReloadController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\CreditReloadPromotionController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -124,10 +133,21 @@ Route::get('lang/change', [LanguageTranslationController::class, 'lang_change'])
 Route::get('/get-states', [UserController::class, 'getStates'])->name('get-states');
 Route::get('/get-cities', [UserController::class, 'getCities'])->name('get-cities');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'admin-prevent-back-history'], function () {
-
+        Route::resource('banners', BannerController::class)->names('admin.banners');
+        Route::resource('ads', AdController::class)->names('admin.ads');
+        Route::resource('calendars', CalendarController::class)->names('admin.calendars');
+        Route::get('/qrcode', [QRCodeController::class, 'index'])->name('qrcode.index');
+        Route::post('/qrcode/generate', [QRCodeController::class, 'generateQrCode'])->name('qrcode.generate');
+        Route::get('/qrcode/download/{data}', [QRCodeController::class, 'downloadQrCode'])->name('qrcode.download');
+        Route::resource('credit_reloads', CreditReloadController::class)->only(['index', 'store']);
+        Route::get('credit_reloads/{id}/accept', [CreditReloadController::class, 'accept'])->name('credit_reloads.accept');
+        Route::get('subscription/payment_reports', [SubscriptionController::class, 'paymentReports'])->name('subscription.payment_reports');
+        Route::post('subscription/activate', [SubscriptionController::class, 'activateSubscription'])->name('subscription.activate');
+        Route::get('credit_reload_promotions', [CreditReloadPromotionController::class, 'index'])->name('credit_reload_promotions.index');
+        Route::post('/reload', [CreditReloadController::class, 'reload'])->name('credit_reload.reload');
         Route::get('login', [Admin::class, 'admin'])->name('admin')->middleware('AdminAlreadyLoggedIn');
         Route::get('country', [Admin::class, 'country'])->name('country')->middleware('alreadyLoggedIn');
         Route::get('city', [Admin::class, 'city'])->name('city')->middleware('alreadyLoggedIn');
@@ -238,7 +258,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::post('/withdraw', [FundController::class, 'withdraw']);
         Route::get('/transactions_report', [Admin::class, 'transactions_report'])->name('transactions_report')->middleware('AdminIsLoggedIn');
     });
-Route::get('/forget_password', [Admin::class, 'forget_password'])->name('forget_password');
+    Route::get('/forget_password', [Admin::class, 'forget_password'])->name('forget_password');
     Route::post('/log', [Admin::class, 'login'])->name('login');
     Route::get('/logout', [Admin::class, 'logout'])->name('logout');
 });
@@ -255,81 +275,93 @@ Route::get('/home', [HomeController::class, 'index']);
 Route::post('update-language', [UserController::class, 'updateLanguage'])->middleware('auth')->name('update-language');
 
 // Impersonate Logout
-Route::get('/users/impersonate-logout',
-    [UserController::class, 'userImpersonateLogout'])->name('impersonate.userLogout');
+Route::get(
+    '/users/impersonate-logout',
+    [UserController::class, 'userImpersonateLogout']
+)->name('impersonate.userLogout');
 
 
-    //view routes
-    Route::get('/conversations',
-        [ChatController::class, 'index'])->name('conversations');
-    Route::get('profile', [UserController::class, 'getProfile']);
-    Route::get('logout', [LoginController::class, 'logout']);
+//view routes
+Route::get(
+    '/conversations',
+    [ChatController::class, 'index']
+)->name('conversations');
+Route::get('profile', [UserController::class, 'getProfile']);
+Route::get('logout', [LoginController::class, 'logout']);
 
-    //get all user list for chat
-    Route::get('users-list', [API\UserAPIController::class, 'getUsersList']);
-    Route::get('get-users', [API\UserAPIController::class, 'getUsers'])->name('get-users')->name('get-users');
-    Route::delete('remove-profile-image',
-        [API\UserAPIController::class, 'removeProfileImage'])->name('remove-profile-image');
-    /** Change password */
-    Route::post('change-password', [API\UserAPIController::class, 'changePassword'])->name('change-password');
-    Route::get('conversations/{ownerId}/archive-chat', [API\UserAPIController::class, 'archiveChat'])->name('conversations.archive-chat');
-    Route::get('conversations/{ownerId}/un-archive-chat', [API\UserAPIController::class, 'unArchiveChat'])->name('conversations.un-archive-chat');
+//get all user list for chat
+Route::get('users-list', [API\UserAPIController::class, 'getUsersList']);
+Route::get('get-users', [API\UserAPIController::class, 'getUsers'])->name('get-users')->name('get-users');
+Route::delete(
+    'remove-profile-image',
+    [API\UserAPIController::class, 'removeProfileImage']
+)->name('remove-profile-image');
+/** Change password */
+Route::post('change-password', [API\UserAPIController::class, 'changePassword'])->name('change-password');
+Route::get('conversations/{ownerId}/archive-chat', [API\UserAPIController::class, 'archiveChat'])->name('conversations.archive-chat');
+Route::get('conversations/{ownerId}/un-archive-chat', [API\UserAPIController::class, 'unArchiveChat'])->name('conversations.un-archive-chat');
 
-    Route::get('get-profile', [API\UserAPIController::class, 'getProfile']);
-    Route::post('profile', [API\UserAPIController::class, 'updateProfile'])->name('update.profile');
-    Route::post('update-last-seen', [API\UserAPIController::class, 'updateLastSeen'])->name('update-last-seen');
+Route::get('get-profile', [API\UserAPIController::class, 'getProfile']);
+Route::post('profile', [API\UserAPIController::class, 'updateProfile'])->name('update.profile');
+Route::post('update-last-seen', [API\UserAPIController::class, 'updateLastSeen'])->name('update-last-seen');
 
-    Route::post('send-message',
-        [API\ChatAPIController::class, 'sendMessage'])->name('conversations.store')->middleware('sendMessage');
-    Route::get('users/{id}/conversation', [API\UserAPIController::class, 'getConversation'])->name('users.conversation');
-    Route::get('conversations-list', [API\ChatAPIController::class, 'getLatestConversations'])->name('conversations-list');
-    Route::get('archive-conversations', [API\ChatAPIController::class, 'getArchiveConversations'])->name('archive-conversations');
-    Route::post('read-message', [API\ChatAPIController::class, 'updateConversationStatus'])->name('read-message');
-    Route::post('file-upload', [API\ChatAPIController::class, 'addAttachment'])->name('file-upload');
-    Route::post('image-upload', [API\ChatAPIController::class, 'imageUpload'])->name('image-upload');
-    Route::get('conversations/{userId}/delete', [API\ChatAPIController::class, 'deleteConversation'])->name('conversations.destroy');
-    Route::post('conversations/message/{conversation}/delete', [API\ChatAPIController::class, 'deleteMessage'])->name('conversations.message-conversation.delete');
-    Route::post('conversations/{conversation}/delete', [API\ChatAPIController::class, 'deleteMessageForEveryone']);
-    Route::get('/conversations/{conversation}', [API\ChatAPIController::class, 'show']);
-    Route::post('send-chat-request', [API\ChatAPIController::class, 'sendChatRequest'])->name('send-chat-request');
-    Route::post('accept-chat-request',
-        [API\ChatAPIController::class, 'acceptChatRequest'])->name('accept-chat-request');
-    Route::post('decline-chat-request',
-        [API\ChatAPIController::class, 'declineChatRequest'])->name('decline-chat-request');
+Route::post(
+    'send-message',
+    [API\ChatAPIController::class, 'sendMessage']
+)->name('conversations.store')->middleware('sendMessage');
+Route::get('users/{id}/conversation', [API\UserAPIController::class, 'getConversation'])->name('users.conversation');
+Route::get('conversations-list', [API\ChatAPIController::class, 'getLatestConversations'])->name('conversations-list');
+Route::get('archive-conversations', [API\ChatAPIController::class, 'getArchiveConversations'])->name('archive-conversations');
+Route::post('read-message', [API\ChatAPIController::class, 'updateConversationStatus'])->name('read-message');
+Route::post('file-upload', [API\ChatAPIController::class, 'addAttachment'])->name('file-upload');
+Route::post('image-upload', [API\ChatAPIController::class, 'imageUpload'])->name('image-upload');
+Route::get('conversations/{userId}/delete', [API\ChatAPIController::class, 'deleteConversation'])->name('conversations.destroy');
+Route::post('conversations/message/{conversation}/delete', [API\ChatAPIController::class, 'deleteMessage'])->name('conversations.message-conversation.delete');
+Route::post('conversations/{conversation}/delete', [API\ChatAPIController::class, 'deleteMessageForEveryone']);
+Route::get('/conversations/{conversation}', [API\ChatAPIController::class, 'show']);
+Route::post('send-chat-request', [API\ChatAPIController::class, 'sendChatRequest'])->name('send-chat-request');
+Route::post(
+    'accept-chat-request',
+    [API\ChatAPIController::class, 'acceptChatRequest']
+)->name('accept-chat-request');
+Route::post(
+    'decline-chat-request',
+    [API\ChatAPIController::class, 'declineChatRequest']
+)->name('decline-chat-request');
 
-    /** Web Notifications */
-    Route::put('update-web-notifications', [API\UserAPIController::class, 'updateNotification'])->name('update-web-notifications');
+/** Web Notifications */
+Route::put('update-web-notifications', [API\UserAPIController::class, 'updateNotification'])->name('update-web-notifications');
 
-    /** BLock-Unblock User */
-    Route::put('users/{user}/block-unblock', [API\BlockUserAPIController::class, 'blockUnblockUser'])->name('users.block-unblock');
-    Route::get('blocked-users', [API\BlockUserAPIController::class, 'blockedUsers']);
+/** BLock-Unblock User */
+Route::put('users/{user}/block-unblock', [API\BlockUserAPIController::class, 'blockUnblockUser'])->name('users.block-unblock');
+Route::get('blocked-users', [API\BlockUserAPIController::class, 'blockedUsers']);
 
-    /** My Contacts */
-    Route::get('my-contacts', [API\UserAPIController::class, 'myContacts'])->name('my-contacts');
+/** My Contacts */
+Route::get('my-contacts', [API\UserAPIController::class, 'myContacts'])->name('my-contacts');
 
-    /** Groups API */
-    Route::post('groups', [API\GroupAPIController::class, 'create'])->name('groups.create');
-    Route::post('groups/{group}', [API\GroupAPIController::class, 'update'])->name('groups.update');
-    Route::get('groups', [API\GroupAPIController::class, 'index'])->name('groups.index');
-    Route::get('groups/{group}', [API\GroupAPIController::class, 'show'])->name('group.show');
-    Route::put('groups/{group}/add-members', [API\GroupAPIController::class, 'addMembers'])->name('groups-group.add-members');
-    Route::delete('groups/{group}/members/{user}', [API\GroupAPIController::class, 'removeMemberFromGroup'])->name('group-from-member-remove');
-    Route::delete('groups/{group}/leave', [API\GroupAPIController::class, 'leaveGroup'])->name('groups.leave');
-    Route::delete('groups/{group}/remove', [API\GroupAPIController::class, 'removeGroup'])->name('group-remove');
-    Route::put('groups/{group}/members/{user}/make-admin', [API\GroupAPIController::class, 'makeAdmin'])->name('groups.members.make-admin');
-    Route::put('groups/{group}/members/{user}/dismiss-as-admin', [API\GroupAPIController::class, 'dismissAsAdmin'])->name('groups.members.dismiss-as-admin');
-    Route::get('users-blocked-by-me', [API\BlockUserAPIController::class, 'blockUsersByMe']);
+/** Groups API */
+Route::post('groups', [API\GroupAPIController::class, 'create'])->name('groups.create');
+Route::post('groups/{group}', [API\GroupAPIController::class, 'update'])->name('groups.update');
+Route::get('groups', [API\GroupAPIController::class, 'index'])->name('groups.index');
+Route::get('groups/{group}', [API\GroupAPIController::class, 'show'])->name('group.show');
+Route::put('groups/{group}/add-members', [API\GroupAPIController::class, 'addMembers'])->name('groups-group.add-members');
+Route::delete('groups/{group}/members/{user}', [API\GroupAPIController::class, 'removeMemberFromGroup'])->name('group-from-member-remove');
+Route::delete('groups/{group}/leave', [API\GroupAPIController::class, 'leaveGroup'])->name('groups.leave');
+Route::delete('groups/{group}/remove', [API\GroupAPIController::class, 'removeGroup'])->name('group-remove');
+Route::put('groups/{group}/members/{user}/make-admin', [API\GroupAPIController::class, 'makeAdmin'])->name('groups.members.make-admin');
+Route::put('groups/{group}/members/{user}/dismiss-as-admin', [API\GroupAPIController::class, 'dismissAsAdmin'])->name('groups.members.dismiss-as-admin');
+Route::get('users-blocked-by-me', [API\BlockUserAPIController::class, 'blockUsersByMe']);
 
-    Route::get('notification/{notification}/read', [API\NotificationController::class, 'readNotification'])->name('notification.read-notification');
-    Route::get('notification/read-all', [API\NotificationController::class, 'readAllNotification'])->name('read-all-notification');
+Route::get('notification/{notification}/read', [API\NotificationController::class, 'readNotification'])->name('notification.read-notification');
+Route::get('notification/read-all', [API\NotificationController::class, 'readAllNotification'])->name('read-all-notification');
 
-    Route::put('update-player-id', [API\UserAPIController::class, 'updatePlayerId'])->name('update-player-id');
-    //set user custom status route
-    Route::post('set-user-status', [API\UserAPIController::class, 'setUserCustomStatus'])->name('set-user-status');
-    Route::get('clear-user-status', [API\UserAPIController::class, 'clearUserCustomStatus'])->name('clear-user-status');
+Route::put('update-player-id', [API\UserAPIController::class, 'updatePlayerId'])->name('update-player-id');
+//set user custom status route
+Route::post('set-user-status', [API\UserAPIController::class, 'setUserCustomStatus'])->name('set-user-status');
+Route::get('clear-user-status', [API\UserAPIController::class, 'clearUserCustomStatus'])->name('clear-user-status');
 
-    //report user
-    Route::post('report-user', [API\ReportUserController::class, 'store'])->name('report-user.store');
+//report user
+Route::post('report-user', [API\ReportUserController::class, 'store'])->name('report-user.store');
 
 
 // users
@@ -364,8 +396,10 @@ Route::middleware(['permission:manage_reported_users', 'auth', 'user.activated']
 // meetings
 Route::middleware(['permission:manage_meetings', 'auth', 'user.activated'])->group(function () {
     Route::resource('meetings', MeetingController::class);
-    Route::get('meetings/{meeting}/change-status/{status}',
-        [MeetingController::class, 'changeMeetingStatus'])->name('meeting.change-meeting-status');
+    Route::get(
+        'meetings/{meeting}/change-status/{status}',
+        [MeetingController::class, 'changeMeetingStatus']
+    )->name('meeting.change-meeting-status');
     Route::get('member/meetings', [MeetingController::class, 'showMemberMeetings'])->name('meetings.member_index');
 });
 
@@ -379,4 +413,4 @@ Route::middleware(['permission:manage_front_cms', 'auth', 'user.activated'])->gr
     Route::post('front-cms', [FrontCMSController::class, 'updateFrontCms'])->name('front.cms.update');
 });
 
-require __DIR__.'/upgrade.php';
+require __DIR__ . '/upgrade.php';

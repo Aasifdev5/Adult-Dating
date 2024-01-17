@@ -40,6 +40,7 @@
         "mariuzzo/laravel-js-localization": "^1.9",
         "opcodesio/log-viewer": "^1.7",
         "pusher/pusher-php-server": "^7.0",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-permission": "^5.5",
         "srmklive/paypal": "~3.0",
         "tightenco/ziggy": "^1.4",
