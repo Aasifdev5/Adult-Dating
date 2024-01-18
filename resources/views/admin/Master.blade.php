@@ -117,7 +117,7 @@
         <div class="page-main-header">
             <div class="main-header-right row">
                 <div class="main-header-left col-auto px-0 d-lg-none">
-                    <div class="logo-wrapper"><a href="{{url('admin/dashboard')}}"><img src="{{asset('icon-removebg-preview.png')}}" alt=""></a>
+                    <div class="logo-wrapper"><a href="{{url('admin/dashboard')}}"><img src="{{asset('logo-removebg-preview.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="vertical-mobile-sidebar col-auto ps-3 d-none"><i class="fa fa-bars sidebar-bar"></i></div>
