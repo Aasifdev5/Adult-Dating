@@ -55,7 +55,7 @@
                <source src="{{asset('admin/video/auth-bg.mp4')}}" type="video/mp4">
             </video>
             <div class="authentication-box">
-               <div class="text-center"><h1 style="font-weight: 700;"><img src="{{asset('logo-removebg-preview.png')}}" alt=""></h1></div>
+               <div class="text-center"><h1 style="font-weight: 700;"><img src="{{asset('logo.png')}}" alt=""></h1></div>
                <div class="card mt-4">
                   <div class="card-body">
                      <div class="text-center">
