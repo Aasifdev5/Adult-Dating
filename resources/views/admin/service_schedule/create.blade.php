@@ -55,7 +55,7 @@ Add Banner
                             <input type="time" class="form-control" id="end_time" name="end_time" required>
                             <span class="text-danger">@error('end_time'){{$message}}@enderror</span>
                         </div>
-<br>
+                        <br>
                         <button type="submit" class="btn btn-primary">Add Schedule</button>
 
                     </form>

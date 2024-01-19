@@ -56,7 +56,7 @@ Ad Details
                 </div>
                 <div class="col-md-3 contactdk">
                     <button href="tel:06009553941" class="btn btn-primary btn-phone btn-block mt-1">
-                        <i class="fa fa-lg fa fa-phone mr-2"></i>telephone </button>
+                        Schedule Appoinment</button>
                     <a target="_blank" rel="nofollow" href="https://wa.me/" class="btn btn-whatsapp btn-block mt-3">
                         <i class="fab fa-lg fa-whatsapp mr-2 align-middle"></i>Whatsapp </a>
                 </div>
