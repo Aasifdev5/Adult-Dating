@@ -298,10 +298,16 @@
                             <ul class="sidebar-submenu">
                                 <li><a href="{{url('admin/qrcode')}}"><i class="fa fa-circle"></i> Manual Payment Method</a></li>
                                 <li><a href="{{url('admin/credit_reloads')}}"><i class="fa fa-circle"></i> Credit Reload</a></li>
-                                <li><a href="{{url('admin/subscription/payment_reports')}}"><i class="fa fa-circle"></i> Payment Report  </a></li>
+                                <li><a href="{{url('admin/subscription/payment_reports')}}"><i class="fa fa-circle"></i> Payment Report </a></li>
                             </ul>
                         </li>
                         <li><a class="sidebar-header" href="{{url('admin/credit_reload_promotions')}}"><i data-feather="book"></i><span>Credits</span></a>
+
+                        </li>
+                        <li><a class="sidebar-header" href="{{url('admin/appointments')}}"><i data-feather="book"></i><span>Subscription Calender</span></a>
+
+                        </li>
+                        <li><a class="sidebar-header" href="{{url('admin/service-schedule')}}"><i data-feather="book"></i><span>Independent</span></a>
 
                         </li>
                         <li><a class="sidebar-header" href="{{url('admin/pages')}}"><i data-feather="book"></i><span>Pages</span></a>
@@ -353,7 +359,7 @@
 
                             </ul>
                         </li>
-                        <li><a class="sidebar-header" href="{{url('admin/balance')}}"><i data-feather="dollar-sign"></i><span>Balance </span></a>
+                        <!-- <li><a class="sidebar-header" href="{{url('admin/balance')}}"><i data-feather="dollar-sign"></i><span>Balance </span></a>
 
                         </li>
                         <li><a class="sidebar-header" href="{{url('admin/withdraws')}}"><i data-feather="dollar-sign"></i><span>Withdraw Request </span></a>
@@ -361,10 +367,10 @@
                         </li>
                         <li><a class="sidebar-header" href="{{url('admin/subscription_plan')}}"><i data-feather="dollar-sign"></i><span>Subscription </span></a>
 
-                        </li>
-                        <li><a class="sidebar-header" href="{{url('admin/transactions')}}"><i data-feather="dollar-sign"></i><span>Transactions </span></a>
+                        </li> -->
+                        <!-- <li><a class="sidebar-header" href="{{url('admin/transactions')}}"><i data-feather="dollar-sign"></i><span>Transactions </span></a>
 
-                        </li>
+                        </li> -->
                         <!-- <li><a class="sidebar-header" href="#"><i data-feather="settings"></i><span>Enquiry
                                     Management</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="sidebar-submenu">

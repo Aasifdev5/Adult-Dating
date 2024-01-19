@@ -33,8 +33,8 @@ use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\CreditReloadController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\CreditReloadPromotionController;
-
-
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ServiceScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,6 +148,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('subscription/activate', [SubscriptionController::class, 'activateSubscription'])->name('subscription.activate');
         Route::get('credit_reload_promotions', [CreditReloadPromotionController::class, 'index'])->name('credit_reload_promotions.index');
         Route::post('/reload', [CreditReloadController::class, 'reload'])->name('credit_reload.reload');
+        Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+        Route::get('appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
+        Route::post('appointments/store', [AppointmentController::class, 'store'])->name('appointments.store');
+        Route::resource('service-schedule', ServiceScheduleController::class)->names('admin.service_schedule');
         Route::get('login', [Admin::class, 'admin'])->name('admin')->middleware('AdminAlreadyLoggedIn');
         Route::get('country', [Admin::class, 'country'])->name('country')->middleware('alreadyLoggedIn');
         Route::get('city', [Admin::class, 'city'])->name('city')->middleware('alreadyLoggedIn');
