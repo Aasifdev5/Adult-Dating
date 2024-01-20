@@ -9418,6 +9418,7 @@
     background-color: rgba(0, 0, 0, 0.7);
   }
   .cusotm-nav-container {
+    width: 106%;
     border-bottom: 1px solid #e8e8e8;
     padding: 15px 0;
     position: relative;

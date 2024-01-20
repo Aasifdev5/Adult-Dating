@@ -557,9 +557,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{url('ads_list/Transsexual')}}">Casual encounter</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Live sex cam')}}">Live Camera</a>
-                                        </li>
+
                                         <li class="nav-item d-none d-lg-block">
                                             <a href="#" class="btn btn-secondary new-ad btn-block" data-toggle="modal" data-target="#signup">
                                                 <i class="fas fa-plus-circle mr-2"></i> Post your ad
@@ -684,9 +682,7 @@
                                 <li> <a data-href="/contact-us/">
                                         <span>Contact us</span>
                                     </a></li>
-                                <li> <a data-href="/promote-your-ads/">
-                                        <span>Promote your ads</span>
-                                    </a></li>
+
                             </ul>
                         </div>
                         <div class="col-sm-3">
