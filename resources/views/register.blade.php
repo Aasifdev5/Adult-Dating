@@ -50,88 +50,111 @@ SignUp
                 </div>
             </div>
             <div class="form-row">
-    <div class="form-group col">
-        <label class="control-label">Password</label>
-        <input name="password" type="password" placeholder="Password" onkeypress="checkPasswordRequirements()" value="{{old('password')}}" autocomplete="new-password" class="form-control" id="password-input">
-        <span class="fa fa-fw field-icon toggle-password fa-eye-slash" onclick="togglePassword()"></span>
-        <span class="text-danger" style="color:red;">@error('password'){{$message}}@enderror</span>
-    </div>
-</div>
-<div>
-    <div class="progress">
-        <div class="progress-bar"></div>
-    </div>
-</div>
-<style>
-    .valid {
-        color: green;
-    }
-</style>
-<div id="message" role="alert" class="alert alert-loginpanel">
-    <h6>Your password must have:</h6>
-    <ul>
-        <li class="invalid" id="lowercase">A <b>lowercase</b> letter </li>
-        <li class="invalid" id="uppercase">A <b>uppercase</b> letter </li>
-        <li class="invalid" id="number">A <b>number</b></li>
-        <li  class="invalid" id="min-length">Minimum <b>8 characters</b></li>
-    </ul>
-</div>
+                <div class="form-group col">
+                    <label class="">Mobile Number</label>
+                    <input name="mobile_number" type="text" placeholder="Email" autocomplete="off" value="{{old('mobile_number')}}" class="form-control">
+                    <span class="text-danger" style="color:red;">@error ('mobile_number'){{$message}}@enderror</span>
 
-<script>
-    function togglePassword() {
-        var passwordInput = document.getElementById("password-input");
-        var eyeIcon = document.querySelector(".toggle-password");
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label class="">Account Type</label>
+                    <select name="account_type" id="" class="form-control">
+                        <option value="">Please Select Account Type</option>
+                        <option value="advertiser">Advertiser (Independent)</option>
+                        <option value="manager">Manager (Club)</option>
+                        <option value="partner">Partner</option>
+                        <option value="user">Consumer(User)</option>
 
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            eyeIcon.classList.remove("fa-eye-slash");
-            eyeIcon.classList.add("fa-eye");
-        } else {
-            passwordInput.type = "password";
-            eyeIcon.classList.remove("fa-eye");
-            eyeIcon.classList.add("fa-eye-slash");
-        }
-    }
+                    </select>
+                    <span class="text-danger" style="color:red;">@error ('account_type'){{$message}}@enderror</span>
 
-    function checkPasswordRequirements() {
-        var password = document.getElementById("password-input").value;
-        var lowercase = document.getElementById("lowercase");
-        var uppercase = document.getElementById("uppercase");
-        var number = document.getElementById("number");
-        var minLength = document.getElementById("min-length");
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label class="control-label">Password</label>
+                    <input name="password" type="password" placeholder="Password" onkeypress="checkPasswordRequirements()" value="{{old('password')}}" autocomplete="new-password" class="form-control" id="password-input">
+                    <span class="fa fa-fw field-icon toggle-password fa-eye-slash" onclick="togglePassword()"></span>
+                    <span class="text-danger" style="color:red;">@error('password'){{$message}}@enderror</span>
+                </div>
+            </div>
+            <div>
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+            <style>
+                .valid {
+                    color: green;
+                }
+            </style>
+            <div id="message" role="alert" class="alert alert-loginpanel">
+                <h6>Your password must have:</h6>
+                <ul>
+                    <li class="invalid" id="lowercase">A <b>lowercase</b> letter </li>
+                    <li class="invalid" id="uppercase">A <b>uppercase</b> letter </li>
+                    <li class="invalid" id="number">A <b>number</b></li>
+                    <li class="invalid" id="min-length">Minimum <b>8 characters</b></li>
+                </ul>
+            </div>
 
-        // Check if password has lowercase letter
-        if (/[a-z]/.test(password)) {
-            lowercase.classList.remove("invalid");
-        } else {
-            lowercase.classList.add("valid");
-        }
+            <script>
+                function togglePassword() {
+                    var passwordInput = document.getElementById("password-input");
+                    var eyeIcon = document.querySelector(".toggle-password");
 
-        // Check if password has uppercase letter
-        if (/[A-Z]/.test(password)) {
-            uppercase.classList.remove("invalid");
-        } else {
-            uppercase.classList.add("valid");
-        }
+                    if (passwordInput.type === "password") {
+                        passwordInput.type = "text";
+                        eyeIcon.classList.remove("fa-eye-slash");
+                        eyeIcon.classList.add("fa-eye");
+                    } else {
+                        passwordInput.type = "password";
+                        eyeIcon.classList.remove("fa-eye");
+                        eyeIcon.classList.add("fa-eye-slash");
+                    }
+                }
 
-        // Check if password has a number
-        if (/\d/.test(password)) {
-            number.classList.remove("invalid");
-        } else {
-            number.classList.add("valid");
-        }
+                function checkPasswordRequirements() {
+                    var password = document.getElementById("password-input").value;
+                    var lowercase = document.getElementById("lowercase");
+                    var uppercase = document.getElementById("uppercase");
+                    var number = document.getElementById("number");
+                    var minLength = document.getElementById("min-length");
 
-        // Check if password meets minimum length requirement
-        if (password.length >= 8) {
-            minLength.classList.remove("invalid");
-        } else {
-            minLength.classList.add("valid");
-        }
-    }
+                    // Check if password has lowercase letter
+                    if (/[a-z]/.test(password)) {
+                        lowercase.classList.remove("invalid");
+                    } else {
+                        lowercase.classList.add("valid");
+                    }
 
-    // Add an event listener to check requirements when the user types
-    document.getElementById("password-input").addEventListener("input", checkPasswordRequirements);
-</script>
+                    // Check if password has uppercase letter
+                    if (/[A-Z]/.test(password)) {
+                        uppercase.classList.remove("invalid");
+                    } else {
+                        uppercase.classList.add("valid");
+                    }
+
+                    // Check if password has a number
+                    if (/\d/.test(password)) {
+                        number.classList.remove("invalid");
+                    } else {
+                        number.classList.add("valid");
+                    }
+
+                    // Check if password meets minimum length requirement
+                    if (password.length >= 8) {
+                        minLength.classList.remove("invalid");
+                    } else {
+                        minLength.classList.add("valid");
+                    }
+                }
+
+                // Add an event listener to check requirements when the user types
+                document.getElementById("password-input").addEventListener("input", checkPasswordRequirements);
+            </script>
 
 
             <div class="row">

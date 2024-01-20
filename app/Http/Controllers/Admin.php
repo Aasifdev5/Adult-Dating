@@ -618,7 +618,12 @@ class Admin extends Controller
     {
         if (Session::has('LoggedIn')) {
 
-
+            $check = User::where('id', Session::get('LoggedIn'))->first();
+            if($check->is_super_admin==0){
+                Session::forget('LoggedIn');
+                $request->session()->invalidate();
+                return redirect('/');
+            }
             Session::forget('LoggedIn');
             $request->session()->invalidate();
             return redirect('admin/login');

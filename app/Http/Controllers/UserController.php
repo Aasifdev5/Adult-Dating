@@ -37,6 +37,7 @@ use App\Notifications\WelcomeNotification;
 use App\Models\Transactions;
 use Illuminate\Support\Str;
 use App\Events\Registered;
+use App\Models\Appointment;
 use App\Models\Order;
 use Illuminate\Support\Facades\URL;
 use App\Notifications\ResetPasswordNotification;
@@ -328,10 +329,10 @@ class UserController extends AppBaseController
 
     public function index()
     {
-
+        $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $category = Course::all();
         $services = CourseCategory::all();
-        return view('index', compact('category'));
+        return view('index', compact('category', 'user_session'));
     }
     public function ads_list($id)
     {
@@ -340,10 +341,10 @@ class UserController extends AppBaseController
         $category = Course::all();
         $countries = Country::all();
         $states = States::all();
-
+        $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $cities = City::all();
 
-        return view('ads_list', compact('ads', 'category','id','countries','cities','states'));
+        return view('ads_list', compact('ads', 'category', 'id', 'countries', 'cities', 'states', 'user_session'));
     }
     public function Userlogin()
     {
@@ -366,12 +367,16 @@ class UserController extends AppBaseController
 
             'email' => 'required|unique:users',
             'password' => ['required', 'string', 'min:8', 'max:30'],
+            'account_type' => 'required',
+            'mobile_number' => 'required'
         ]);
         // Create a new user instance
         $user = User::create([
 
             'email' => $request->email,
             'password' => $request->password,
+            'account_type' => $request->account_type,
+            'mobile_number' => $request->mobile_number,
             'ip_address' => getIp(),
         ]);
 
@@ -399,15 +404,37 @@ class UserController extends AppBaseController
                 if ($user->email_verified_at === null) {
                     return back()->with('fail', 'Your account is not verified. Please verify your email.');
                 }
+                // if ($user->account_type == "user") {
 
+                // }
                 $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
                 $request->session()->put('LoggedIn', $user->id);
                 return redirect('dashboard');
+                // if ($user->account_type == "advertiser") {
+                //     $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
+                //     $request->session()->put('LoggedIn', $user->id);
+                //     $appointment= Appointment::where('profile_id',$user->id)->get();
+
+                //     return redirect('admin/dashboard')->with(['appointment' => $appointment]);
+
+
+                // }
+
             } else {
                 return back()->with('fail', 'Password does not match');
             }
         } else {
             return back()->with('fail', 'Email is not registered');
+        }
+    }
+    public function appointment()
+    {
+        if (Session::has('LoggedIn')) {
+
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $appointments = Appointment::where('profile_id', Session::get('LoggedIn'))->get();
+
+            return view('appointment', compact('appointments', 'user_session'));
         }
     }
     public function sendResetPasswordLink(Request $request)
@@ -757,8 +784,9 @@ class UserController extends AppBaseController
     public function ad_details($id)
     {
         $ads_details = PostingAds::where('id', $id)->first();
-        $id=$ads_details->category;
-        return view('ad_details', compact('ads_details','id'));
+        $id = $ads_details->category;
+        $user_session = User::where('id', Session::get('LoggedIn'))->first();
+        return view('ad_details', compact('ads_details', 'id', 'user_session'));
     }
     public function post_list()
     {
@@ -794,8 +822,8 @@ class UserController extends AppBaseController
 
         $results = $query->paginate(10);
         // dd($results);
-        $id=$request->input('category');
-        return view('search_results', compact('results','id', 'category','countries','states','cities'));
+        $id = $request->input('category');
+        return view('search_results', compact('results', 'id', 'category', 'countries', 'states', 'cities'));
     }
     public function Ad_insert(Request $request)
     {
@@ -848,7 +876,7 @@ class UserController extends AppBaseController
 
 
 
-            session()->put('search_tag__nationality', $request->search_tag__nationality);
+        session()->put('search_tag__nationality', $request->search_tag__nationality);
 
         if (!empty($request->search_tag__breast)) {
             $search_tag__breast = implode(',', $request->search_tag__breast);
@@ -938,28 +966,43 @@ class UserController extends AppBaseController
 
         return redirect()->route('visibity');
     }
-    public function PurchaseDeepProject()
+    public function ScheduleAppointment(Request $request)
+    {
+        // dd($request->all());
+        $profile_id = PostingAds::where('id', $request->ad_id)->first();
+        $profile_id = $profile_id->user_id;
+        $appointment = new Appointment();
+        $appointment->date = $request->input("date");
+        $appointment->time = $request->input("time");
+        $appointment->user_id = $request->user_id;
+        $appointment->profile_id = $profile_id;
+        $appointment->ad_id = $request->ad_id;
+        $data = $appointment->save();
+        if ($data) {
+            return back()->with('success', 'Appointment Scheduled Successfully');
+        } else {
+            return back()->with('fail', 'Error In scheduling appointment. Please try again later!');
+        }
+    }
+    public function edit_appointment($id)
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $Appointment = Appointment::where('id', $id)->first();
+            return view('edit_appointment', compact('user_session', 'Appointment'));
+        }
+    }
+    public function UpdateAppointment(Request $request)
+    {
+        $appointment = Appointment::where('id', $request->id)->update([
+            "status" => $request->status,
+        ]);
 
-            return view('PurchaseDeepProject', compact('user_session'));
-        }
-    }
-    public function PurchasePowerbi($id)
-    {
-        if (Session::has('LoggedIn')) {
-            $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $PurchaseProject = Course::where('id', $id)->where('category_id', '8')->first();
-            return view('PurchasePowerbi', compact('user_session', 'PurchaseProject'));
-        }
-    }
-    public function PurchaseAIapplication($id)
-    {
-        if (Session::has('LoggedIn')) {
-            $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $PurchaseProject = Course::where('id', $id)->where('category_id', '10')->first();
-            return view('PurchaseAIapplication', compact('user_session', 'PurchaseProject'));
+
+        if ($appointment) {
+            return redirect('appointment')->with('success', 'Appointment Status Update Successfully');
+        } else {
+            return back()->with('fail', 'Error In scheduling appointment. Please try again later!');
         }
     }
     public function PurchaseExcel($id)

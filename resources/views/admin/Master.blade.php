@@ -272,6 +272,7 @@
                                                 ?></h6>
 
                     </div>
+                    @if($user_session->is_super_admin==1)
                     <ul class="sidebar-menu">
                         <li><a class="sidebar-header" href="{{url('admin/dashboard')}}"><i data-feather="home"></i><span>{{ trans('dashboard') }}</span></a>
 
@@ -381,6 +382,15 @@
                             </ul>
                         </li> -->
                     </ul>
+                    @endif
+                    @if($user_session->is_super_admin==0 and $user_session->account_type=="advertiser")
+                    <ul class="sidebar-menu">
+                        <li><a class="sidebar-header" href="{{url('admin/dashboard')}}"><i data-feather="home"></i><span>{{ trans('dashboard') }}</span></a></li>
+
+                        <li><a class="sidebar-header" href="{{url('admin/appointments')}}"><i data-feather="book"></i><span>Appointments</span></a> </li>
+
+                    </ul>
+                    @endif
                 </div>
             </div>
             <!-- Page Sidebar Ends-->

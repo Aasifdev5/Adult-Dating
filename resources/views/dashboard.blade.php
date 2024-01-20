@@ -185,6 +185,29 @@ Dashboard
             </div>
           </div>
 
+          <div class="col-md-6 col-sm-12">
+            <div class="card dashboard mb-4">
+              <div class="card-content">
+                <div class="card-body">
+                  <div class="media d-flex">
+                    <div class="media-body">
+                      <h5 class="card-title skokka-text">
+                        <a href="{{url('appointment')}}" class="">
+                            @if($user_session->account_type=="advertiser")
+                           Appointment<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                           @else
+                           My Appointment Requests<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                           @endif
+                        </a>
+                      </h5>
+                      <p>Manage your Appointment.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

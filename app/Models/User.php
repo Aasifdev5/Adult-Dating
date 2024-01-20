@@ -197,7 +197,8 @@ class User extends Authenticatable
         'is_super_admin',
         'facebook_id',
         'google_id',
-        'ip_address'
+        'ip_address',
+        'account_type'
     ];
 
     const LANGUAGES = [

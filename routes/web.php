@@ -59,9 +59,9 @@ Route::post('/ResetPassword', [UserController::class, 'ResetPassword'])->name('R
 
 
 Route::group(['middleware' => 'prevent-back-history'], function () {
-    Route::get('/index', [UserController::class, 'index'])->name('index')->middleware('alreadyLoggedIn');
-    Route::get('/', [UserController::class, 'index'])->name('index')->middleware('alreadyLoggedIn');
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('isLoggedIn');
+    Route::get('/index', [UserController::class, 'index'])->name('index');
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
@@ -120,6 +120,10 @@ Route::post('/reg', [UserController::class, 'registration']);
 Route::get('/Statements', [UserController::class, 'Statements'])->name('Statements');
 Route::get('/search', [UserController::class, 'search'])->name('search');
 Route::post('/log', [UserController::class, 'login'])->name('login');
+Route::get('/appointment', [UserController::class, 'appointment'])->name('appointment');
+Route::post('ScheduleAppointment', [UserController::class, 'ScheduleAppointment']);
+Route::get('/edit_appointment/{id}', [UserController::class, 'edit_appointment'])->name('edit_appointment');
+Route::post('UpdateAppointment', [UserController::class, 'UpdateAppointment']);
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/post_ad', [UserController::class, 'post_ad'])->name('post_ad');
 Route::get('/ad_details/{id}', [UserController::class, 'ad_details'])->name('ad_details');
