@@ -29,6 +29,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\CalendarController;
+use App\Http\Controllers\AgeVerificationController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\CreditReloadController;
 use App\Http\Controllers\SubscriptionController;
@@ -62,15 +63,16 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-
+    Route::get('verification_form', [AgeVerificationController::class, 'showVerificationForm']);
+    Route::post('verificationSubmit', [AgeVerificationController::class, 'submitVerification']);
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
     Route::get('/Billing', [UserController::class, 'Billing'])->name('Billing')->middleware('isLoggedIn');
     Route::get('/visibity', [UserController::class, 'visibity'])->name('visibity')->middleware('isLoggedIn');
     Route::post('/post-insert-images', [UserController::class, 'ads_photos_upload'])->name('ads_photos_upload')->middleware('isLoggedIn');
     Route::post('/update_password', [UserController::class, 'update_password'])->name('update_password')->middleware('isLoggedIn');
-    Route::post('/deactivateAccount', [UserController::class, 'deactivateAccount'])->name('deactivateAccount')->middleware('isLoggedIn');
-
+    Route::get('/edit_profile', [UserController::class, 'edit_profile']);
+    Route::post('update_profile', [UserController::class, 'update_profile']);
     Route::get('/Payment', [UserController::class, 'Payment'])->name('Payment')->middleware('isLoggedIn');
     Route::get('/finish', [UserController::class, 'finish'])->name('finish')->middleware('isLoggedIn');
     Route::get('/Machine', [UserController::class, 'Machine'])->name('Machine')->middleware('isLoggedIn');

@@ -20,7 +20,7 @@
                     @if(Session::has('success'))
                         <div class="alert alert-success">{{Session::get('success')}}</div>
                     @endif
-                    <form method="post" action="{{ url('/password/reset') }}" id="resetPasswordForm">
+                    <form method="post" action="{{ url('ResetPassword') }}" id="resetPasswordForm">
                         {{ csrf_field() }}
                         <input type="hidden" name="token" value="{{$token}}">
                         <h1>{{ __('messages.reset_password') }}</h1>

@@ -31,17 +31,17 @@ Home
                         <ul class="list-unstyled">
                             <li class="list-unstyled">
                                 <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Bangalore
+                                    <span class="homecategory notranslate">{{$row->category_id}}</span> La Paz
                                 </a>
                             </li>
                             <li class="list-unstyled">
                                 <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Hyderabad
+                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Santa Cruz
                                 </a>
                             </li>
                             <li class="list-unstyled">
                                 <a href="{{url('ads_list/')}}/<?php echo $row->category_id; ?>">
-                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Delhi
+                                    <span class="homecategory notranslate">{{$row->category_id}}</span> Cochabamba
                                 </a>
                             </li>
 
@@ -71,27 +71,27 @@ Home
                     <div class="col">
                         <a href="call-girls/bangalore/" title="Call Girls Bangalore">
                             <button class="button-pill">
-                                <span class="notranslate">Bangalore</span>
+                                <span class="notranslate">La Paz</span>
                             </button>
                         </a>
                         <a href="call-girls/hyderabad/" title="Call Girls Hyderabad">
                             <button class="button-pill">
-                                <span class="notranslate">Hyderabad</span>
+                                <span class="notranslate">Santa Cruz</span>
                             </button>
                         </a>
                         <a href="call-girls/delhi/" title="Call Girls Delhi">
                             <button class="button-pill">
-                                <span class="notranslate">Delhi</span>
+                                <span class="notranslate">Cochabamba</span>
                             </button>
                         </a>
                         <a href="call-girls/pune/" title="Call Girls Pune">
                             <button class="button-pill">
-                                <span class="notranslate">Pune</span>
+                                <span class="notranslate">Sucre</span>
                             </button>
                         </a>
                         <a href="call-girls/mumbai/" title="Call Girls Mumbai">
                             <button class="button-pill">
-                                <span class="notranslate">Mumbai</span>
+                                <span class="notranslate">El Alto</span>
                             </button>
                         </a>
                     </div>

@@ -46,6 +46,7 @@ use App\Models\PasswordReset;
 use App\Models\PostingAds;
 use App\Models\States;
 use App\Models\Task;
+use App\Models\VerificationDocument;
 use Illuminate\Support\Facades\Mail;
 
 use App\Notifications\VerifyEmailNotification;
@@ -646,8 +647,10 @@ class UserController extends AppBaseController
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $task = Task::where('user_id', Session::get('LoggedIn'))->first();
             $ads = PostingAds::where('user_id', Session::get('LoggedIn'))->get();
+            $isverified = VerificationDocument::where('user_id', Session::get('LoggedIn'))->first();
+
             $completed = Order::where('status', 'Completed')->where('user_id', Session::get('LoggedIn'))->get();
-            return view('dashboard', compact('user_session', 'ads', 'completed', 'task'));
+            return view('dashboard', compact('user_session', 'ads', 'completed', 'isverified', 'task'));
         }
     }
     public function DataAnalysis()
@@ -769,8 +772,8 @@ class UserController extends AppBaseController
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $top_ad=Ad::all();
-            return view('visibity', compact('user_session','top_ad'));
+            $top_ad = Ad::all();
+            return view('visibity', compact('user_session', 'top_ad'));
         }
     }
     public function finish()
@@ -1150,19 +1153,55 @@ class UserController extends AppBaseController
             return redirect('/');
         }
     }
-
-    public function deactivateAccount(Request $request)
+    public function edit_profile()
     {
-        $data = User::where('id', '=', $request->user_id)->update([
-            'status' => '0'
+        if (Session::has('LoggedIn')) {
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
-        ]);
-        if ($data) {
-            Session::forget('LoggedIn');
-            $request->session()->invalidate();
-            return redirect('/');
+            return view('edit_profile', compact('user_session'));
         }
     }
+    public function update_profile(Request $request)
+    {
+
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        // Check if a new profile photo is provided
+        if ($request->hasFile('profile_photo')) {
+            $profilePhoto = $request->file('profile_photo');
+            $imageName = $profilePhoto->getClientOriginalName();
+
+            // Move the uploaded file to the 'profile_photo' directory in the public path
+            $profilePhoto->move(public_path('profile_photo'), $imageName);
+
+            // Update the profile photo variable
+            $profile = $imageName;
+        } else {
+            // If no new photo is provided, use the existing one
+            $user = User::find($request->user_id);
+            $profile = $user->profile_photo;
+        }
+
+        // Update user data in the database
+        $userUpdate = User::where('id', $request->user_id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'profile_photo' => $profile,
+        ]);
+
+        if ($userUpdate) {
+            return redirect('dashboard')->with('success', 'Profile Updated Successfully');
+        } else {
+            return back()->with('fail', 'Failed to update profile');
+        }
+    }
+
     public function forget_password()
     {
 
