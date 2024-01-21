@@ -65,7 +65,7 @@
                                </span>
                             @endif
                         </div>
-                        <button type="button" id="resetPasswordBtn" class="btn btn-block btn-primary btn-block btn-flat">
+                        <button type="submit" id="resetPasswordBtn" class="btn btn-block btn-primary btn-block btn-flat">
                             <i class="fa fa-btn fa-refresh"></i> {{ __('messages.reset') }}
                         </button>
                     </form>
