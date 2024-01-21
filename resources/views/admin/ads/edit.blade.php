@@ -1,6 +1,6 @@
 @extends('admin.Master')
 @section('title')
-Edit Ads Product
+Edit Top ad
 @endsection
 @section('content')
 <!-- page-wrapper Start-->
@@ -14,7 +14,7 @@ Edit Ads Product
             <div class="authentication-box">
                 <div class="text-center"><img src="assets/images/endless-logo.png" alt=""></div>
                 <div class="card mt-4 p-4">
-                    <h4 class="text-center">Edit Ads Product</h4>
+                    <h4 class="text-center">Edit Top ad</h4>
 
 
 
@@ -46,11 +46,7 @@ Edit Ads Product
 
                             <span class="text-danger">@error('publish') {{$message}}@enderror</span>
                         </div>
-                        <div class="mb-3">
-                            <label for="schedule" class="form-label">Schedule</label>
-                            <input type="datetime-local" class="form-control" id="schedule" name="schedule" value="{{ $ad->schedule }}">
-                            <span class="text-danger">@error('schedule'){{$message}}@enderror</span>
-                        </div>
+
                         <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                 </div>

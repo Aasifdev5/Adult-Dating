@@ -38,10 +38,10 @@ class AdController extends Controller
     {
         $request->validate([
             'ad_type' => 'required|string',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'detail' => 'required|string',
             'publish' => 'boolean',
-            'schedule' => 'nullable|date',
+
         ]);
 
         Ad::create($request->all());
@@ -64,10 +64,10 @@ class AdController extends Controller
     {
         $request->validate([
             'ad_type' => 'required|string',
-            'price' => 'required|numeric',
+            'price' => 'required',
             'detail' => 'required|string',
             'publish' => 'boolean',
-            'schedule' => 'nullable|date',
+
         ]);
 
         $ad = Ad::findOrFail($id);

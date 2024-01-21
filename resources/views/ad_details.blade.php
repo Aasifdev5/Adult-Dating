@@ -292,7 +292,7 @@ Ad Details
                                 <b>Price per hour</b>
                             </small>
                             <ul class="list-group price-hour">
-                                <li class="list-group-item d-flex justify-content-between align-items-center"> From <span class="badge badge-light badge-pill">Rs {{$ads_details->hourly_price}}</span>
+                                <li class="list-group-item d-flex justify-content-between align-items-center"> From <span class="badge badge-light badge-pill">$ {{$ads_details->hourly_price}}</span>
                                 </li>
                             </ul>
                             <p class="mt-2">

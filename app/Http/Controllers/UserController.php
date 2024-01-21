@@ -10,7 +10,7 @@ use App\Queries\UserDataTable;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\UserRepository;
 use Carbon\Carbon;
-use DataTables;
+use App\Models\Ad;
 use Exception;
 use App\Models\Image;
 use Illuminate\Contracts\Foundation\Application;
@@ -769,8 +769,8 @@ class UserController extends AppBaseController
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-
-            return view('visibity', compact('user_session'));
+            $top_ad=Ad::all();
+            return view('visibity', compact('user_session','top_ad'));
         }
     }
     public function finish()
@@ -828,11 +828,12 @@ class UserController extends AppBaseController
     public function Ad_insert(Request $request)
     {
         $request->validate([
-
+            'name' => 'required',
+            'availability_hours' => 'required',
             'title' => 'required',
             'description' => 'required'
         ]);
-
+        // dd($request->all());
         if (!empty($request->country)) {
             $country = Country::where('code', $request->country)->first();
             // Decode JSON string into a PHP associative array
@@ -861,7 +862,7 @@ class UserController extends AppBaseController
         session()->put('country', $country);
         session()->put('state', $state);
         session()->put('city', $city);
-
+        session()->put('name', $request->name);
         session()->put('address', $request->address);
         session()->put('postal_code', $request->postal_code);
         session()->put('place', $request->place);
@@ -913,6 +914,7 @@ class UserController extends AppBaseController
         }
 
         session()->put('hourly_price', $request->hourly_price);
+        session()->put('availability_hours', $request->availability_hours);
         session()->put('email', $request->email);
         session()->put('telephone', $request->telephone);
         // dd($request->all());
@@ -928,6 +930,8 @@ class UserController extends AppBaseController
             $ads->country = session()->get('country');
             $ads->state = session()->get('state');
             $ads->city = session()->get('city');
+            $ads->availability = session()->get('availability_hours');
+            $ads->name = session()->get('name');
             $ads->category = session()->get('category');
             $ads->user_id = $request->user_id;
             $ads->address = session()->get('address');
@@ -951,6 +955,8 @@ class UserController extends AppBaseController
             $ads->email = session()->get('email');
             $ads->telephone = session()->get('telephone');
             $ads->save();
+
+            session()->put('ad_id', $ads->id);
             // dd($ads->id);
             // Check if 'ads_photos' is present in the request
             if ($request->hasFile('ads_photos')) {

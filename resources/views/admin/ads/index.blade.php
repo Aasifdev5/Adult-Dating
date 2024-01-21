@@ -54,7 +54,7 @@ Top Ads  List
                                         <th>Price</th>
                                         <th>Detail</th>
                                         <th>Publish</th>
-                                        <th>Schedule</th>
+
                                         <th>Action</th>
 
                                     </tr>
@@ -67,7 +67,7 @@ Top Ads  List
                                         <td>{{ $ad->price }}</td>
                                         <td>{!!stripslashes ($ad->detail)!!}</td>
                                         <td>{{ $ad->publish ? 'Yes' : 'No' }}</td>
-                                        <td>{{ $ad->schedule }}</td>
+
                                         <td>
                                             <a href="{{ route('admin.ads.edit', ['ad' => $ad->id]) }}" class="btn btn-sm btn-warning">Edit</a>
                                             <form action="{{ route('admin.ads.destroy', ['ad' => $ad->id]) }}" method="POST" style="display: inline;">

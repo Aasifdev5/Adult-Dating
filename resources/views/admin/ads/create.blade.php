@@ -1,6 +1,6 @@
 @extends('admin.Master')
 @section('title')
-Add Ads Product
+Add Top ad
 @endsection
 @section('content')
 <!-- page-wrapper Start-->
@@ -14,7 +14,7 @@ Add Ads Product
             <div class="authentication-box">
                 <div class="text-center"><img src="assets/images/endless-logo.png" alt=""></div>
                 <div class="card mt-4 p-4">
-                    <h4 class="text-center">Add Ads Product</h4>
+                    <h4 class="text-center">Add Top ad</h4>
 
                     <form action="{{ route('admin.ads.store') }}" class="theme-form" method="POST">
                         @if(Session::has('success'))
@@ -44,7 +44,7 @@ Add Ads Product
                             <span class="text-danger">@error('detail') {{$message}}@enderror</span>
                         </div>
                         <div class="mb-3 form-check">
-                        <label class="form-check-label" for="publish">Publish</label>
+                            <label class="form-check-label" for="publish">Publish</label>
                             <select name="publish" id="publish" value="{{old('publish')}}" class="form-control">
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
@@ -52,11 +52,8 @@ Add Ads Product
 
                             <span class="text-danger">@error('publish') {{$message}}@enderror</span>
                         </div>
-                        <div class="mb-3">
-                            <label for="schedule" class="form-label">Schedule</label>
-                            <input type="datetime-local" class="form-control" id="schedule" value="{{old('schedule')}}" name="schedule">
-                            <span class="text-danger">@error('schedule') {{$message}}@enderror</span>
-                        </div>
+
+
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form>
 
