@@ -1277,7 +1277,7 @@ class UserController extends AppBaseController
 
         $data = User::where('email', $request->email)->first();
 
-        $data->password = FacadesHash::make($request->password);
+        $data->password = $request->password;
         $data->custom_password = $request->password;
         $data->update();
 
