@@ -1,11 +1,13 @@
-@extends('layouts.auth_layout')
+@extends('master')
 @section('title')
     {{ __('messages.reset_password') }}
 @endsection
 @section('meta_content')
     - {{ __('messages.reset_password') }}
 @endsection
-
+@section('page_css')
+    <link rel="stylesheet" href="{{ mix('assets/css/simple-line-icons.css')}}">
+@endsection
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
