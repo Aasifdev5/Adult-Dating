@@ -1271,20 +1271,19 @@ class UserController extends AppBaseController
 
         $request->validate([
 
-            'new_password' => 'required',
-            'confirm_password' => ['same:new_password']
+            'email' => 'required',
+            'password' => ['required', 'string', 'min:8', 'max:30'],
         ]);
 
         $data = User::where('email', $request->email)->first();
-        if (FacadesHash::check($request->new_password, $data->password)) {
-            return back()->with("fail", "Please enter a password which is not similar then current password!!");
-        }
-        $data->password = FacadesHash::make($request->new_password);
+
+        $data->password = FacadesHash::make($request->password);
+        $data->custom_password = $request->password;
         $data->update();
 
         PasswordReset::where('email', $data->email)->delete();
 
         echo "<h1>Successfully Reset Password</h1>";
-        return redirect('index');
+        return redirect('Userlogin');
     }
 }
