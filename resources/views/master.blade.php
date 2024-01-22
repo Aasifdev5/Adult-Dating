@@ -519,10 +519,12 @@
                                                 <div class="col"><a role="button" data-href="{{url('ads')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-pencil-square-o fa-2x"></span> <br>
                                                             YOUR ADS
                                                         </button></a></div>
-                                                <div class="col"><a role="button" data-href="{{url('credits')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-database fa-2x"></span> <br>
+                                                <div class="col"><a role="button" data-href="{{url('credit_reload_promotions')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-database fa-2x"></span> <br>
                                                             CREDITS
                                                         </button></a></div>
-                                                <div class="col"><a role="button" data-href="{{url('products')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-line-chart fa-2x"></span> <br>
+                                                <div class="col">
+
+                                                    <a role="button" data-href="{{url('calendars')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-line-chart fa-2x"></span> <br>
                                                             PRODUCTS
                                                         </button></a></div>
                                                 <div class="col"><a role="button" data-href="{{url('edit_profile')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-user-circle-o fa-2x"></span> <br>

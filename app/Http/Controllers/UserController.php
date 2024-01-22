@@ -28,7 +28,7 @@ use App\Models\Country;
 use App\Models\City;
 use App\Models\CourseCategory;
 use App\Models\Course;
-use Notification;
+use App\Models\ServiceSchedule;
 use App\Models\Settings;
 use App\Mail\SendMailreset;
 use Illuminate\Support\Facades\Hash;
@@ -405,21 +405,21 @@ class UserController extends AppBaseController
                 if ($user->email_verified_at === null) {
                     return back()->with('fail', 'Your account is not verified. Please verify your email.');
                 }
-                // if ($user->account_type == "user") {
+                if ($user->account_type == "user" || $user->account_type == "advertiser" || $user->account_type == "manager") {
+                    $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
+                    $request->session()->put('LoggedIn', $user->id);
+                    return redirect('dashboard');
+                }
 
-                // }
-                $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
-                $request->session()->put('LoggedIn', $user->id);
-                return redirect('dashboard');
-                // if ($user->account_type == "advertiser") {
-                //     $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
-                //     $request->session()->put('LoggedIn', $user->id);
-                //     $appointment= Appointment::where('profile_id',$user->id)->get();
+                 if ($user->account_type == "partner") {
+                    $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
+                    $request->session()->put('LoggedIn', $user->id);
+                    $appointment= Appointment::where('profile_id',$user->id)->get();
 
-                //     return redirect('admin/dashboard')->with(['appointment' => $appointment]);
+                    return redirect('admin/dashboard')->with(['appointment' => $appointment]);
 
 
-                // }
+                }
 
             } else {
                 return back()->with('fail', 'Password does not match');
@@ -789,7 +789,9 @@ class UserController extends AppBaseController
         $ads_details = PostingAds::where('id', $id)->first();
         $id = $ads_details->category;
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
-        return view('ad_details', compact('ads_details', 'id', 'user_session'));
+        $service_time=ServiceSchedule::where('user_id',$ads_details->user_id)->get();
+
+        return view('ad_details', compact('ads_details', 'id', 'user_session','service_time'));
     }
     public function post_list()
     {
@@ -982,7 +984,8 @@ class UserController extends AppBaseController
         $profile_id = $profile_id->user_id;
         $appointment = new Appointment();
         $appointment->date = $request->input("date");
-        $appointment->time = $request->input("time");
+        $appointment->start_time = $request->input("start_time");
+        $appointment->end_time = $request->input("end_time");
         $appointment->user_id = $request->user_id;
         $appointment->profile_id = $profile_id;
         $appointment->ad_id = $request->ad_id;

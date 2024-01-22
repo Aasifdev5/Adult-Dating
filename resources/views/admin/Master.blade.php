@@ -284,8 +284,8 @@
                         </li>
                         <li><a class="sidebar-header" href="#"><i data-feather="settings"></i><span>{{__('settings')}}</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="sidebar-submenu">
-                                <li><a href="{{url('admin/country')}}"><i class="fa fa-circle"></i> country</a></li>
-                                <li><a href="{{url('admin/city')}}"><i class="fa fa-circle"></i> city</a></li>
+                            <li><a href="{{url('admin/country')}}"><i class="fa fa-circle"></i> country</a></li>
+                        <li><a href="{{url('admin/city')}}"><i class="fa fa-circle"></i> city</a></li>
                                 <li><a href="{{url('admin/smtp_setting')}}"><i class="fa fa-circle"></i>SMTP Setting</a></li>
                                 <li><a href="{{url('admin/payment_gateway')}}"><i class="fa fa-circle"></i>Payment Gateway</a></li>
                                 <li><a href="{{url('admin/social_lite_login')}}"><i class="fa fa-circle"></i>Socialite Login</a></li>
@@ -294,7 +294,7 @@
                         </li>
                         <li><a class="sidebar-header" href="{{ url('admin/banners') }}"><i data-feather="book"></i><span>Banner</span></a></li>
                         <li><a class="sidebar-header" href="{{ url('admin/ads') }}"><i data-feather="book"></i><span>Top Ads</span></a></li>
-                        <li><a class="sidebar-header" href="{{ url('admin/calendars') }}"><i data-feather="book"></i><span>Calender Profile</span></a></li>
+
                         <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Payment Management</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="{{url('admin/qrcode')}}"><i class="fa fa-circle"></i> Manual Payment Method</a></li>
@@ -302,15 +302,10 @@
                                 <li><a href="{{url('admin/subscription/payment_reports')}}"><i class="fa fa-circle"></i> Payment Report </a></li>
                             </ul>
                         </li>
-                        <li><a class="sidebar-header" href="{{url('admin/credit_reload_promotions')}}"><i data-feather="book"></i><span>Credits</span></a>
 
-                        </li>
-                        <li><a class="sidebar-header" href="{{url('admin/appointments')}}"><i data-feather="book"></i><span>Subscription Calender</span></a>
 
-                        </li>
-                        <li><a class="sidebar-header" href="{{url('admin/service-schedule')}}"><i data-feather="book"></i><span>Independent</span></a>
 
-                        </li>
+
                         <li><a class="sidebar-header" href="{{url('admin/pages')}}"><i data-feather="book"></i><span>Pages</span></a>
 
                         </li>
@@ -352,14 +347,14 @@
 
                             </ul>
                         </li>
-                        <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Order Management</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <!-- <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Order Management</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="{{url('admin/transactions_report')}}"><i class="fa fa-circle"></i>Transaction Report </a></li>
                                 <li><a href="{{url('admin/tasks')}}"><i class="fa fa-circle"></i>Task List </a></li>
                                 <li><a href="{{url('admin/orders')}}"><i class="fa fa-circle"></i>Order List</a></li>
 
                             </ul>
-                        </li>
+                        </li> -->
                         <!-- <li><a class="sidebar-header" href="{{url('admin/balance')}}"><i data-feather="dollar-sign"></i><span>Balance </span></a>
 
                         </li>
@@ -383,10 +378,9 @@
                         </li> -->
                     </ul>
                     @endif
-                    @if($user_session->is_super_admin==0 and $user_session->account_type=="advertiser")
+                    @if($user_session->is_super_admin==0 and $user_session->account_type=="manager")
                     <ul class="sidebar-menu">
-                        <li><a class="sidebar-header" href="{{url('admin/dashboard')}}"><i data-feather="home"></i><span>{{ trans('dashboard') }}</span></a></li>
-
+                        <li><a class="sidebar-header" href="{{ url('admin/calendars') }}"><i data-feather="book"></i><span>Calender Profile</span></a></li>
                         <li><a class="sidebar-header" href="{{url('admin/appointments')}}"><i data-feather="book"></i><span>Appointments</span></a> </li>
 
                     </ul>

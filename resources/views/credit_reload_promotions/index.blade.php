@@ -1,31 +1,13 @@
-@extends('admin.Master')
+@extends('master')
 @section('title')
-credit reload promotions
+Credits
 @endsection
 @section('content')
 
 <div class="page-body">
-    <div class="container-fluid">
-        <div class="page-header">
-            <div class="row">
-                <div class="col">
-                    <div class="page-header-left">
-                        <h3>Adult Dating</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
 
-                            <li class="breadcrumb-item"> credit reload promotions</li>
-
-                        </ol>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
     <!-- Container-fluid starts-->
-    <!-- Container-fluid starts-->
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -40,13 +22,13 @@ credit reload promotions
                     </div>
                     @endif
                     <div class="card-header">
-                        <h5> credit reload promotions</h5>
+                        <h5> Credits</h5>
                         <a class="btn btn-pill btn-primary btn-air-primary pull-right" href="#" data-toggle="tooltip" title="" role="button" data-bs-original-title="btn btn-primary">Add
                             Credit Reload</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="display" id="advance-1">
+                            <table class="display table table-bordered table-striped" id="advance-1">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

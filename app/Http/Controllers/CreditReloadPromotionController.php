@@ -15,7 +15,7 @@ class CreditReloadPromotionController extends Controller
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             // Display credit reload promotions
             $promotions = CreditReloadPromotion::all();
-            return view('admin.credit_reload_promotions.index', compact('promotions', 'user_session'));
+            return view('credit_reload_promotions.index', compact('promotions', 'user_session'));
         }
     }
     public function reload(Request $request)

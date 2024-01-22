@@ -28,7 +28,7 @@ use App\Http\Controllers\FundController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\AdController;
-use App\Http\Controllers\Admin\CalendarController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\AgeVerificationController;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\CreditReloadController;
@@ -65,6 +65,9 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
     Route::get('verification_form', [AgeVerificationController::class, 'showVerificationForm']);
     Route::post('verificationSubmit', [AgeVerificationController::class, 'submitVerification']);
+    Route::resource('calendars', CalendarController::class)->names('calendars');
+    Route::get('credit_reload_promotions', [CreditReloadPromotionController::class, 'index'])->name('credit_reload_promotions.index');
+    Route::resource('service-schedule', ServiceScheduleController::class)->names('service_schedule');
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
     Route::get('/Billing', [UserController::class, 'Billing'])->name('Billing')->middleware('isLoggedIn');
@@ -144,7 +147,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin-prevent-back-history'], function () {
         Route::resource('banners', BannerController::class)->names('admin.banners');
         Route::resource('ads', AdController::class)->names('admin.ads');
-        Route::resource('calendars', CalendarController::class)->names('admin.calendars');
+
         Route::get('/qrcode', [QRCodeController::class, 'index'])->name('qrcode.index');
         Route::post('/qrcode/generate', [QRCodeController::class, 'generateQrCode'])->name('qrcode.generate');
         Route::get('/qrcode/download/{data}', [QRCodeController::class, 'downloadQrCode'])->name('qrcode.download');
@@ -152,12 +155,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('credit_reloads/{id}/accept', [CreditReloadController::class, 'accept'])->name('credit_reloads.accept');
         Route::get('subscription/payment_reports', [SubscriptionController::class, 'paymentReports'])->name('subscription.payment_reports');
         Route::post('subscription/activate', [SubscriptionController::class, 'activateSubscription'])->name('subscription.activate');
-        Route::get('credit_reload_promotions', [CreditReloadPromotionController::class, 'index'])->name('credit_reload_promotions.index');
+
         Route::post('/reload', [CreditReloadController::class, 'reload'])->name('credit_reload.reload');
         Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments.index');
         Route::get('appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
         Route::post('appointments/store', [AppointmentController::class, 'store'])->name('appointments.store');
-        Route::resource('service-schedule', ServiceScheduleController::class)->names('admin.service_schedule');
+
         Route::get('login', [Admin::class, 'admin'])->name('admin')->middleware('AdminAlreadyLoggedIn');
         Route::get('country', [Admin::class, 'country'])->name('country')->middleware('alreadyLoggedIn');
         Route::get('city', [Admin::class, 'city'])->name('city')->middleware('alreadyLoggedIn');

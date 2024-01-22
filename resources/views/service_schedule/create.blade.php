@@ -1,24 +1,22 @@
-@extends('admin.Master')
+@extends('master')
 @section('title')
-Add Banner
+Add Service Time
 @endsection
 @section('content')
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
-    <div class="container-fluid">
+    <div class="container">
         <!-- sign up page start-->
         <div class="auth-bg-video">
-            <video id="bgvid" poster="{{asset('admin/images/coming-soon-bg.jpg')}}" playsinline="" autoplay="" muted="" loop="">
-                <source src="{{asset('admin/video/auth-bg.mp4')}}" type="video/mp4">
-            </video>
+
             <div class="authentication-box">
                 <div class="text-center"><img src="assets/images/endless-logo.png" alt=""></div>
                 <div class="card mt-4 p-4">
-                    <h4 class="text-center">Add Banner</h4>
+                    <h4 class="text-center">Add Service Time</h4>
 
 
                     <!-- Form to create a new banner -->
-                    <form action="{{ route('admin.service_schedule.store') }}" class="theme-form" method="post">
+                    <form action="{{ route('service_schedule.store') }}" class="theme-form" method="post">
                         @if(Session::has('success'))
                         <div class="alert alert-success">
                             <p>{{session::get('success')}}</p>

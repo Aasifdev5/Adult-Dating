@@ -67,44 +67,84 @@ Ad Details
                 <div class="col-md-3 contactdk">
                     @if(!empty($user_session))
                     <button class="btn btn-primary btn-phone btn-block mt-1" onclick="getModal()">Schedule Appointment</button>
-                       <!-- Modal for Schedule Appointment -->
-        <div class="modal" id="appointmentModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
+                    <!-- Modal for Schedule Appointment -->
+                    <div class="modal" id="appointmentModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
 
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Schedule Appointment</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Schedule Appointment</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="col-sm-12">
+                                        <h6 class="text-red" style="color: red;">Please check Available Time Slot before schedule appointment </h6>
+                                        <div class="table-responsive">
+                                            <table class="display table table-bordered table-striped" id="advance-1">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th scope="col">Start Time</th>
+                                                        <th scope="col">End Time</th>
+
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($service_time as $schedule)
+                                                    @php
+                                                    $check = \App\Models\Appointment::where('start_time', $schedule->start_time)
+                                                    ->where('end_time', $schedule->end_time)
+                                                    ->whereDate('date', date('Y-m-d'))
+                                                    ->get();
+                                                    @endphp
+                                                    @if($check->isEmpty())
+                                                    <tr>
+                                                        <td>{{ $schedule->start_time }}</td>
+                                                        <td>{{ $schedule->end_time }}</td>
+                                                    </tr>
+
+                                                    @endif
+                                                    @endforeach
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                    </div>
+                                    <form id="appointmentForm" action="{{url('ScheduleAppointment')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="ad_id" id="" value="{{$ads_details->id}}">
+                                        <input type="hidden" name="user_id" id="" value="{{$user_session->id}}">
+                                        <div class="form-group">
+                                            <label for="appointmentDate">Select a Date:</label>
+                                            <input type="date" class="form-control" name="date" value="{{ date('Y-m-d') }}" id="appointmentDate" min="{{ date('Y-m-d') }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appointmentTime">Select a Start Time:</label>
+                                            <input type="time" class="form-control" name="start_time" id="appointmentTime" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="appointmentTime">Select a End Time:</label>
+                                            <input type="time" class="form-control" name="end_time" id="appointmentTime" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Schedule</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                        <form id="appointmentForm" action="{{url('ScheduleAppointment')}}" method="post">
-                            @csrf
-                            <input type="hidden" name="ad_id" id="" value="{{$ads_details->id}}">
-                            <input type="hidden" name="user_id" id="" value="{{$user_session->id}}">
-                            <div class="form-group">
-                                <label for="appointmentDate">Select a Date:</label>
-                                <input type="date" class="form-control" name="date" value="{{ date('Y-m-d') }}" id="appointmentDate" min="{{ date('Y-m-d') }}" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="appointmentTime">Select a Time:</label>
-                                <input type="time" class="form-control" name="time" id="appointmentTime" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Schedule</button>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <script>
-            function getModal() {
-                $('#appointmentModal').modal('show');
-            }
-        </script>
+                    <script>
+                        function getModal() {
+                            $('#appointmentModal').modal('show');
+                        }
+                    </script>
                     @else
                     <button class="btn btn-primary btn-phone btn-block mt-1" data-toggle="modal" data-target="#signup">Schedule Appointment</button>
                     @endif

@@ -1,24 +1,22 @@
-@extends('admin.Master')
+@extends('master')
 @section('title')
-Edit Calender Profile
+Edit  Profile
 @endsection
 @section('content')
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
-    <div class="container-fluid">
+    <div class="container">
         <!-- sign up page start-->
         <div class="auth-bg-video">
-            <video id="bgvid" poster="{{asset('admin/images/coming-soon-bg.jpg')}}" playsinline="" autoplay="" muted="" loop="">
-                <source src="{{asset('admin/video/auth-bg.mp4')}}" type="video/mp4">
-            </video>
+
             <div class="authentication-box">
                 <div class="text-center"><img src="assets/images/endless-logo.png" alt=""></div>
                 <div class="card mt-4 p-4">
-                    <h4 class="text-center">Edit Calender Profile</h4>
+                    <h4 class="text-center">Edit  Profile</h4>
 
 
 
-                    <form action="{{ route('admin.calendars.update', ['calendar' => $calendar->id]) }}" method="POST">
+                    <form action="{{ route('calendars.update', ['calendar' => $calendar->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">

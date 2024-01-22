@@ -145,14 +145,14 @@ Dashboard
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 col-sm-12">
+                    <div class="col-md-6 col-sm-12">
                         <div class="card dashboard mb-4">
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="media d-flex">
                                         <div class="media-body">
                                             <h5 class="card-title skokka-text">
-                                                <a href="{{url('product')}}" class="">
+                                                <a href="{{url('calendars')}}" class="">
                                                     <i class="fa fa-line-chart float-left mr-2"></i> Products <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                 </a>
                                             </h5>
@@ -163,7 +163,7 @@ Dashboard
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-12">
+                    <div class="col-md-6 col-sm-12">
                         <div class="card dashboard mb-4">
                             <div class="card-content">
                                 <div class="card-body">
@@ -181,8 +181,30 @@ Dashboard
                             </div>
                         </div>
                     </div>
+                    @if($user_session->account_type=="advertiser" || $user_session->account_type=="manager")
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card dashboard mb-4">
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <div class="media d-flex">
+                                        <div class="media-body">
+                                            <h5 class="card-title skokka-text">
+                                                <a href="{{url('service-schedule')}}" class="">
 
-                    <div class="col-md-4 col-sm-12">
+
+                                                      Add Service Hours<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+
+                                                </a>
+                                            </h5>
+                                            <p>Manage your service hours.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    <div class="col-md-6 col-sm-12">
                         <div class="card dashboard mb-4">
                             <div class="card-content">
                                 <div class="card-body">

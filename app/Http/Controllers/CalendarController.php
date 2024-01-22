@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Models\Calendar;
 use App\Models\User;
@@ -16,8 +16,8 @@ class CalendarController extends Controller
 
 
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $calendars = Calendar::all();
-            return view('admin.calendars.index', compact('calendars', 'user_session'));
+            $calendars = Calendar::where('user_id',Session::get('LoggedIn'))->get();
+            return view('calendars.index', compact('calendars', 'user_session'));
         }
     }
 
@@ -27,13 +27,14 @@ class CalendarController extends Controller
 
 
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            return view('admin.calendars.create', compact('user_session'));
+            return view('calendars.create', compact('user_session'));
         }
     }
 
     public function store(Request $request)
     {
         $request->validate([
+
             'name' => 'required|string',
             'details' => 'required|string',
             'days' => 'required|integer',
@@ -42,7 +43,7 @@ class CalendarController extends Controller
 
         Calendar::create($request->all());
 
-        return redirect()->route('admin.calendars.index')->with('success', 'Calendar created successfully');
+        return redirect()->route('calendars.index')->with('success', 'Calendar created successfully');
     }
 
     public function edit($id)
@@ -52,7 +53,7 @@ class CalendarController extends Controller
 
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $calendar = Calendar::findOrFail($id);
-            return view('admin.calendars.edit', compact('calendar', 'user_session'));
+            return view('calendars.edit', compact('calendar', 'user_session'));
         }
     }
 
@@ -68,7 +69,7 @@ class CalendarController extends Controller
         $calendar = Calendar::findOrFail($id);
         $calendar->update($request->all());
 
-        return redirect()->route('admin.calendars.index')->with('success', 'Calendar updated successfully');
+        return redirect()->route('calendars.index')->with('success', 'Calendar updated successfully');
     }
 
     public function destroy($id)
@@ -76,6 +77,6 @@ class CalendarController extends Controller
         $calendar = Calendar::findOrFail($id);
         $calendar->delete();
 
-        return redirect()->route('admin.calendars.index')->with('success', 'Calendar deleted successfully');
+        return redirect()->route('calendars.index')->with('success', 'Calendar deleted successfully');
     }
 }
