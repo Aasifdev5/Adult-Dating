@@ -543,8 +543,9 @@
                             <nav class="navbar navbar-expand-lg navbar-light">
 
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
+                                    <span class="navbar-toggler-icon"><svg _ngcontent-ng-c3087462376="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu fea icon-md"><line _ngcontent-ng-c3087462376="" x1="3" y1="12" x2="21" y2="12"></line><line _ngcontent-ng-c3087462376="" x1="3" y1="6" x2="21" y2="6"></line><line _ngcontent-ng-c3087462376="" x1="3" y1="18" x2="21" y2="18"></line></svg></span>
                                 </button>
+
                                 <div class="collapse navbar-collapse" id="navbarNav">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
@@ -560,7 +561,7 @@
                                             <a class="nav-link" href="{{url('ads_list/Transsexual')}}">Casual encounter</a>
                                         </li>
 
-                                        <li class="nav-item d-none d-lg-block">
+                                        <li class="nav-item  d-lg-block">
                                             <a href="#" class="btn btn-secondary new-ad btn-block" data-toggle="modal" data-target="#signup">
                                                 <i class="fas fa-plus-circle mr-2"></i> Post your ad
                                             </a>
