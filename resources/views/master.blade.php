@@ -489,7 +489,7 @@
                                 </div>
                             </div>
                             @if($_SERVER['REQUEST_URI']!="/post_ad")
-                            <a href="{{ url('post_ad') }}" class="d-none d-lg-block btn btn-secondary new-ad btn-block">
+                            <a href="{{ url('post_ad') }}" class=" d-lg-block btn btn-secondary new-ad btn-block">
                                 <i class="fas fa-plus-circle mr-2"></i> Post your ad
                             </a>
 
