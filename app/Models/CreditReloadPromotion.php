@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class CreditReloadPromotion extends Model
 {
-    protected $fillable = ['name', 'minimum_amount', 'discount_percentage'];
+    protected $fillable = ['name', 'minimum_amount', 'discount_percentage','amount','discounted_amount'];
 }

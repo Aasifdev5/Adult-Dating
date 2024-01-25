@@ -519,7 +519,7 @@
                                                 <div class="col"><a role="button" data-href="{{url('ads')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-pencil-square-o fa-2x"></span> <br>
                                                 TUS ANUNCIOS
                                                         </button></a></div>
-                                                <div class="col"><a role="button" data-href="{{url('credit_reload_promotions')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-database fa-2x"></span> <br>
+                                                <div class="col"><a role="button" data-href="{{url('credits')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-database fa-2x"></span> <br>
                                                 CRÉDITOS
                                                         </button></a></div>
                                                 <div class="col">

@@ -30,6 +30,7 @@ use App\Models\CourseCategory;
 use App\Models\Course;
 use App\Models\ServiceSchedule;
 use App\Models\Settings;
+use App\Models\CreditReloadPromotion;
 use App\Mail\SendMailreset;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PaymentGateway;
@@ -1033,14 +1034,26 @@ class UserController extends AppBaseController
             return view('PurchaseAnalysis', compact('user_session', 'PurchaseProject'));
         }
     }
-    public function Orders()
+    public function credits()
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $progress = Order::where('status', 'progress')->where('user_id', Session::get('LoggedIn'))->get();
-            $completed = Order::where('status', 'Completed')->where('user_id', Session::get('LoggedIn'))->get();
-            $cancel = Order::where('status', 'cancel')->where('user_id', Session::get('LoggedIn'))->get();
-            return view('Orders', compact('user_session', 'progress', 'completed', 'cancel'));
+
+            $credits =  CreditReloadPromotion::all();
+            return view('credit', compact('user_session', 'credits'));
+        }
+    }
+    public function credit_buy_post()
+    {
+
+    }
+    public function credit_buy_details($id)
+    {
+        if (Session::has('LoggedIn')) {
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+
+            $credit =  CreditReloadPromotion::find($id);
+            return view('credit_buy', compact('user_session', 'credit'));
         }
     }
     public function ActivityOrder()

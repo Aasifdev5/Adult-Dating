@@ -303,6 +303,7 @@
                             </ul>
                         </li>
 
+                        <li><a class="sidebar-header" href="{{url('admin/credit_reload_promotions')}}"><i data-feather="book"></i><span>Credits</span></a> </li>
 
 
 
@@ -355,10 +356,10 @@
 
                             </ul>
                         </li> -->
-                        <!-- <li><a class="sidebar-header" href="{{url('admin/balance')}}"><i data-feather="dollar-sign"></i><span>Balance </span></a>
+                        <li><a class="sidebar-header" href="{{url('admin/balance')}}"><i data-feather="dollar-sign"></i><span>Balance </span></a>
 
                         </li>
-                        <li><a class="sidebar-header" href="{{url('admin/withdraws')}}"><i data-feather="dollar-sign"></i><span>Withdraw Request </span></a>
+                        <!-- <li><a class="sidebar-header" href="{{url('admin/withdraws')}}"><i data-feather="dollar-sign"></i><span>Withdraw Request </span></a>
 
                         </li>
                         <li><a class="sidebar-header" href="{{url('admin/subscription_plan')}}"><i data-feather="dollar-sign"></i><span>Subscription </span></a>

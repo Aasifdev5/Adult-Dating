@@ -145,7 +145,7 @@ Visibility
                             </h5>
                             <div>
                                 <small>Ninguna promoción seleccionada</small>
-                                <button type="button" class="btn btn-outline-primary waves-effect btn-block">Publicar anuncio gratis </button>
+                                <a type="{{url('finish')}}" class="btn btn-outline-primary waves-effect btn-block">Publicar anuncio gratis </a>
                             </div>
                         </div>
                     </div>

@@ -66,7 +66,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('verification_form', [AgeVerificationController::class, 'showVerificationForm']);
     Route::post('verificationSubmit', [AgeVerificationController::class, 'submitVerification']);
     Route::resource('calendars', CalendarController::class)->names('calendars');
-    Route::get('credit_reload_promotions', [CreditReloadPromotionController::class, 'index'])->name('credit_reload_promotions.index');
+
     Route::resource('service-schedule', ServiceScheduleController::class)->names('service_schedule');
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
@@ -78,7 +78,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('update_profile', [UserController::class, 'update_profile']);
     Route::get('/Payment', [UserController::class, 'Payment'])->name('Payment')->middleware('isLoggedIn');
     Route::get('/finish', [UserController::class, 'finish'])->name('finish')->middleware('isLoggedIn');
-    Route::get('/Machine', [UserController::class, 'Machine'])->name('Machine')->middleware('isLoggedIn');
+    Route::get('/credits', [UserController::class, 'credits'])->name('credits')->middleware('isLoggedIn');
+    Route::get('/credit_buy_details/{id}', [UserController::class, 'credit_buy_details'])->name('credit_buy_details')->middleware('isLoggedIn');
     Route::get('/PurchaseTime/{id}', [UserController::class, 'PurchaseTime'])->name('PurchaseTime')->middleware('isLoggedIn');
     Route::get('/Hybrid', [UserController::class, 'Hybrid'])->name('Hybrid')->middleware('isLoggedIn');
     Route::get('/TimeSeries', [UserController::class, 'TimeSeries'])->name('TimeSeries')->middleware('isLoggedIn');
@@ -155,7 +156,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('credit_reloads/{id}/accept', [CreditReloadController::class, 'accept'])->name('credit_reloads.accept');
         Route::get('subscription/payment_reports', [SubscriptionController::class, 'paymentReports'])->name('subscription.payment_reports');
         Route::post('subscription/activate', [SubscriptionController::class, 'activateSubscription'])->name('subscription.activate');
+        Route::get('credit_reload_promotions', [CreditReloadPromotionController::class, 'index'])->name('credit_reload_promotions.index');
+        // Create a new promotion
+        Route::get('/promotions/create', [CreditReloadPromotionController::class, 'create']);
+        Route::post('/promotions', [CreditReloadPromotionController::class, 'store']);
 
+        // Edit an existing promotion
+        Route::get('/promotions/{id}', [CreditReloadPromotionController::class, 'edit']);
+        Route::put('/promotions/{promotion}', [CreditReloadPromotionController::class, 'update']);
+
+        // Delete a promotion
+        Route::delete('/promotions/{promotion}', [CreditReloadPromotionController::class, 'destroy']);
         Route::post('/reload', [CreditReloadController::class, 'reload'])->name('credit_reload.reload');
         Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments.index');
         Route::get('appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
