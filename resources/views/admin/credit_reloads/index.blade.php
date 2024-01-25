@@ -46,24 +46,16 @@ Credit Reload
                     <div class="card-body">
 
 
-                        <form action="{{ route('credit_reloads.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="user_id" value="{{$user_session->id}}">
-                            <div class="mb-3">
-                                <label for="amount" class="form-label">Amount</label>
-                                <input type="text" class="form-control" id="amount" name="amount" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="payment_receipt" class="form-label">Payment Receipt</label>
-                                <input type="file" class="form-control" id="payment_receipt" name="payment_receipt" accept="image/*" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit Request</button>
-                        </form>
+
                         <div class="table-responsive">
                             <table class="display" id="advance-1">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
+                                        <th>User</th>
+                                        <th>Credits Name</th>
+                                        <th>Discounted Percentage</th>
+                                        <th>Discounted Amount</th>
                                         <th>Amount</th>
                                         <th>Payment Receipt</th>
                                         <th>Status</th>
@@ -73,8 +65,18 @@ Credit Reload
                                 </thead>
                                 <tbody>
                                     @foreach ($creditReloads as $creditReload)
+                                    @php
+                                    $userFullname = \App\Models\User::getUserFullname($creditReload->user_id);
+                                    $creditsDetails = \App\Models\CreditReloadPromotion::find($creditReload->credit_id);
+
+                                    @endphp
+
                                     <tr>
                                         <td>{{ $creditReload->id }}</td>
+                                        <td>{{ $userFullname }}</td>
+                                        <td>{{ $creditsDetails->name }}</td>
+                                        <td>{{ $creditsDetails->discount_percentage }}</td>
+                                        <td>{{ $creditsDetails->discounted_amount }}</td>
                                         <td>{{ $creditReload->amount }}</td>
                                         <td>
                                             @if ($creditReload->payment_receipt)
@@ -97,6 +99,7 @@ Credit Reload
                                         </td>
                                     </tr>
                                     @endforeach
+
                                 </tbody>
                             </table>
                         </div>

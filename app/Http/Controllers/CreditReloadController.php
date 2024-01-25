@@ -34,6 +34,7 @@ class CreditReloadController extends Controller
 
         $creditReload = new CreditReload([
             'user_id' => $request->user_id,
+            'credit_id' => $request->credit_id,
             'amount' => $request->amount,
             'accepted' => false,
         ]);
@@ -45,7 +46,7 @@ class CreditReloadController extends Controller
 
         $creditReload->save();
 
-        return redirect()->route('credit_reloads.index')->with('success', 'Credit reload request submitted');
+        return redirect('dashboard')->with('success', 'Credit reload request submitted');
     }
 
     public function accept($id)

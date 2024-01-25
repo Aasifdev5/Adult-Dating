@@ -66,7 +66,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('verification_form', [AgeVerificationController::class, 'showVerificationForm']);
     Route::post('verificationSubmit', [AgeVerificationController::class, 'submitVerification']);
     Route::resource('calendars', CalendarController::class)->names('calendars');
-
+    Route::resource('credit_reloads', CreditReloadController::class);
     Route::resource('service-schedule', ServiceScheduleController::class)->names('service_schedule');
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
@@ -152,7 +152,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/qrcode', [QRCodeController::class, 'index'])->name('qrcode.index');
         Route::post('/qrcode/generate', [QRCodeController::class, 'generateQrCode'])->name('qrcode.generate');
         Route::get('/qrcode/download/{data}', [QRCodeController::class, 'downloadQrCode'])->name('qrcode.download');
-        Route::resource('credit_reloads', CreditReloadController::class)->only(['index', 'store']);
+        Route::get('credit_reload', [CreditReloadController::class, 'index'])->name('credit_reloads.index');
         Route::get('credit_reloads/{id}/accept', [CreditReloadController::class, 'accept'])->name('credit_reloads.accept');
         Route::get('subscription/payment_reports', [SubscriptionController::class, 'paymentReports'])->name('subscription.payment_reports');
         Route::post('subscription/activate', [SubscriptionController::class, 'activateSubscription'])->name('subscription.activate');

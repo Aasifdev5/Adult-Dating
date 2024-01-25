@@ -298,7 +298,7 @@
                         <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Payment Management</span><i class="fa fa-angle-right pull-right"></i></a>
                             <ul class="sidebar-submenu">
                                 <li><a href="{{url('admin/qrcode')}}"><i class="fa fa-circle"></i> Manual Payment Method</a></li>
-                                <li><a href="{{url('admin/credit_reloads')}}"><i class="fa fa-circle"></i> Credit Reload</a></li>
+                                <li><a href="{{url('admin/credit_reload')}}"><i class="fa fa-circle"></i> Credit Reload</a></li>
                                 <li><a href="{{url('admin/subscription/payment_reports')}}"><i class="fa fa-circle"></i> Payment Report </a></li>
                             </ul>
                         </li>

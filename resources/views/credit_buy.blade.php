@@ -27,10 +27,25 @@ Credits Buy Details
                         <div class="cart-total mt-4">
                             <h6>Total: ${{ $credit->discounted_amount }}</h6>
                         </div>
-
+                        <form action="{{ route('credit_reloads.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{$user_session->id}}">
+                            <input type="hidden" name="credit_id" value="{{$credit->id}}">
+                            <div class="col-sm-12">
+                                <label for="amount" class="form-label">Amount</label>
+                                <input type="text" class="form-control" id="amount" name="amount" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="payment_receipt" class="form-label">Payment Receipt</label>
+                                <input type="file" class="form-control" id="payment_receipt" name="payment_receipt" accept="image/*" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
+
 
             <div class="col-md-4">
                 <div class="card">
@@ -58,10 +73,12 @@ Credits Buy Details
                         </div>
 
                         <!-- Checkout button -->
-                        <button class="btn btn-success btn-block mt-3">Checkout</button>
+
+
                     </div>
                 </div>
             </div>
+
         </div>
 
 
