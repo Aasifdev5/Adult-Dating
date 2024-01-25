@@ -52,6 +52,19 @@ QR codes List
                                 <label for="data" class="form-label">Data for QR Code</label>
                                 <input type="text" class="form-control" id="data" name="data" placeholder="Enter data">
                             </div>
+                            <!-- Bank Details Fields -->
+                            <div class="mb-3">
+                                <label for="bank_name" class="form-label">Bank Name</label>
+                                <input type="text" class="form-control" id="bank_name" name="bank_name" placeholder="Enter bank name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="account_number" class="form-label">Account Number</label>
+                                <input type="text" class="form-control" id="account_number" name="account_number" placeholder="Enter account number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="ifsc_code" class="form-label">IFSC Code</label>
+                                <input type="text" class="form-control" id="ifsc_code" name="ifsc_code" placeholder="Enter IFSC code">
+                            </div>
                             <button type="submit" class="btn btn-primary">Generate QR Code</button>
                         </form>
                     </div>

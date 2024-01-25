@@ -167,21 +167,7 @@ POST AD
 
                             <!---->
 
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                <label class="">Dirección</label>
-                                <input name="address" type="text" class="form-control">
-                                <!---->
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                <label class="">Código postal</label>
-                                <input name="postal_code" type="text" class="form-control">
-                                <!---->
-                            </div>
-                            <div class="col-12 form-group">
-                                <label class="">Área/Distrito/Barrio</label>
-                                <input name="place" type="text" class="form-control">
-                                <!---->
-                            </div>
+
                         </div>
                     </div>
                     <hr class="my-3">
