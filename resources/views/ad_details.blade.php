@@ -66,7 +66,7 @@ Ad Details
                 </div>
                 <div class="col-md-3 contactdk">
                     @if(!empty($user_session))
-                    <button class="btn btn-primary btn-phone btn-block mt-1" onclick="getModal()">Schedule Appointment</button>
+                    <button class="btn btn-primary btn-phone btn-block mt-1" onclick="getModal()">Programar una cita</button>
                     <!-- Modal for Schedule Appointment -->
                     <div class="modal" id="appointmentModal">
                         <div class="modal-dialog">
@@ -74,21 +74,21 @@ Ad Details
 
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Schedule Appointment</h4>
+                                    <h4 class="modal-title">Programar una cita</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
 
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <div class="col-sm-12">
-                                        <h6 class="text-red" style="color: red;">Please check Available Time Slot before schedule appointment </h6>
+                                        <h6 class="text-red" style="color: red;">Por favor verifique el horario disponible antes de programar la cita. </h6>
                                         <div class="table-responsive">
                                             <table class="display table table-bordered table-striped" id="advance-1">
                                                 <thead>
                                                     <tr>
 
-                                                        <th scope="col">Start Time</th>
-                                                        <th scope="col">End Time</th>
+                                                        <th scope="col">Hora de inicio</th>
+                                                        <th scope="col">Hora de finalización</th>
 
 
                                                     </tr>
@@ -121,18 +121,18 @@ Ad Details
                                         <input type="hidden" name="ad_id" id="" value="{{$ads_details->id}}">
                                         <input type="hidden" name="user_id" id="" value="{{$user_session->id}}">
                                         <div class="form-group">
-                                            <label for="appointmentDate">Select a Date:</label>
+                                            <label for="appointmentDate">Seleccione una fecha:</label>
                                             <input type="date" class="form-control" name="date" value="{{ date('Y-m-d') }}" id="appointmentDate" min="{{ date('Y-m-d') }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="appointmentTime">Select a Start Time:</label>
+                                            <label for="appointmentTime">Seleccione una hora de inicio:</label>
                                             <input type="time" class="form-control" name="start_time" id="appointmentTime" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="appointmentTime">Select a End Time:</label>
+                                            <label for="appointmentTime">Seleccione una hora de finalización:</label>
                                             <input type="time" class="form-control" name="end_time" id="appointmentTime" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Schedule</button>
+                                        <button type="submit" class="btn btn-primary">Cronograma</button>
                                     </form>
                                 </div>
 
@@ -157,7 +157,7 @@ Ad Details
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 id="staticBackdropLabel" class="modal-title">
-                            <i class="icon icon-Social Citas signup pr-2"></i> Get into Social Citas!
+                            <i class="icon icon-Social Citas signup pr-2"></i> Ingrese a las citas sociales!
                         </h5>
                         <button type="button" data-dismiss="modal" aria-label="Close" class="close">
                             <span aria-hidden="true">×</span>
@@ -167,19 +167,19 @@ Ad Details
                         <hr class="my-1">
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item border-0">
-                                <strong>Publish and Manage </strong>your ads
+                                <strong>Publica y gestiona tus anuncios</strong>
                             </li>
                         </ul>
                         <div class="action">
-                            <p class="small"> Have an account yet? </p>
+                            <p class="small"> ¿Ya tienes una cuenta?  </p>
                             <a data-href="{{url('Userlogin')}}">
                                 <button type="button" class="btn btn-primary w-75 mb-4">
-                                    <i class="fas fa-sign-in-alt mr-2"></i> Login </button>
+                                    <i class="fas fa-sign-in-alt mr-2"></i> Iniciar sesión </button>
                             </a>
-                            <p class="small"> Don't have an account yet? </p>
+                            <p class="small"> ¿Todavía no tienes una cuenta? </p>
                             <a data-href="{{url('signup')}}">
                                 <button type="button" class="btn btn-outline-primary w-75">
-                                    <i class="fas fa-edit mr-2"></i> Sign up </button>
+                                    <i class="fas fa-edit mr-2"></i> ¡Regístrate </button>
                             </a>
                         </div>
                     </div>
@@ -262,7 +262,7 @@ Ad Details
                 <div class="col service-detail">
                     <h5>
                         <strong>
-                            <i class="far fa-grin-wink"></i>About me </strong>
+                            <i class="far fa-grin-wink"></i>Acerca de mí </strong>
                     </h5>
                     <p> {{$ads_details->description}}
                     </p>
@@ -282,7 +282,7 @@ Ad Details
                             <hr class="my-4">
                             <h5>
                                 <strong>
-                                    <i class="far fa-heart"></i>Services </strong>
+                                    <i class="far fa-heart"></i>Servicios </strong>
                             </h5>
                             <p>
                                 @foreach(explode(',', $ads_details->search_tag__services) as $service)
@@ -297,7 +297,7 @@ Ad Details
                             <hr class="my-4">
                             <h5>
                                 <strong>
-                                    <i class="far fa-user"></i>Attention to </strong>
+                                    <i class="far fa-user"></i>Atención a </strong>
                             </h5>
                             <p>
                                 @foreach(explode(',', $ads_details->search_tag__attention_to) as $service)
@@ -311,7 +311,7 @@ Ad Details
                             <hr class="my-4">
                             <h5>
                                 <strong>
-                                    <i class="far fa-map"></i>Place of service </strong>
+                                    <i class="far fa-map"></i>lugar de servicio </strong>
                             </h5>
                             <p>
                                 @foreach(explode(',', $ads_details->search_tag__place_of_service) as $service)
@@ -326,13 +326,13 @@ Ad Details
                             <hr class="my-4">
                             <h5>
                                 <strong>
-                                    <i class="fas fa-coins"></i>Payments </strong>
+                                    <i class="fas fa-coins"></i>Pagos </strong>
                             </h5>
                             <small>
-                                <b>Price per hour</b>
+                                <b>Precio por hora</b>
                             </small>
                             <ul class="list-group price-hour">
-                                <li class="list-group-item d-flex justify-content-between align-items-center"> From <span class="badge badge-light badge-pill">$ {{$ads_details->hourly_price}}</span>
+                                <li class="list-group-item d-flex justify-content-between align-items-center"> De <span class="badge badge-light badge-pill">$ {{$ads_details->hourly_price}}</span>
                                 </li>
                             </ul>
                             <p class="mt-2">
@@ -340,9 +340,9 @@ Ad Details
                                 <span class="badge badge-pill">
                                     @if($service=="cash")
                                     <i class="fas fa-coins mr-2"></i>
-                                    Cash
+                                    Dinero
                                     @else
-                                    <i class="fa fa-credit-card mr-2"></i> Credit Card
+                                    <i class="fa fa-credit-card mr-2"></i> Tarjeta de crédito
                                     @endif
                                 </span>
 

@@ -6,7 +6,7 @@ POST AD
 <main>
     <hr class="my-2">
     <div class="text-center">
-        <h1 class="main-title home pb-3"> Publish for free in just a few steps! </h1>
+        <h1 class="main-title home pb-3"> ¡Publica gratis en solo unos pasos! </h1>
     </div>
     <hr class="my-2">
     <div class="container">
@@ -42,16 +42,16 @@ POST AD
                 <input type="hidden" name="user_id" value="{{$user_session->id}}">
                 <ul class="progressbar">
                     <li class="personal active">
-                        <strong>Ad info</strong>
+                        <strong>Información del anuncio</strong>
                     </li>
                     <li class="photo ">
-                        <strong>Your photos</strong>
+                        <strong>Tus fotos</strong>
                     </li>
                     <li class="promote ">
-                        <strong>Visibility</strong>
+                        <strong>Visibilidad</strong>
                     </li>
                     <li class="confirm ">
-                        <strong>Finish</strong>
+                        <strong>Finalizar</strong>
                     </li>
                 </ul>
                 <hr class="my-2">
@@ -60,9 +60,9 @@ POST AD
                     <div class="row">
                         <div class="col">
                             <h5 class="mb-4">
-                                <strong>Your Ad</strong>
+                                <strong>Información del anuncio</strong>
                                 <small class="requiredinfo text-muted pull-right">
-                                    <i class="fa fa-asterisk"></i>Required fields </small>
+                                    <i class="fa fa-asterisk"></i>Campos requeridos </small>
                             </h5>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ POST AD
                         <div class="form-row">
                             <div class="col-12 form-group">
                                 <label class="">
-                                    <i class="fa fa-asterisk"></i>Select category </label>
+                                    <i class="fa fa-asterisk"></i>Selecciona categoría </label>
                                 <select name="category" class="browser-default custom-select" autocomplete="off">
                                     <option value="">Please Category</option>
                                     @foreach($category as $row)
@@ -82,7 +82,7 @@ POST AD
                             <div class="col-12 form-group">
                                 <h6 class="mb-4">
                                     <strong>
-                                        <i aria-hidden="true" class="fab fa-font-awesome-flag mr-2"></i> Nationality </strong>
+                                        <i aria-hidden="true" class="fab fa-font-awesome-flag mr-2"></i> Nacionalidad </strong>
                                 </h6>
                                 @if ($countries->isNotEmpty())
                                 <select class="browser-default custom-select select2" id="countrySelect" name="country">
@@ -101,7 +101,7 @@ POST AD
 
                             <div class="col-12 form-group">
                                 <label class="">
-                                    </i>Select State </label>
+                                    </i>Seleccione estado </label>
                                 <select class="browser-default custom-select select2" id="states" name="state">
                                     <!-- Options will be populated dynamically using jQuery Ajax -->
                                 </select>
@@ -109,7 +109,7 @@ POST AD
 
                             <div class="col-12 form-group">
                                 <label class="">
-                                    </i>Select City </label>
+                                    </i>Ciudad selecta </label>
                                 <select class="form-control select2" id="city" name="city">
                                     <!-- Options will be populated dynamically using jQuery Ajax -->
                                 </select>
@@ -168,17 +168,17 @@ POST AD
                             <!---->
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                <label class="">Address</label>
+                                <label class="">Dirección</label>
                                 <input name="address" type="text" class="form-control">
                                 <!---->
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                <label class="">Postal code</label>
+                                <label class="">Código postal</label>
                                 <input name="postal_code" type="text" class="form-control">
                                 <!---->
                             </div>
                             <div class="col-12 form-group">
-                                <label class="">Area/District/Neighbourhood</label>
+                                <label class="">Área/Distrito/Barrio</label>
                                 <input name="place" type="text" class="form-control">
                                 <!---->
                             </div>
@@ -186,21 +186,21 @@ POST AD
                     </div>
                     <hr class="my-3">
                     <h5 class="mb-4">
-                        <strong>Your data</strong>
+                        <strong>Campos obligatorios</strong>
                         <small class="requiredinfo text-muted pull-right">
-                            <i class="fa fa-asterisk"></i> Required fields </small>
+                            <i class="fa fa-asterisk"></i> Campos requeridos </small>
                     </h5>
                     <div class="panelar">
                         <div class="form-row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                <label class=""><i class="fa fa-asterisk"></i>Profile Name</label>
+                                <label class=""><i class="fa fa-asterisk"></i>Nombre de perfil</label>
                                 <input name="name" type="text" class="form-control">
                                 <!---->
                             </div>
                             <div class="col-md-4 col-xs-12 form-group">
                                 <label class="">
                                     <i class="fa fa-asterisk"></i>
-                                    <i aria-hidden="true" class="fa fa-calendar-check-o pr-1"></i>Age </label>
+                                    <i aria-hidden="true" class="fa fa-calendar-check-o pr-1"></i>Edad </label>
                                 <input name="age" type="text" class="form-control">
                                 <!---->
                             </div>
@@ -208,8 +208,8 @@ POST AD
                                 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="dnXmp"></grammarly-extension>
                                 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="dnXmp"></grammarly-extension>
                                 <label class="">
-                                    <i class="fa fa-asterisk"></i> Title </label>
-                                <small class="text-muted pull-right">5 characters required</small>
+                                    <i class="fa fa-asterisk"></i> Título </label>
+                                <small class="text-muted pull-right">Se requieren 5 caracteres</small>
                                 <textarea name="title" rows="3" placeholder="Give your ad a good title" class="form-control" spellcheck="false"></textarea>
                                 <!---->
                             </div>
@@ -217,8 +217,8 @@ POST AD
                                 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="dnXmp"></grammarly-extension>
                                 <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="dnXmp"></grammarly-extension>
                                 <label class="">
-                                    <i class="fa fa-asterisk"></i> Text </label>
-                                <small class="text-muted pull-right">20 characters required</small>
+                                    <i class="fa fa-asterisk"></i> Texto </label>
+                                <small class="text-muted pull-right">Se requieren 20 caracteres</small>
                                 <textarea name="description" rows="5" placeholder="Use this space to describe yourself, your body, talk about your skills, what you like ..." class="form-control" spellcheck="false"></textarea>
                                 <!---->
                             </div>
@@ -229,21 +229,21 @@ POST AD
                             <!---->
                             <hr class="my-3">
                             <h5>
-                                <strong>About You</strong>
+                                <strong>Acerca de ti</strong>
                             </h5>
                             <p class="mb-4 text-primary small">
                                 <i aria-hidden="true" class="fa fa-info-circle mr-1"></i>
-                                <span>Tags are only visible on <b>promoted ads.</b>
+                                <span>Las etiquetas sólo son visibles en <b>anuncios promocionados.</b>
                                 </span>
                             </p>
                             <div class="badger-right">
-                                <span class="badge badge-new">new</span>
+                                <span class="badge badge-Nuevo">Nuevo</span>
                             </div>
                             <div class="panelar">
                                 <div id="ethnicity-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="icon-world mr-2"></i> Ethnicity </strong>
+                                            <i aria-hidden="true" class="icon-world mr-2"></i> Etnia </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
@@ -304,22 +304,22 @@ POST AD
                                 <div id="breast-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="icon-boobs mr-2"></i> Breast </strong>
+                                            <i aria-hidden="true" class="icon-boobs mr-2"></i> Pecho </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-non_operated" name="search_tag__breast[]" value="non_operated">
+                                                <input type="checkbox" id="tag-button-non_operated" name="search_tag__breast[]" value="Pechos naturales">
                                                 <label for="tag-button-non_operated" class="contactad">
-                                                    <div class="card-body mx-2"> Natural Boobs </div>
+                                                    <div class="card-body mx-2"> Pechos naturales </div>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-bigger_breast" name="search_tag__breast[]" value="bigger_breast">
+                                                <input type="checkbox" id="tag-button-bigger_breast" name="search_tag__breast[]" value="Tetona">
                                                 <label for="tag-button-bigger_breast" class="contactad">
-                                                    <div class="card-body mx-2"> Busty </div>
+                                                    <div class="card-body mx-2"> Tetona </div>
                                                 </label>
                                             </div>
                                         </div>
@@ -329,38 +329,38 @@ POST AD
                                 <div id="hair-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="icon-hair mr-2"></i> Hair </strong>
+                                            <i aria-hidden="true" class="icon-hair mr-2"></i> Cabello </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-blond" name="search_tag__hair[]" value="blond">
+                                                <input type="checkbox" id="tag-button-blond" name="search_tag__hair[]" value="Cabello rubio">
                                                 <label for="tag-button-blond" class="contactad">
-                                                    <div class="card-body mx-2"> Blond Hair </div>
+                                                    <div class="card-body mx-2"> Cabello rubio </div>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-brown" name="search_tag__hair[]" value="brown">
+                                                <input type="checkbox" id="tag-button-brown" name="search_tag__hair[]" value="Cabello castaño">
                                                 <label for="tag-button-brown" class="contactad">
-                                                    <div class="card-body mx-2"> Brown Hair </div>
+                                                    <div class="card-body mx-2"> Cabello castaño </div>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-black" name="search_tag__hair[]" value="black">
+                                                <input type="checkbox" id="tag-button-black" name="search_tag__hair[]" value="Cabello negro">
                                                 <label for="tag-button-black" class="contactad">
-                                                    <div class="card-body mx-2"> Black Hair </div>
+                                                    <div class="card-body mx-2"> Cabello negro </div>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-red" name="search_tag__hair[]" value="red">
+                                                <input type="checkbox" id="tag-button-red" name="search_tag__hair[]" value="Cabello rojo">
                                                 <label for="tag-button-red" class="contactad">
-                                                    <div class="card-body mx-2"> Red Hair </div>
+                                                    <div class="card-body mx-2"> Cabello rojo </div>
                                                 </label>
                                             </div>
                                         </div>
@@ -370,22 +370,22 @@ POST AD
                                 <div id="body_type-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="icon-bodytipe mr-2"></i> Body type </strong>
+                                            <i aria-hidden="true" class="icon-bodytipe mr-2"></i> Tipo de cuerpo </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-slim" name="search_tag__body_type[]" value="slim">
+                                                <input type="checkbox" id="tag-button-slim" name="search_tag__body_type[]" value="Delgada">
                                                 <label for="tag-button-slim" class="contactad">
-                                                    <div class="card-body mx-2"> Slim </div>
+                                                    <div class="card-body mx-2"> Delgada </div>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-curvy" name="search_tag__body_type[]" value="curvy">
+                                                <input type="checkbox" id="tag-button-curvy" name="search_tag__body_type[]" value="Con curvas">
                                                 <label for="tag-button-curvy" class="contactad">
-                                                    <div class="card-body mx-2"> Curvy </div>
+                                                    <div class="card-body mx-2"> Con curvas </div>
                                                 </label>
                                             </div>
                                         </div>
@@ -398,21 +398,21 @@ POST AD
                             <!---->
                             <hr class="my-3">
                             <h5>
-                                <strong>Services</strong>
+                                <strong>Servicios</strong>
                             </h5>
                             <p class="mb-4 text-primary small">
                                 <i aria-hidden="true" class="fa fa-info-circle mr-1"></i>
-                                <span>Tags are only visible on <b>promoted ads.</b>
+                                <span>Las etiquetas sólo son visibles en <b>anuncios promocionados.</b>
                                 </span>
                             </p>
                             <div class="badger-right">
-                                <span class="badge badge-new">new</span>
+                                <span class="badge badge-Nuevo">Nuevo</span>
                             </div>
                             <div class="panelar">
                                 <div id="services-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="far fa-heart mr-2"></i> Services </strong>
+                                            <i aria-hidden="true" class="far fa-heart mr-2"></i> Servicios </strong>
                                     </h6>
                                     <div class="form-row">
                                         @foreach($services as $row)
@@ -433,7 +433,7 @@ POST AD
                                 <div id="attention_to-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="far fa-user mr-2"></i> Attention to </strong>
+                                            <i aria-hidden="true" class="far fa-user mr-2"></i> Atención a </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
@@ -474,7 +474,7 @@ POST AD
                                 <div id="place_of_service-section" class="tag-container">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="far fa-map mr-2"></i> Place of service </strong>
+                                            <i aria-hidden="true" class="far fa-map mr-2"></i> Lugar de servicio </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
@@ -530,17 +530,17 @@ POST AD
                             </h5>
                             <p class="mb-4 text-primary small">
                                 <i aria-hidden="true" class="fa fa-info-circle mr-1"></i>
-                                <span>Tags are only visible on <b>promoted ads.</b>
+                                <span>Las etiquetas sólo son visibles en <b>anuncios promocionados.</b>
                                 </span>
                             </p>
                             <div class="badger-right">
-                                <span class="badge badge-new">new</span>
+                                <span class="badge badge-Nuevo">Nuevo</span>
                             </div>
                             <div class="panelar">
                                 <div>
                                     <h6 class="mb-4 mt-4">
                                         <strong>
-                                            <i class="fas fa-coins mr-2"></i>Price per hour </strong>
+                                            <i class="fas fa-coins mr-2"></i>Precio por hora </strong>
                                     </h6>
                                     <div class="form-row d-flex align-items-baseline">
                                         <div class="col-12 form-group">
@@ -552,22 +552,22 @@ POST AD
                                 <div class="tag-container mt-4">
                                     <h6 class="mb-4">
                                         <strong>
-                                            <i aria-hidden="true" class="far fa-credit-card mr-2"></i> Payment methods </strong>
+                                            <i aria-hidden="true" class="far fa-credit-card mr-2"></i> Métodos de pago </strong>
                                     </h6>
                                     <div class="form-row">
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-cash" name="search_tag__payment_methods[]" value="cash">
+                                                <input type="checkbox" id="tag-button-cash" name="search_tag__payment_methods[]" value="Efectivo">
                                                 <label for="tag-button-cash" class="contactad">
-                                                    <div class="card-body mx-2"> Cash </div>
+                                                    <div class="card-body mx-2"> Efectivo </div>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="boxservice form-group">
                                             <div class="custom-control frb frb-info pl-0">
-                                                <input type="checkbox" id="tag-button-credit_card" name="search_tag__payment_methods[]" value="credit_card">
+                                                <input type="checkbox" id="tag-button-credit_card" name="search_tag__payment_methods[]" value="Tarjeta de crédito">
                                                 <label for="tag-button-credit_card" class="contactad">
-                                                    <div class="card-body mx-2"> Credit Card </div>
+                                                    <div class="card-body mx-2">Tarjeta de crédito</div>
                                                 </label>
                                             </div>
                                         </div>
@@ -580,7 +580,7 @@ POST AD
                     <h5 class="mb-4">
                         <strong>Your Availability & Contacts</strong>
                         <small class="requiredinfo text-muted pull-right">
-                            <i class="fa fa-asterisk"></i> Required fields </small>
+                            <i class="fa fa-asterisk"></i> Campos requeridos </small>
                     </h5>
 
                     <div class="panelar">
@@ -593,7 +593,7 @@ POST AD
                         </div>
                         <br>
                         <h6 class="mb-4">
-                            <strong>How would you like to be contacted?</strong>
+                            <strong>¿Cómo te gustaría ser contactado?</strong>
                         </h6>
                         <hr class="my-2">
                         <div class="row">
@@ -603,7 +603,7 @@ POST AD
                                     <label for="contact_method_only_phone" class="contactad">
                                         <div class="card-body">
                                             <ul class="list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item mr-0 pl-4">Only Phone</li>
+                                                <li class="list-inline-item mr-0 pl-4">Solo teléfono</li>
                                             </ul>
                                         </div>
                                     </label>
@@ -615,7 +615,7 @@ POST AD
                                     <label for="contact_method_email_and_phone" class="contactad">
                                         <div class="card-body">
                                             <ul class="list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item mr-0 pl-4">Email and Phone</li>
+                                                <li class="list-inline-item mr-0 pl-4">Correo electrónico y teléfono</li>
                                             </ul>
                                         </div>
                                     </label>
@@ -627,7 +627,7 @@ POST AD
                                     <label for="contact_method_only_email" class="contactad">
                                         <div class="card-body">
                                             <ul class="list-unstyled list-inline mb-0">
-                                                <li class="list-inline-item mr-0 pl-4">Only Email</li>
+                                                <li class="list-inline-item mr-0 pl-4">Solo correo electrónico</li>
                                             </ul>
                                         </div>
                                     </label>
@@ -648,25 +648,25 @@ POST AD
                                 <span class="switch-handle"></span>
                             </label>
                         </div>
-                        <div class="col-md-10 txt_privacy">* <b>Terms, Conditions and Privacy Policy</b>
-                            <p> I have read the <a target="_blank" data-href="/terms-and-conditions/">Terms and Conditions</a> of use and <a target="_blank" data-href="/privacy-policy/">Privacy Policy</a> and I hereby authorize the processing of my personal data for the purpose of providing this web service. </p>
+                        <div class="col-md-10 txt_privacy">* <b>Términos, condiciones y política de privacidad</b>
+                            <p> He leído los Términos y Condiciones de uso y la Política de Privacidad y autorizo el procesamiento de mis datos personales con el fin de proporcionar este servicio web. </p>
                         </div>
                     </div>
                     <ul>
-                        <small>IT IS NOT ALLOWED:</small>
+                        <small>NO SE PERMITE:</small>
                         <small class="txt_privacy">
-                            <li>Insert Escort ads or similar.</li>
-                            <li>Make references to sexual payment services.</li>
-                            <li>Insert links in the ads (clickable or not clickable).</li>
-                            <li>Insert offensive or vulgar texts or pictures.</li>
-                            <li>User confirms that he is of legal age according to his jurisdiction and he has not been forced in any way to create this profile</li>
-                            <li>User confirms confirm that he will not offer any services that are against the law in his region</li>
+                            <li>Insertar anuncios de Escorts o similares.</li>
+                            <li>Hacer referencia a servicios de pago sexual.</li>
+                            <li>Insertar enlaces en los anuncios (clicables o no clicables).</li>
+                            <li>Insertar textos o imágenes ofensivas o vulgares.</li>
+                            <li>El usuario confirma que es mayor de edad según su jurisdicción y que no ha sido obligado de ninguna manera a crear este perfil.</li>
+                            <li>El usuario confirma que no ofrecerá servicios que vayan en contra de la ley en su región.</li>
                         </small>
                     </ul>
                     <hr class="my-3">
                     <div class="row stickymobile bordermobile">
                         <div class="col-md-6 px-0 ml-auto">
-                            <button type="submit" class="btn btn-primary waves-effect btn-block"> Go on </button>
+                            <button type="submit" class="btn btn-primary waves-effect btn-block"> CONTINUAR </button>
                         </div>
                     </div>
                 </div>

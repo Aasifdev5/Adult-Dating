@@ -7,8 +7,8 @@ Home
 
     <div class="container mt-5">
         <div class="text-center">
-            <h1 class="main-title home">Hot meetings in your city</h1>
-            <h2 class="h2 home">Find your favourite Escort in Social Citas</h2>
+            <h1 class="main-title home">Reuniones calientes en tu ciudad</h1>
+            <h2 class="h2 home">Encuentra tu Escort favorita en Social Citas</h2>
         </div>
     </div>
     <div class="container">
@@ -55,9 +55,9 @@ Home
     </div>
 </main>
 <div class="container mt-5">
-    <p class="col-lg txt_seo mt-5">Welcome to Social Citas, #1 Adult Classifieds in India. Are you looking for escort service? In Social Citas you will find massages, sexual meetings, escorts service, independent escorts... Browse among all categories. Independent Girls, Call boys, Transsexual, Gay escorts, swinger meetings and the new one Adult Meetings. Looking for paid sex? Find it on Social Citas. Can not find what you're looking for? POST YOUR AD absolutely FREE!</p>
+    <p class="col-lg txt_seo mt-5">Bienvenido a Social Citas, Clasificados Adultos #1 en Bolivia. ¿Estás buscando servicio de acompañante? En Social Citas encontrarás masajes, encuentros sexuales, servicio de escorts, escorts independientes... Navega entre todas las categorías. Chicas Independientes, Call Boys, Transexuales, Escorts Gay, Encuentros Swinger y el nuevo Encuentros de Adultos. ¿Buscas sexo pago? Encuéntrelo en Social Citas. ¿No encuentras lo que estás buscando? ¡PUBLICA TU ANUNCIO absolutamente GRATIS!</p>
     <hr class="mt-5">
-    <p class="h4 mt-5 text-center"> Find ads in <span class="notranslate">India</span>
+    <p class="h4 mt-5 text-center"> Find ads in <span class="notranslate">Bolivia</span>
     </p>
     <div class="footer-city">
         @foreach($category as $row)
@@ -106,7 +106,7 @@ Home
                 <div class="row">
                     @foreach($ads as $ad)
                     <div class="col-sm-3 text-center">
-                        <img src="{{ asset('avatar.jpg') }}" style="height: 200px; width: 250px;border-radius: 50%!important;" alt="Profile Image" class="profile-image rounded-circle">
+                        <img src="{{ asset('avatar.jpg') }}" style="height: 180px; width: 220px;border-radius: 50%!important;" alt="Profile Image" class="profile-image rounded-circle">
                         <p class="mb-1 text-center">{{ $ad->title }}</p>
                         <a href="{{url('ad_details/')}}<?php echo '/' . $ad->id; ?>" target="_self" data-pck="272144">   <h3 class="mb-3 text-center">{{$ad->name}}</h3></a>
                         <p class="mb-3 text-center">{{$ad->age}} Years</p>

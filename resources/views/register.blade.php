@@ -6,23 +6,23 @@ SignUp
 <main>
     <div class="container mt-5 mb-5">
         <div class="text-center">
-            <h1 class="main-title home">Join Social Citas </h1>
+            <h1 class="main-title home">Únase a las citas sociales</h1>
         </div>
         <div class="d-flex justify-content-center tipsaccount">
             <div id="skokkaPromoCarousel" data-ride="carousel" class="carousel slide">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                <div class="carousel-item">
                         <i class="fa fa-line-chart mr-2"></i>
                         <br>
-                        <strong>Publish and Manage </strong>your ads
+                        <strong>Publica y gestiona tus anuncios </strong>
                     </div>
                     <div class="carousel-item">
                         <i class="fa fa-bullhorn mr-2"></i>
-                        <br> Discover all our <strong>news</strong>
+                        <br>  <strong>Descubre todas nuestras novedades</strong>
                     </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item active">
                         <i class="fa fa-thumbs-o-up mr-2"></i>
-                        <br> Activate our exclusive <strong>promotions</strong>
+                        <br>  <strong>Activa nuestras promociones exclusivas</strong>
                     </div>
                 </div>
             </div>
@@ -43,29 +43,29 @@ SignUp
             @csrf
             <div class="form-row">
                 <div class="form-group col">
-                    <label class="">Email</label>
-                    <input name="email" type="email" placeholder="Email" autocomplete="off" value="{{old('email')}}" class="form-control">
+                    <label class="">Correo electrónico</label>
+                    <input name="email" type="email" placeholder="Correo electrónico" autocomplete="off" value="{{old('email')}}" class="form-control">
                     <span class="text-danger" style="color:red;">@error ('email'){{$message}}@enderror</span>
 
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <label class="">Mobile Number</label>
-                    <input name="mobile_number" type="text" placeholder="Email" autocomplete="off" value="{{old('mobile_number')}}" class="form-control">
+                    <label class="">Número de teléfono móvil</label>
+                    <input name="mobile_number" type="text" placeholder="Número de teléfono móvil" autocomplete="off" value="{{old('mobile_number')}}" class="form-control">
                     <span class="text-danger" style="color:red;">@error ('mobile_number'){{$message}}@enderror</span>
 
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <label class="">Account Type</label>
+                    <label class="">Tipo de cuenta</label>
                     <select name="account_type" id="" class="form-control">
-                        <option value="">Please Select Account Type</option>
-                        <option value="advertiser">Advertiser (Independent)</option>
-                        <option value="manager">Manager (Club)</option>
-                        <option value="partner">Partner</option>
-                        <option value="user">Consumer(User)</option>
+                        <option value="">Por favor seleccione el tipo de cuenta</option>
+                        <option value="advertiser">Anunciante (Independiente)</option>
+                        <option value="manager">Gerente (Club)</option>
+                        <option value="partner">Pareja</option>
+                        <option value="user">Consumidor (Usuario)</option>
 
                     </select>
                     <span class="text-danger" style="color:red;">@error ('account_type'){{$message}}@enderror</span>
@@ -74,8 +74,8 @@ SignUp
             </div>
             <div class="form-row">
                 <div class="form-group col">
-                    <label class="control-label">Password</label>
-                    <input name="password" type="password" placeholder="Password" onkeypress="checkPasswordRequirements()" value="{{old('password')}}" autocomplete="new-password" class="form-control" id="password-input">
+                    <label class="control-label">Contraseña</label>
+                    <input name="password" type="password" placeholder="Contraseña" onkeypress="checkPasswordRequirements()" value="{{old('password')}}" autocomplete="new-password" class="form-control" id="password-input">
                     <span class="fa fa-fw field-icon toggle-password fa-eye-slash" onclick="togglePassword()"></span>
                     <span class="text-danger" style="color:red;">@error('password'){{$message}}@enderror</span>
                 </div>
@@ -91,7 +91,7 @@ SignUp
                 }
             </style>
             <div id="message" role="alert" class="alert alert-loginpanel">
-                <h6>Your password must have:</h6>
+                <h6>Tu contraseña debe tener:</h6>
                 <ul>
                     <li class="invalid" id="lowercase">A <b>lowercase</b> letter </li>
                     <li class="invalid" id="uppercase">A <b>uppercase</b> letter </li>
@@ -166,17 +166,17 @@ SignUp
                     </label>
                 </div>
                 <div class="col-md-10 txt_privacy">
-                    <b>Terms, Conditions and Privacy Policy</b>
+                    <b>Términos, condiciones y política de privacidad</b>
                     <p> I have read the <a target="_blank" data-href="/terms-and-conditions/">Terms and Conditions</a> of use and <a target="_blank" data-href="/privacy-policy/">Privacy Policy</a> and I hereby authorize the processing of my personal data for the purpose of providing this web service. </p>
                     <!---->
                 </div>
             </div>
 
             <!---->
-            <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+            <button type="submit" class="btn btn-primary btn-block">¡Regístrate</button>
         </form>
         <hr>
-        <p class="text-center">Have an account yet? <a href="{{url('Userlogin')}}">Login</a>
+        <p class="text-center">¿Ya tienes una cuenta? <a href="{{url('Userlogin')}}">Iniciar sesión</a>
         </p>
     </div>
 </main>

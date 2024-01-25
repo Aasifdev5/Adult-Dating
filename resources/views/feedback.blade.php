@@ -10,14 +10,14 @@ Social Citas
         <h1>
           <i aria-hidden="true" class="icon-mail-time"></i>
         </h1>
-        <h5>To activate your account, click on the link we sent you via email:</h5>
+        <h5>Para activar su cuenta, haga clic en el enlace que le enviamos por correo electrónico:</h5>
         <p>
           <b>{{$user->email}}</b>
         </p>
-        <p> After confirming your email address, you can: <br>
-          <b>Publish</b> without confirmation email <br> Easily <b>manage</b> your ads <br>
-          <b>Access</b> packages and products designed for you <br>
-          <br> If you do not receive the confirmation email within a few minutes after signing up, please check your Spam or Junk folder.
+        <p>Después de confirmar su dirección de correo electrónico, puede: <br>
+          <b>Publicar</b> sin correo electrónico de confirmación <br> Fácilmente <b>administrar</b> tus anuncios <br>
+          <b>Acceso</b> paquetes diseñados para ti <br>
+          <br> Si no recibe el correo electrónico de confirmación unos minutos después de registrarse, revise su carpeta de Spam o Correo no deseado.
         </p>
       </div>
     </div>

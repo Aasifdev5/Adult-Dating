@@ -457,7 +457,7 @@
             <header class="container">
                 <div class="cusotm-nav-container d-flex justify-content-between align-items-center noscrolling-navbar-navheight ">
                     <a href="/" class="navbar-brand logo-header logo">
-                        <img src="{{asset('logo.jpg')}}" alt="Social Citas" height="90">
+                        <img src="{{asset('logo.jpg')}}" alt="Social Citas" height="50">
 
                     </a>
 
@@ -490,7 +490,7 @@
                             </div>
                             @if($_SERVER['REQUEST_URI']!="/post_ad")
                             <a href="{{ url('post_ad') }}" class=" d-lg-block btn btn-secondary new-ad btn-block">
-                                <i class="fas fa-plus-circle mr-2"></i> Post your ad
+                                <i class="fas fa-plus-circle mr-2"></i> Publica tu anuncio
                             </a>
 
 
@@ -514,24 +514,24 @@
                                             </h5>
                                             <div class="row text-center">
                                                 <div class="col"><a role="button" data-href="{{url('dashboard')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-home fa-2x"></span> <br>
-                                                            DASHBOARD
+                                                PANEL
                                                         </button></a></div>
                                                 <div class="col"><a role="button" data-href="{{url('ads')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-pencil-square-o fa-2x"></span> <br>
-                                                            YOUR ADS
+                                                TUS ANUNCIOS
                                                         </button></a></div>
                                                 <div class="col"><a role="button" data-href="{{url('credit_reload_promotions')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-database fa-2x"></span> <br>
-                                                            CREDITS
+                                                CRÉDITOS
                                                         </button></a></div>
                                                 <div class="col">
 
                                                     <a role="button" data-href="{{url('calendars')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-line-chart fa-2x"></span> <br>
-                                                            PRODUCTS
+                                                    PRODUCTOS
                                                         </button></a></div>
                                                 <div class="col"><a role="button" data-href="{{url('edit_profile')}}"><button type="button" class="btn btn-outline-primary actionar btn-block"><span class="fa fa-user-circle-o fa-2x"></span> <br>
-                                                            EDIT PROFILE
+                                                EDITAR PERFIL
                                                         </button></a></div>
                                                 <div class="col"><a role="button" data-href="{{url('logout')}}"><button type="button" class="btn btn-primary actionar btn-block"><span class="fa fa-sign-out fa-2x"></span> <br>
-                                                            Logout
+                                                Cerrar sesión
                                                         </button></a></div>
                                             </div>
                                         </div>
@@ -549,21 +549,21 @@
                                 <div class="collapse navbar-collapse" id="navbarNav">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="/">Home</a>
+                                            <a class="nav-link" href="/">Hogar</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Call Girls')}}">Female Escort</a>
+                                            <a class="nav-link" href="{{url('ads_list/Chicas de compañía')}}">Escort femenina</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Male Escorts')}}">Male Escort</a>
+                                            <a class="nav-link" href="{{url('ads_list/Escorts masculinos')}}">Escorts masculinos</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Transsexual')}}">Casual encounter</a>
+                                            <a class="nav-link" href="{{url('ads_list/Transexuales')}}">Transexuales</a>
                                         </li>
 
                                         <li class="nav-item  d-lg-block">
                                             <a href="#" class="btn btn-secondary new-ad btn-block" data-toggle="modal" data-target="#signup">
-                                                <i class="fas fa-plus-circle mr-2"></i> Post your ad
+                                                <i class="fas fa-plus-circle mr-2"></i> Publica tu anuncio
                                             </a>
                                         </li>
                                     </ul>
@@ -577,7 +577,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 id="staticBackdropLabel" class="modal-title">
-                                                <i class="icon icon-Social Citas signup pr-2"></i> Get into Social Citas!
+                                                <i class="icon icon-Social Citas signup pr-2"></i> Ingrese a las citas sociales!
                                             </h5>
                                             <button type="button" data-dismiss="modal" aria-label="Close" class="close">
                                                 <span aria-hidden="true">×</span>
@@ -587,19 +587,19 @@
                                             <hr class="my-1">
                                             <ul class="list-group list-group-flush text-center">
                                                 <li class="list-group-item border-0">
-                                                    <strong>Publish and Manage </strong>your ads
+                                                    <strong>Publica y gestiona tus anuncios </strong>
                                                 </li>
                                             </ul>
                                             <div class="action">
-                                                <p class="small"> Have an account yet? </p>
+                                                <p class="small"> ¿Ya tienes una cuenta? </p>
                                                 <a data-href="{{url('Userlogin')}}">
                                                     <button type="button" class="btn btn-primary w-75 mb-4">
-                                                        <i class="fas fa-sign-in-alt mr-2"></i> Login </button>
+                                                        <i class="fas fa-sign-in-alt mr-2"></i> Iniciar sesión </button>
                                                 </a>
-                                                <p class="small"> Don't have an account yet? </p>
+                                                <p class="small"> ¿Todavía no tienes una cuenta? </p>
                                                 <a data-href="{{url('signup')}}">
                                                     <button type="button" class="btn btn-outline-primary w-75">
-                                                        <i class="fas fa-edit mr-2"></i> Sign up </button>
+                                                        <i class="fas fa-edit mr-2"></i> ¡Regístrate </button>
                                                 </a>
                                             </div>
                                         </div>
@@ -618,7 +618,7 @@
                                             <nav class="main-nav menu navbar navbar-light navbar-expand-lg text-center">
                                                 <h4 class="px-0 item-mobile">Publish ad</h4>
                                                 <a data-href="/u/post-insert/" class="btn btn-secondary new-ad btn-block">
-                                                    <i class="fas fa-plus-circle mr-2"></i> Post your ad </a>
+                                                    <i class="fas fa-plus-circle mr-2"></i> Publica tu anuncio </a>
                                                 <hr class="my-2">
                                                 <h4 class="px-0 item-mobile">Services for you!</h4>
                                                 <ul class="list-group list-group-flush item-mobile">
@@ -670,20 +670,20 @@
                 <div class="container-fluid text-center text-md-left">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="{{asset('footerlogo-removebg-preview.png')}}" alt="Social Citas">
+                            <img src="{{asset('footerlogo-removebg-preview.png')}}" height="50" alt="Social Citas">
                         </div>
                         <div class="col-sm-3">
 
 
                             <ul style="list-style-type: none;">
                                 <li>
-                                    <h5>Main</h5>
+                                    <h5>Principal</h5>
                                 </li>
                                 <li> <a data-href="{{url('about')}}">
-                                        <span>About us</span>
+                                        <span>Sobre nosotros</span>
                                     </a></li>
                                 <li> <a data-href="/contact-us/">
-                                        <span>Contact us</span>
+                                        <span>Contacta con nosotros</span>
                                     </a></li>
 
                             </ul>
@@ -692,14 +692,14 @@
 
                             <ul style="list-style-type: none;">
                                 <li>
-                                    <h5>Information</h5>
+                                    <h5>Información</h5>
                                 </li>
                                 <li><a data-href="/terms-and-conditions/">
-                                        <span>Terms and conditions</span>
+                                        <span>Términos y condiciones</span>
                                     </a>
                                 </li>
                                 <li> <a data-href="/privacy-policy/">
-                                        <span>Privacy policy</span>
+                                        <span>Política de privacidad</span>
                                     </a></li>
                             </ul>
                         </div>
@@ -707,10 +707,10 @@
 
                             <ul style="list-style-type: none;">
                                 <li>
-                                    <h5>Contact</h5>
+                                    <h5>Contacto</h5>
                                 </li>
-                                <li>Email : hola@socialcitas.com</li>
-                                <li>Phone : (+591) 947 002 963</li>
+                                <li>Correo electrónico : hola@socialcitas.com</li>
+                                <li>Teléfono : (+591) 947 002 963</li>
                             </ul>
                         </div>
                     </div>

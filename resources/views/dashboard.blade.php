@@ -8,7 +8,7 @@ Dashboard
         <hr class="my-3">
         <div class="my-4 personal">
             <h6 class="text-uppercase">
-                <strong>welcome</strong>
+                <strong>bienvenido</strong>
             </h6>
             <p>
                 <i> {{$user_session->email}}</i>
@@ -31,46 +31,46 @@ Dashboard
                                         <div class="col">
                                             <a href="#" target="_blank">
                                                 <i aria-hidden="true" class="fa fa-info-circle mr-1"></i>
-                                                <b>How does it work?</b>
+                                                <b>¿Como funciona?</b>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a href="#" target="_blank">
                                                 <i aria-hidden="true" class="fa fa-info-circle mr-1"></i>
-                                                <b>Any questions?</b>
+                                                <b>¿Alguna pregunta?</b>
                                             </a>
                                         </div>
                                     </div>
                                     @if(empty($isverified))
                                     <div class="card-body p-4" style="overflow-y: auto;">
                                         <h4 class="card-title">
-                                            <b>Verify your age!</b>
+                                            <b>Verifique su edad!</b>
                                         </h4>
-                                        <p>As Social Citas we need to be sure that everyone who publish is of age. <br>
-                                            <strong>Verify your age now!</strong>
+                                        <p>Como Social Citas debemos asegurarnos de que todas las personas que publican sean mayores de edad.. <br>
+                                            <strong>Verifica tu edad ahora!</strong>
                                         </p>
 
                                         <br>
-                                        <span>We’ll get back to you soon!</span>
+                                        <span>Nos comunicaremos contigo pronto!</span>
                                         <h5 class="mt-3">
                                             <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i aria-hidden="true" class="fa fa-info-circle pr-1"></i>Info </a>
+                                                <i aria-hidden="true" class="fa fa-info-circle pr-1"></i>Información </a>
                                         </h5>
                                         <div id="collapseExample" class="collapse">
                                             <div>
-                                                <strong>Your privacy is important.</strong>
-                                                <br> Documents uploaded to verify your age will be saved on Yoti systems, a secure platform specialized in identity verification.
+                                                <strong>Tu privacidad es importante.</strong>
+                                                <br> Los documentos cargados para verificar tu edad se guardarán en los sistemas Yoti, una plataforma segura especializada en verificación de identidad.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-footer" style="background: inherit; border-color: inherit;">
-                                        <a href="{{url('verification_form')}}" class="btn btn-primary btn-block ">Start now</a>
+                                        <a href="{{url('verification_form')}}" class="btn btn-primary btn-block ">Empezar ahora</a>
                                     </div>
                                     @endif
                                     @if(!empty($isverified))
                                     <div class="col px-0">
                                         <div class="badger-right">
-                                            <span class="badge badge-new">new</span>
+                                            <span class="badge badge-new">nuevo</span>
                                         </div>
                                         <div class="promo-id-verification mb-4 mt-4">
                                             <h5>
@@ -78,7 +78,7 @@ Dashboard
                                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                                                     <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
                                                 </svg>
-                                                <strong class="align-middle ml-1">Age verified</strong>
+                                                <strong class="align-middle ml-1">Edad verificada</strong>
                                             </h5>
                                             <!---->
                                         </div>
@@ -101,13 +101,13 @@ Dashboard
                                         <div class="media-body">
                                             <h5 class="card-title skokka-text">
                                                 <a href="{{url('ads')}}" class="">
-                                                    <i class="fa fa-pencil-square-o float-left mr-2"></i> Your Ads <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                    <i class="fa fa-pencil-square-o float-left mr-2"></i> Tus anuncios <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                 </a>
                                             </h5>
                                             <ul class="list-group">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Active <span class="badge badge-light badge-pill">{{count($ads)}}</span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Activo <span class="badge badge-light badge-pill">{{count($ads)}}</span>
                                                 </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Not published <span class="badge badge-light badge-pill">0</span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"> No publicado <span class="badge badge-light badge-pill">0</span>
                                                 </li>
                                             </ul>
                                             <!---->
@@ -125,17 +125,17 @@ Dashboard
                                         <div class="media-body">
                                             <h5 class="card-title skokka-text">
                                                 <a href="{{url('credits')}}" class="">
-                                                    <i class="fa fa-database float-left mr-2"></i> Credits <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                    <i class="fa fa-database float-left mr-2"></i> Créditos <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                 </a>
                                             </h5>
                                             <ul class="list-group">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Currents <span class="badge badge-light badge-pill">0</span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Corrientes <span class="badge badge-light badge-pill">0</span>
                                                 </li>
-                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Used <span class="badge badge-light badge-pill">0</span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Usado <span class="badge badge-light badge-pill">0</span>
                                                 </li>
                                             </ul>
                                             <a data-href="{{url('credits')}}">
-                                                <button type="button" class="btn btn-primary"> Buy Credits </button>
+                                                <button type="button" class="btn btn-primary">Compra creditos </button>
                                             </a>
                                         </div>
                                     </div>
@@ -153,10 +153,10 @@ Dashboard
                                         <div class="media-body">
                                             <h5 class="card-title skokka-text">
                                                 <a href="{{url('calendars')}}" class="">
-                                                    <i class="fa fa-line-chart float-left mr-2"></i> Products <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                    <i class="fa fa-line-chart float-left mr-2"></i> Productos <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                 </a>
                                             </h5>
-                                            <p>Purchase our products to be always on TOP!</p>
+                                            <p>¡Compra nuestros productos para estar siempre en la cima!</p>
                                         </div>
                                     </div>
                                 </div>
@@ -171,10 +171,10 @@ Dashboard
                                         <div class="media-body">
                                             <h5 class="card-title skokka-text">
                                                 <a href="{{url('edit_profile')}}" class="">
-                                                    <i class="fa fa-user-circle-o float-left mr-2"></i> Edit Profile <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                    <i class="fa fa-user-circle-o float-left mr-2"></i> Editar perfil <i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                 </a>
                                             </h5>
-                                            <p>Manage your personal info.</p>
+                                            <p>Gestiona tu información personal.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -192,11 +192,11 @@ Dashboard
                                                 <a href="{{url('service-schedule')}}" class="">
 
 
-                                                      Add Service Hours<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                Agregar horas de servicio<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
 
                                                 </a>
                                             </h5>
-                                            <p>Manage your service hours.</p>
+                                            <p>Administre sus horas de servicio.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -213,13 +213,13 @@ Dashboard
                                             <h5 class="card-title skokka-text">
                                                 <a href="{{url('appointment')}}" class="">
                                                     @if($user_session->account_type=="advertiser")
-                                                    Appointment<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                    Cita<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                     @else
-                                                    My Appointment Requests<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
+                                                    Mis solicitudes de cita<i aria-hidden="true" class="fa fa-angle-right float-right"></i>
                                                     @endif
                                                 </a>
                                             </h5>
-                                            <p>Manage your Appointment.</p>
+                                            <p>Gestiona tu cita.</p>
                                         </div>
                                     </div>
                                 </div>

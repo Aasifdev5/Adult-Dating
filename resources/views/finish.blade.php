@@ -11,13 +11,13 @@ Posting Ad Finish
       <div class="text-center">
         <h1>
         <ul class="progressbar" style="margin-left: 400px;">
-<li class="confirm active"><strong>Finish</strong></li>
+<li class="confirm active"><strong>Finalizar</strong></li>
  </ul>
         </h1>
-        <h5>You are Ad Successfully Publish now</h5>
+        <h5>Tu anuncio se ha publicado correctamente ahora</h5>
 
         <a href="{{url('ads')}}">
-          <b>Manage</b> your ads <br>
+          <b>Administrar</b> tus anuncios <br>
             </a>
       </div>
     </div>
