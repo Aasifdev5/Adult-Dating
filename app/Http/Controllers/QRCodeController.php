@@ -7,7 +7,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\BankDetails;
 
 class QRCodeController extends Controller
 {
@@ -26,9 +26,24 @@ class QRCodeController extends Controller
             $qrCodes = [];
             $data = $request->input('data', 'Default QR Code Data');
             $qrCodes['simple']        = QrCode::size(150)->generate($data);
+            // Inside your controller method
+            $bankDetail = BankDetails::create([
+                'user_id' => Session::get('LoggedIn'),
+                'bank_name' => $request->input('bank_name'),
+                'account_number' => $request->input('account_number'),
+                'ifsc_code' => $request->input('ifsc_code'),
+            ]);
+
+            // Generate and store the QR code
+            $data = $request->input('data', 'Default QR Code Data');
+            $qrCodePath = 'qrcodes/' . Session::get('LoggedIn') . '_qrcode.png'; // Adjust the path as needed
+            QrCode::size(150)->generate($data, public_path($qrCodePath));
+
+            // Update the bank_detail record with the QR code path
+            $bankDetail->update(['qrcode_path' => $qrCodePath]);
 
 
-            return view('admin.qrcode.generate', $qrCodes,compact('user_session','data'));
+            return view('admin.qrcode.generate', $qrCodes, compact('user_session', 'data'));
         }
     }
 
