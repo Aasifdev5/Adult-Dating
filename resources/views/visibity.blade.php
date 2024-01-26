@@ -65,8 +65,21 @@ Visibility
                         <!---->
 
                         <div class="row">
+                            @if(Session::has('success'))
+        <div class="alert alert-success" style="background-color: green;">
+            <p style="color: #fff;">{{session::get('success')}}</p>
+        </div>
+        @endif
+        @if(Session::has('fail'))
+        <div class="alert alert-danger" style="background-color: red;">
+            <p style="color: #fff;">{{session::get('fail')}}</p>
+        </div>
+        @endif
                             @foreach($top_ad as $index => $row)
                             <div class="col-md-6 frb frb-info">
+                                <form action="{{ url('pay_credit', $row->id) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="ad_id" value="{{ session()->get('ad_id') }}">
                                 <input id="availabilityCheckbox_{{ $index }}" type="checkbox" value="">
                                 <label for="availabilityCheckbox_{{ $index }}">
                                     <div class="card-body">
@@ -95,13 +108,14 @@ Visibility
                                         </div>
 
                                         <!-- Add the Stripe payment button with an initial style of display:none -->
-                                        <button id="stripeButton_{{ $index }}" class="btn btn-primary" style="display:none;">
-                                            Pay with Stripe
+                                        <button type="submit" id="stripeButton_{{ $index }}" class="btn btn-primary" style="display:none;">
+                                            Pay with Credits
                                         </button>
 
                                         <!-- Rest of the code... -->
                                     </div>
                                 </label>
+                            </form>
                             </div>
                             @endforeach
 

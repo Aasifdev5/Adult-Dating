@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Queries\UserDataTable;
 use Illuminate\Support\Facades\DB;
+use App\Models\Balance;
 use App\Repositories\UserRepository;
 use Carbon\Carbon;
 use App\Models\Ad;
@@ -43,6 +44,7 @@ use App\Models\Order;
 use Illuminate\Support\Facades\URL;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Support\Facades\Password;
+use App\Models\PaidTopAd;
 use App\Models\PasswordReset;
 use App\Models\PostingAds;
 use App\Models\States;
@@ -412,16 +414,13 @@ class UserController extends AppBaseController
                     return redirect('dashboard');
                 }
 
-                 if ($user->account_type == "partner") {
+                if ($user->account_type == "partner") {
                     $user->update(['is_online' => 1, 'last_seen' => Carbon::now()]);
                     $request->session()->put('LoggedIn', $user->id);
-                    $appointment= Appointment::where('profile_id',$user->id)->get();
+                    $appointment = Appointment::where('profile_id', $user->id)->get();
 
                     return redirect('admin/dashboard')->with(['appointment' => $appointment]);
-
-
                 }
-
             } else {
                 return back()->with('fail', 'Password does not match');
             }
@@ -790,9 +789,9 @@ class UserController extends AppBaseController
         $ads_details = PostingAds::where('id', $id)->first();
         $id = $ads_details->category;
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
-        $service_time=ServiceSchedule::where('user_id',$ads_details->user_id)->get();
+        $service_time = ServiceSchedule::where('user_id', $ads_details->user_id)->get();
 
-        return view('ad_details', compact('ads_details', 'id', 'user_session','service_time'));
+        return view('ad_details', compact('ads_details', 'id', 'user_session', 'service_time'));
     }
     public function post_list()
     {
@@ -1018,13 +1017,39 @@ class UserController extends AppBaseController
             return back()->with('fail', 'Error In scheduling appointment. Please try again later!');
         }
     }
-    public function PurchaseExcel($id)
+    public function pay_credit(Request $request, $id)
     {
-        if (Session::has('LoggedIn')) {
-            $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $PurchaseProject = Course::where('id', $id)->first();
-            return view('PurchaseExcel', compact('user_session', 'PurchaseProject'));
+        // dd($request->all());
+        $top_ad_details = Ad::find($id);
+        $price = str_replace(array("(", ")", "credits"), "", $top_ad_details->price);
+
+        $user = User::findOrFail(Session::get('LoggedIn'));
+        if($user->balance <= $price){
+            return back()->with('fail','Your selected package credits more than your Credits balance');
         }
+        $user_balance = $user->balance - $price;
+        $user_balance_update = User::where('id', '=', Session::get('LoggedIn'))->update([
+
+            'balance' => $user_balance,
+        ]);
+        $balance = Balance::where('user_id', '=', Session::get('LoggedIn'))->first();
+        $user_balances = $balance->amount - $price;
+        $admin_balance_update = Balance::where('user_id', '=', Session::get('LoggedIn'))->update([
+
+            'amount' => $user_balances,
+        ]);
+        // Create a new instance of the TopAdBalance model
+        $topAdBalance = new PaidTopAd([
+            'top_ad_id' => $top_ad_details->id,
+            'user_id' => Session::get('LoggedIn'),
+            'amount' => $price,
+            'schedule' => $request->schedule,
+            'ad_id' => $request->ad_id,
+        ]);
+
+        // Save the new record to the database
+        $topAdBalance->save();
+        return redirect('finish');
     }
     public function PurchaseAnalysis($id)
     {
@@ -1045,7 +1070,6 @@ class UserController extends AppBaseController
     }
     public function credit_buy_post()
     {
-
     }
     public function credit_buy_details($id)
     {

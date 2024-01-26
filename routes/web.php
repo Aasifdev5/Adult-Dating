@@ -80,7 +80,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/finish', [UserController::class, 'finish'])->name('finish')->middleware('isLoggedIn');
     Route::get('/credits', [UserController::class, 'credits'])->name('credits')->middleware('isLoggedIn');
     Route::get('/credit_buy_details/{id}', [UserController::class, 'credit_buy_details'])->name('credit_buy_details')->middleware('isLoggedIn');
-    Route::get('/PurchaseTime/{id}', [UserController::class, 'PurchaseTime'])->name('PurchaseTime')->middleware('isLoggedIn');
+    Route::post('pay_credit/{id}', [UserController::class, 'pay_credit'])->name('pay_credit')->middleware('isLoggedIn');
     Route::get('/Hybrid', [UserController::class, 'Hybrid'])->name('Hybrid')->middleware('isLoggedIn');
     Route::get('/TimeSeries', [UserController::class, 'TimeSeries'])->name('TimeSeries')->middleware('isLoggedIn');
     Route::get('/PurchaseHybrid/{id}', [UserController::class, 'PurchaseHybrid'])->name('PurchaseHybrid')->middleware('isLoggedIn');

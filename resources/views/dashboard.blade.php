@@ -14,7 +14,16 @@ Dashboard
                 <i> {{$user_session->email}}</i>
             </p>
         </div>
-
+        @if(Session::has('success'))
+        <div class="alert alert-success" style="background-color: green;">
+            <p style="color: #fff;">{{session::get('success')}}</p>
+        </div>
+        @endif
+        @if(Session::has('fail'))
+        <div class="alert alert-danger" style="background-color: red;">
+            <p style="color: #fff;">{{session::get('fail')}}</p>
+        </div>
+        @endif
 
         <div class="row">
             <div class="col-md-5 order-md-2">
