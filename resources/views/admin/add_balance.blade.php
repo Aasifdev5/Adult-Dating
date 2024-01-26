@@ -45,7 +45,7 @@ Add Balance
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label class="col-form-label">Amount</label>
+                                    <label class="col-form-label">Credits</label>
 
                                     <input type="text" name="balance" value="{{old('balance')}}" class="form-control">
                                     <span class="text-danger">@error('balance'){{$message}}@enderror</span>

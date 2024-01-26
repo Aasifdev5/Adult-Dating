@@ -8722,7 +8722,7 @@
   }
   @media (min-width: 769px) {
     .mobilecontactbar {
-      display: block !important;
+      display: none !important;
       margin-bottom: 10px;
     }
   }

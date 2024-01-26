@@ -307,9 +307,7 @@
 
 
 
-                        <li><a class="sidebar-header" href="{{url('admin/pages')}}"><i data-feather="book"></i><span>Pages</span></a>
-
-                        </li>
+                        <li><a class="sidebar-header" href="{{url('admin/pages')}}"><i data-feather="book"></i><span>Pages</span></a> </li>
                         <li>
                             <a href="{{ url('admin/mail-templates') }}" class="sidebar-header">
                                 <i data-feather="mail"></i><span>Mail Templates</span>

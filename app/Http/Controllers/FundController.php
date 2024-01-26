@@ -71,10 +71,16 @@ class FundController extends Controller
     {
         if (Session::has('LoggedIn')) {
 
-            $users = User::where('status', '1')->where('is_super_admin', '0')->get();
+            $users = User::join('credit_reloads', 'users.id', '=', 'credit_reloads.user_id')
+                ->where('users.status', '1')
+                ->where('users.is_super_admin', '0')
+                ->where('credit_reloads.accepted', '1')
+                ->groupBy('users.id') // Adding GROUP BY clause
+                ->get(['users.*']);
+
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
-            return view('admin.add_balance', compact('user_session','users'));
+            return view('admin.add_balance', compact('user_session', 'users'));
         }
     }
     public function save_balance(Request $request)
@@ -97,7 +103,7 @@ class FundController extends Controller
 
         $data = $balance->save();
         if ($data) {
-            return redirect('admin/balance')->with('success', 'Balance Add Successfully');
+            return redirect('admin/balance')->with('success', 'Credits Add Successfully');
         } else {
             return back()->with('fail', 'failed');
         }
@@ -109,7 +115,7 @@ class FundController extends Controller
             $users = User::where('status', '1')->where('is_super_admin', '0')->get();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $balance = Balance::find($id);
-            return view('admin.edit_balance', compact('user_session', 'balance','users'));
+            return view('admin.edit_balance', compact('user_session', 'balance', 'users'));
         }
     }
     public function update_balance(Request $request)
@@ -133,7 +139,7 @@ class FundController extends Controller
             'amount' => $request->balance,
         ]);
         if ($Balance) {
-            return redirect('admin/balance')->with('success', 'Balance Updated Successfully');
+            return redirect('admin/balance')->with('success', 'Credits Updated Successfully');
         } else {
             return back()->with('fail', 'Failed');
         }
@@ -142,10 +148,10 @@ class FundController extends Controller
     {
         $Balance = Balance::find($id);
         $user = User::findOrFail($Balance->user_id);
-        $user_balance=$user->balance - $Balance->amount;
+        $user_balance = $user->balance - $Balance->amount;
         $user_balance_update = User::where('id', '=', $Balance->user_id)->update([
 
-            'balance' =>0,
+            'balance' => 0,
         ]);
         // dd($Balance->amount);
 
@@ -154,5 +160,4 @@ class FundController extends Controller
 
         return back()->with('success', 'Deleted Succesuufully');
     }
-
 }

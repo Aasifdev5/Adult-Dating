@@ -129,7 +129,7 @@ Dashboard
                                                 </a>
                                             </h5>
                                             <ul class="list-group">
-                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Corrientes <span class="badge badge-light badge-pill">0</span>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center"> Corrientes <span class="badge badge-light badge-pill">{{$user_session->balance}}</span>
                                                 </li>
                                                 <li class="list-group-item d-flex justify-content-between align-items-center"> Usado <span class="badge badge-light badge-pill">0</span>
                                                 </li>
