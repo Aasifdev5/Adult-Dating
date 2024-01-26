@@ -158,7 +158,46 @@ Ads List
             </div>
         </div>
         <div class="title-story small font-weight-bold pb-2">SUPERTOP STORIES</div>
+        <div class="supertop-stories-container">
+            <div>
+                <div class="skokka-stories-list">
+                   <!-- Example: Displaying ads in a Bootstrap carousel -->
+<div id="adCarousel" class="carousel">
+    <div class="carousel-inner">
+        @php
+            // dd(session()->all());
+        @endphp
+        @foreach($story as $ad)
+            <div class="carousel-item">
+                <img src="{{ asset('storage/' . $ad->image) }}" alt="Ad Image">
+                <div class="carousel-caption">
+                    <p>{{ $ad->start_time }} - {{ $ad->end_time }}</p>
+                    <!-- Add more ad details as needed -->
+                </div>
+            </div>
+        @endforeach
+    </div>
+</div>
 
+<!-- Include the Bootstrap carousel JavaScript library -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Add this script at the end of your Blade view -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // JavaScript logic to show/hide ads in the slider based on the current time
+        var ads = @json(session('active_carousel_ads', []));
+
+        // Your JavaScript logic to update the carousel UI with ads
+        // ...
+
+    });
+</script>
+
+                </div>
+                <!---->
+            </div>
+        </div>
 
         @foreach($ads as $row)
         <div class="supertop show-in-related-free-list">
