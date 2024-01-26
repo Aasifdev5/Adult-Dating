@@ -51,7 +51,7 @@ use App\Models\States;
 use App\Models\Task;
 use App\Models\VerificationDocument;
 use Illuminate\Support\Facades\Mail;
-
+use App\Models\ScheduledAd;
 use App\Notifications\VerifyEmailNotification;
 
 function getIp()
@@ -347,8 +347,9 @@ class UserController extends AppBaseController
         $states = States::all();
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $cities = City::all();
+        $story=ScheduledAd::all();
 
-        return view('ads_list', compact('ads', 'category', 'id', 'countries', 'cities', 'states', 'user_session'));
+        return view('ads_list', compact('ads', 'category', 'id', 'countries', 'cities', 'states','story', 'user_session'));
     }
     public function Userlogin()
     {
@@ -1024,10 +1025,34 @@ class UserController extends AppBaseController
         $price = str_replace(array("(", ")", "credits"), "", $top_ad_details->price);
 
         $user = User::findOrFail(Session::get('LoggedIn'));
-        if($user->balance <= $price){
-            return back()->with('fail','Your selected package credits more than your Credits balance');
+        if ($user->balance <= $price) {
+            return back()->with('fail', 'Your selected package credits more than your Credits balance');
         }
         $user_balance = $user->balance - $price;
+        if ($request->schedule == "9 a.m. - 12 p.m.") {
+            $start_time = "9:00";
+            $end_time = "12:00";
+        }
+        if ($request->schedule == "12 p.m. - 3 p.m.") {
+            $start_time = "12:00";
+            $end_time = "15:00";
+        }
+        if ($request->schedule == "3 p.m. - 6 p.m.") {
+            $start_time = "15:00";
+            $end_time = "18:00";
+        }
+        if ($request->schedule == "6 p.m. - 8 p.m.") {
+            $start_time = "18:00";
+            $end_time = "20:00";
+        }
+        if ($request->schedule == "8 p.m. - 10 p.m.") {
+            $start_time = "20:00";
+            $end_time = "22:00";
+        }
+        if ($request->schedule == "10 p.m. - 12 a.m.") {
+            $start_time = "22:00";
+            $end_time = "00:00";
+        }
         $user_balance_update = User::where('id', '=', Session::get('LoggedIn'))->update([
 
             'balance' => $user_balance,
@@ -1043,7 +1068,8 @@ class UserController extends AppBaseController
             'top_ad_id' => $top_ad_details->id,
             'user_id' => Session::get('LoggedIn'),
             'amount' => $price,
-            'schedule' => $request->schedule,
+            'start_time' => $start_time,
+            'end_time' => $end_time,
             'ad_id' => $request->ad_id,
         ]);
 

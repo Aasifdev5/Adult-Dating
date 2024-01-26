@@ -158,37 +158,7 @@ Ads List
             </div>
         </div>
         <div class="title-story small font-weight-bold pb-2">SUPERTOP STORIES</div>
-        <div class="supertop-stories-container">
-            <div>
-                <div class="skokka-stories-list">
-                    <div id="stories-right-button" style="visibility: hidden; display: none;">
-                        <a href="#"></a>
-                    </div>
-                    <div id="outer">
-                        <div id="inner">
-                            <div class="stories_thumb">
-                                <a href="#">
-                                    <picture class="stories_thumb-media">
-                                        <img src="" draggable="false">
-                                    </picture>
-                                    <span class="badge badge-supertop mt-3">
-                                        <i class="icon-supertop mr-1"></i>
-                                    </span>
-                                    <div class="user-username"> FULL NUDE BODY MASSAGEHAPPY ENDING/BLOWJOB/FINGRNG/NURU/SHOWER </div>
-                                </a>
-                            </div>
 
-
-
-                        </div>
-                    </div>
-                    <div id="stories-left-button" style="visibility: hidden;">
-                        <a href="#"></a>
-                    </div>
-                </div>
-                <!---->
-            </div>
-        </div>
 
         @foreach($ads as $row)
         <div class="supertop show-in-related-free-list">
