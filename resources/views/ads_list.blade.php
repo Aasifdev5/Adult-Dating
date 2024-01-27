@@ -217,7 +217,14 @@ Ads List
 
                 <div role="listbox" class="carousel-inner modalstories">
                     @foreach ($tadsPhotos as $index => $topadsPhoto)
-                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" style="background-image: url({{ asset('storage/' . $topadsPhoto->path) }});"></div>
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                            @if ($topadsPhoto)
+                                <img src="{{ asset('storage/' . $topadsPhoto->path) }}" class="d-block w-100" alt="Image {{ $index + 1 }}">
+                            @else
+                                <!-- Handle the case where $topadsPhoto is null (no image found) -->
+                                <img src="{{ asset('path-to-default-image.jpg') }}" class="d-block w-100" alt="Default Image">
+                            @endif
+                        </div>
                     @endforeach
                 </div>
 
@@ -231,6 +238,7 @@ Ads List
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
 
 
           </div>

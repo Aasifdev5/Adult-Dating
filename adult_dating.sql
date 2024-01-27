@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2024 at 03:10 PM
+-- Generation Time: Jan 27, 2024 at 11:23 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -89,8 +89,9 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `user_id`, `profile_id`, `ad_id`, `date`, `time`, `start_time`, `end_time`, `status`, `created_at`, `updated_at`) VALUES
-(3, 7, 3, 2, '2024-01-22', NULL, '01:00:00', '03:00:00', 'pending', '2024-01-22 07:23:08', '2024-01-22 07:23:08'),
-(4, 7, 3, 2, '2024-01-22', NULL, '11:00:00', '12:00:00', 'pending', '2024-01-22 07:23:38', '2024-01-22 07:23:38');
+(3, 7, 3, 2, '2024-01-22', NULL, '01:00:00', '03:00:00', 'scheduled', '2024-01-22 07:23:08', '2024-01-27 00:11:34'),
+(4, 7, 3, 2, '2024-01-22', NULL, '11:00:00', '12:00:00', 'pending', '2024-01-22 07:23:38', '2024-01-22 07:23:38'),
+(6, 7, 3, 23, '2024-01-27', NULL, '15:00:00', '17:00:00', 'scheduled', '2024-01-27 00:46:06', '2024-01-27 00:47:30');
 
 -- --------------------------------------------------------
 
@@ -12255,7 +12256,9 @@ CREATE TABLE `paid_top_ads` (
 --
 
 INSERT INTO `paid_top_ads` (`id`, `top_ad_id`, `user_id`, `amount`, `start_time`, `end_time`, `ad_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 5, 3, 4.00, '17:00', '00:00', 23, NULL, '2024-01-26 03:56:45', '2024-01-26 03:56:45');
+(1, 5, 3, 4.00, '15:06', '00:00', 23, NULL, '2024-01-26 03:56:45', '2024-01-26 03:56:45'),
+(2, 5, 3, 4.00, '14:56', '00:00', 20, NULL, '2024-01-26 03:56:45', '2024-01-26 03:56:45'),
+(3, 5, 3, 4.00, '14:57', '00:00', 19, NULL, '2024-01-26 03:56:45', '2024-01-26 03:56:45');
 
 -- --------------------------------------------------------
 
@@ -12631,11 +12634,15 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 
 CREATE TABLE `scheduled_ads` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `image` varchar(191) NOT NULL,
-  `url` varchar(191) NOT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
+  `age` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `ad_id` varchar(191) DEFAULT NULL,
+  `category` varchar(191) DEFAULT NULL,
   `alt_text` varchar(191) DEFAULT NULL,
-  `start_time` time NOT NULL,
-  `end_time` time NOT NULL,
+  `start_time` time DEFAULT NULL,
+  `end_time` time DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -12644,11 +12651,10 @@ CREATE TABLE `scheduled_ads` (
 -- Dumping data for table `scheduled_ads`
 --
 
-INSERT INTO `scheduled_ads` (`id`, `image`, `url`, `alt_text`, `start_time`, `end_time`, `created_at`, `updated_at`) VALUES
-(1, 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', 'ads_photos/s3WXlRB1q4tqI08Jnjto5QQGuQdkAYzqQmzQEfnk.jpg', NULL, '18:27:00', '22:00:00', '2024-01-26 07:27:03', '2024-01-26 07:27:03'),
-(2, 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', NULL, '12:00:00', '15:00:00', '2024-01-26 07:27:03', '2024-01-26 07:27:03'),
-(3, 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', NULL, '18:37:00', '22:00:00', '2024-01-26 07:37:07', '2024-01-26 07:37:07'),
-(4, 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', 'ads_photos/uAZA8j0KI33aPrkwhlGsawKBxc5b4QeKs5lzhgrL.jpg', NULL, '12:00:00', '15:00:00', '2024-01-26 07:37:07', '2024-01-26 07:37:07');
+INSERT INTO `scheduled_ads` (`id`, `user_id`, `age`, `city`, `title`, `ad_id`, `category`, `alt_text`, `start_time`, `end_time`, `created_at`, `updated_at`) VALUES
+(1, '3', '25', 'Hyderabad', 'HIGH⭐PROFAIL⭐GENUINE PREMIUM ESCORTS ASIAN RUSSIAN UNLIMITED FUN WITH HOT MODEL ONLY CASH PAYMENT 100% REALHIGH⭐PROFAIL⭐GENUINE PREMIUM ESCORTS ASIAN RUSSIAN UNLIMITED FUN WITH HOT MODEL ONLY', '23', 'Videochat', NULL, '15:06:00', '00:00:00', '2024-01-27 04:06:02', '2024-01-27 04:06:02'),
+(2, '3', 'd', 'Saint Philip', 'dgdfg', '20', 'Masajes', NULL, '14:56:00', '00:00:00', '2024-01-27 04:06:02', '2024-01-27 04:06:02'),
+(3, '3', '35', 'Saint Lucy', 'park', '19', 'Escorts masculinos', NULL, '14:57:00', '00:00:00', '2024-01-27 04:06:02', '2024-01-27 04:06:02');
 
 -- --------------------------------------------------------
 
@@ -12685,7 +12691,8 @@ CREATE TABLE `service_schedules` (
 
 INSERT INTO `service_schedules` (`id`, `user_id`, `day_of_week`, `start_time`, `end_time`, `created_at`, `updated_at`) VALUES
 (1, 3, 'sunday', '11:00:00', '12:00:00', '2024-01-22 05:51:23', '2024-01-22 05:51:23'),
-(2, 3, 'sunday', '01:00:00', '03:00:00', '2024-01-22 05:51:52', '2024-01-22 05:52:39');
+(2, 3, 'sunday', '01:00:00', '03:00:00', '2024-01-22 05:51:52', '2024-01-22 05:52:39'),
+(4, 3, 'sunday', '15:00:00', '17:00:00', '2024-01-27 00:44:57', '2024-01-27 00:44:57');
 
 -- --------------------------------------------------------
 
@@ -16712,11 +16719,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `account_type`, `name`, `email`, `email_verified_at`, `password`, `custom_password`, `mobile_number`, `country`, `last_seen`, `is_online`, `is_active`, `status`, `about`, `photo_url`, `profile_photo`, `remember_token`, `ip_address`, `balance`, `created_at`, `updated_at`, `is_system`, `player_id`, `is_subscribed`, `privacy`, `gender`, `deleted_at`, `language`, `is_super_admin`, `activation_code`) VALUES
-(1, NULL, 'Super Admin', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$wNaEZGRMjjPJbYm28X9Jzuk1BD7ec9kRWcLRYFDqdFe27JeWyHDmi', NULL, '8878326802', 'india', '2024-01-26 04:06:32', 1, 1, 1, NULL, NULL, '8ed0bb502b31e86202bbcd97317fdf24.jpg', NULL, NULL, '0', '2023-03-23 07:45:02', '2024-01-26 04:06:32', 1, NULL, 0, 1, 1, NULL, 'en', 1, ''),
+(1, NULL, 'Super Admin', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$wNaEZGRMjjPJbYm28X9Jzuk1BD7ec9kRWcLRYFDqdFe27JeWyHDmi', NULL, '8878326802', 'india', '2024-01-27 01:12:10', 1, 1, 1, NULL, NULL, '8ed0bb502b31e86202bbcd97317fdf24.jpg', NULL, NULL, '0', '2023-03-23 07:45:02', '2024-01-27 01:12:10', 1, NULL, 0, 1, 1, NULL, 'en', 1, ''),
 (2, 'manager', 'Aasif', 'aasifdev5@mail.com', '2024-01-10 01:57:42', 'Berlin@3sss', NULL, NULL, NULL, '2024-01-22 05:43:02', 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, '2024-01-10 00:29:34', '2024-01-22 05:43:02', 0, NULL, NULL, 1, NULL, NULL, 'en', 0, ''),
-(3, 'advertiser', 'Arsh', 'arstech2a@gmail.com', '2024-01-10 01:57:42', 'Berlin@3sss', NULL, NULL, NULL, '2024-01-26 03:16:43', 1, 1, 1, NULL, NULL, 'avatar.jpg', NULL, '127.0.0.1', '46', '2024-01-10 01:42:10', '2024-01-26 03:56:45', 0, NULL, NULL, 1, NULL, NULL, 'en', 0, ''),
+(3, 'advertiser', 'Arsh', 'arstech2a@gmail.com', '2024-01-10 01:57:42', 'Berlin@3sss', NULL, NULL, NULL, '2024-01-27 00:02:45', 1, 1, 1, NULL, NULL, 'avatar.jpg', NULL, '127.0.0.1', '46', '2024-01-10 01:42:10', '2024-01-27 00:02:45', 0, NULL, NULL, 1, NULL, NULL, 'en', 0, ''),
 (6, 'user', 'Berlin', 'ars3sssssss@gmail.com', '2024-01-11 04:35:27', 'Berlin@3sss', NULL, NULL, NULL, '2024-01-20 08:53:25', 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, '2024-01-11 04:34:35', '2024-01-20 08:53:25', 0, NULL, NULL, 1, NULL, NULL, 'en', 0, ''),
-(7, 'user', 'Alex', 'asifarslaan5@gmail.com', '2024-01-11 04:35:27', 'Berlin@3sss', NULL, NULL, NULL, '2024-01-22 07:41:55', 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, '2024-01-20 05:34:18', '2024-01-22 07:41:55', 0, NULL, NULL, 1, NULL, NULL, 'en', 0, '');
+(7, 'user', 'Alex', 'asifarslaan5@gmail.com', '2024-01-11 04:35:27', 'Berlin@3sss', NULL, NULL, NULL, '2024-01-27 01:11:49', 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, '2024-01-20 05:34:18', '2024-01-27 01:11:49', 0, NULL, NULL, 1, NULL, NULL, 'en', 0, '');
 
 -- --------------------------------------------------------
 
@@ -17216,7 +17223,7 @@ ALTER TABLE `ads_activations`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `balances`
@@ -17384,7 +17391,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `paid_top_ads`
 --
 ALTER TABLE `paid_top_ads`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
@@ -17462,7 +17469,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `scheduled_ads`
 --
 ALTER TABLE `scheduled_ads`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `service_places`
@@ -17474,7 +17481,7 @@ ALTER TABLE `service_places`
 -- AUTO_INCREMENT for table `service_schedules`
 --
 ALTER TABLE `service_schedules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `settings`
