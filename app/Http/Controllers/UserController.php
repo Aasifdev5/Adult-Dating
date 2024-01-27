@@ -435,8 +435,8 @@ class UserController extends AppBaseController
 
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $appointments = Appointment::where('profile_id', Session::get('LoggedIn'))->get();
-
-            return view('appointment', compact('appointments', 'user_session'));
+            $user_appoinment=Appointment::where('user_id', Session::get('LoggedIn'))->get();
+            return view('appointment', compact('appointments', 'user_session','user_appoinment'));
         }
     }
     public function sendResetPasswordLink(Request $request)
