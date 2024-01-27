@@ -5,42 +5,62 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Models\ScheduledAd;
+use App\Models\PaidTopAd;
+use App\Models\PostingAds;
 
 class Kernel extends ConsoleKernel
 {
     protected function schedule(Schedule $schedule)
     {
-        $scheduledAds = [
-            // Define each ad with start and end times, replace with your actual data
-            ['start_time' => '18:37', 'end_time' => '22:00', 'image' => 'ad1.jpg', 'url' => 'https://example.com/ad1'],
-            ['start_time' => '12:00', 'end_time' => '15:00', 'image' => 'ad2.jpg', 'url' => 'https://example.com/ad2'],
-            // ... add more ads ...
-        ];
+        $adData = PaidTopAd::select('ad_id', 'start_time', 'end_time')->get();
 
-        foreach ($scheduledAds as $adData) {
-            $scheduledAd = ScheduledAd::create($adData);
+        foreach ($adData as $ad) {
+            // Fetch data from the posting_ads table based on ad_id
+            $adsData = PostingAds::select('title', 'category', 'city', 'age', 'user_id')
+                ->where('id', $ad->ad_id)
+                ->first();
 
-            $schedule->call(function () use ($scheduledAd) {
-                $this->showCarouselAd($scheduledAd);
-            })->dailyAt($adData['start_time'])->timezone('Asia/Kolkata');
+            if ($adsData) {
+                // Insert into the scheduled_ads table
+                ScheduledAd::create([
+                    'ad_id' => $ad->ad_id,
+                    'category' => $adsData->category,
+                    'title' => $adsData->title,
+                    'city' => $adsData->city,
+                    'age' => $adsData->age,
+                    'user_id' => $adsData->user_id,
+                    'start_time' => $ad->start_time,
+                    'end_time' => $ad->end_time,
+                ]);
+
+                // Format start_time and end_time for dailyAt
+                $startTime = \Carbon\Carbon::parse($ad->start_time)->format('H:i');
+                $endTime = \Carbon\Carbon::parse($ad->end_time)->format('H:i');
+
+                // Schedule the daily task
+                $schedule->call(function () use ($adsData, $ad) {
+                    $this->showCarouselAd($adsData, $ad);
+                })->dailyAt($startTime)->timezone('Asia/Kolkata');
+            }
         }
     }
 
-    protected function showCarouselAd(ScheduledAd $ad)
+    protected function showCarouselAd($adsData, $ad)
     {
-        info("Showing carousel ad: {$ad->image} at {$ad->start_time}");
+        // Check if 'start_time' and 'end_time' properties exist in the PaidTopAd model
+        if (property_exists($ad, 'start_time') && property_exists($ad, 'end_time')) {
+            // Log the start and end time for debugging
+            info("Showing carousel ad: Start Time - {$ad->start_time}, End Time - {$ad->end_time}");
 
-        // Replace with your logic to display the ad in the carousel on the 'ads_list' blade
-        // You can use a dedicated carousel library or build your own HTML structure
+            // Your existing code here
 
-        // Example placeholder code:
-        $ads = [$ad]; // Replace with the actual list of ads for the current time slot
-        $currentSlot = ['start_time' => $ad->start_time, 'end_time' => $ad->end_time];
+            // For testing, log the details of the fetched ad
+            info("Ad Details: " . json_encode($adsData));
 
-        // Pass required data to the blade using session, flash data, or view props
-        session()->put('active_carousel_ads', $ads);
-        session()->put('current_carousel_slot', $currentSlot);
-
-        // ... trigger an event or send a notification about the displayed ad (optional) ...
+            // ... trigger an event or send a notification about the displayed ad (optional) ...
+        } else {
+            // Log an error if 'start_time' or 'end_time' properties are missing
+            info("Error: 'start_time' or 'end_time' properties missing in PaidTopAd model.");
+        }
     }
 }

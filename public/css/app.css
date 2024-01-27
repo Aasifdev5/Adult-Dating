@@ -8445,7 +8445,7 @@
     }
   }
   .tagcard .badge-pill.special-tag {
-    color: #4f566a;
+    color: #fff;
     margin-right: 5px;
   }
   .inlinetag {
@@ -8506,11 +8506,11 @@
     word-wrap: break-word;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    background-color: #f7f7f7;
+    background-color: #7b2ba6;
     border: 0;
     border-radius: 8px;
     box-sizing: border-box;
-    color: #4f566a;
+    color: #fff;
     display: inline-block;
     font-size: 0.78rem;
     font-weight: 400;

@@ -158,46 +158,118 @@ Ads List
             </div>
         </div>
         <div class="title-story small font-weight-bold pb-2">SUPERTOP STORIES</div>
+
         <div class="supertop-stories-container">
-            <div>
-                <div class="skokka-stories-list">
-                   <!-- Example: Displaying ads in a Bootstrap carousel -->
-<div id="adCarousel" class="carousel">
-    <div class="carousel-inner">
-        @php
-            // dd(session()->all());
-        @endphp
-        @foreach($story as $ad)
-            <div class="carousel-item">
-                <img src="{{ asset('storage/' . $ad->image) }}" alt="Ad Image">
-                <div class="carousel-caption">
-                    <p>{{ $ad->start_time }} - {{ $ad->end_time }}</p>
-                    <!-- Add more ad details as needed -->
+            <div class="skokka-stories-list">
+                <div id="stories-right-button" style="visibility: visible;">
+                  <a href="#"></a>
                 </div>
+                <div id="outer">
+                  <div id="inner">
+                    @foreach ($story as $index => $row)
+                    @php
+                        $tadsPhoto = App\Models\Image::where('user_id', $row->user_id)->where('ad_id', $row->ad_id)->first();
+                        @endphp
+                    <div class="stories_thumb">
+                        <!-- Add id="storyThumbLink" to the anchor tag -->
+                        <a href="#" id="storyThumbLink{{ $index }}" data-toggle="modal" data-target="#storyModal{{ $index }}">
+                            <picture class="stories_thumb-media">
+                                <img src="{{ asset('storage/' . $tadsPhoto->path) }}" alt="{{ $row->title }}" draggable="false">
+                            </picture>
+                            <span class="badge badge-supertop mt-3">
+                                <i class="icon-supertop mr-1"></i>
+                            </span>
+                            <div class="user-username">{{ $row->title }}</div>
+                        </a>
+                    </div>
+                    <!-- Story Modal -->
+<div class="modal fade" id="storyModal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="storyModalLabel{{ $index }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark">
+          <div class="modal-header border-0">
+            <a href="{{url('ad_details/')}}<?php echo '/' . $row->ad_id; ?>" target="_self"><h5 class="modal-title text-title cursor-pointer onlydk"> {{ $row->title }} <div class="tagcard"></a>
+                <span class="badge-pill">
+                  <b> {{ $row->age }} years </b>
+                </span>
+                <span class="badge-pill">
+                  <b> {{ $row->category }} </b>
+                </span>
+                <span translate="no" class="badge-pill">
+                  <i class="icon icon-map-pin mr-1"></i>
+                  <b> {{ $row->city }} </b> / {{ $row->city }} City </span>
+              </div>
+            </h5>
+            <button type="button" data-dismiss="modal" class="close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="storiesModalCarousel" data-interval="5000" data-ride="carousel" class="carousel slide">
+                <ol class="carousel-indicators stories">
+                    @php
+                        $tadsPhotos = App\Models\Image::where('user_id', $row->user_id)->where('ad_id', $row->ad_id)->get();
+                    @endphp
+
+                    @foreach ($tadsPhotos as $index => $topadsPhoto)
+                        <li data-target="#storiesModalCarousel" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+                    @endforeach
+                </ol>
+
+                <div role="listbox" class="carousel-inner modalstories">
+                    @foreach ($tadsPhotos as $index => $topadsPhoto)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" style="background-image: url({{ asset('storage/' . $topadsPhoto->path) }});"></div>
+                    @endforeach
+                </div>
+
+                <a role="button" class="carousel-control-prev" href="#storiesModalCarousel" role="button" data-slide="prev">
+                    <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a role="button" class="carousel-control-next" href="#storiesModalCarousel" role="button" data-slide="next">
+                    <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-        @endforeach
-    </div>
+
+
+          </div>
+          <div class="modal-footer justify-content-center border-0 w-100">
+
+            <a href="{{url('ad_details/')}}<?php echo '/' . $row->ad_id; ?>" target="_self" class="btn btn-primary">Find out more</a>
+          </div>
+        </div>
+      </div>
 </div>
+                    @endforeach
+                   <!-- Story Thumb -->
 
-<!-- Include the Bootstrap carousel JavaScript library -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Add this script at the end of your Blade view -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // JavaScript logic to show/hide ads in the slider based on the current time
-        var ads = @json(session('active_carousel_ads', []));
 
-        // Your JavaScript logic to update the carousel UI with ads
-        // ...
 
-    });
-</script>
-
+                  </div>
                 </div>
-                <!---->
+                <div id="stories-left-button" style="visibility: visible;">
+                  <a href="#"></a>
+                </div>
+              </div>
+
+            <div>
+
             </div>
         </div>
+
+
+
+<!-- JavaScript to handle the click event and show the modal -->
+<script>
+    $(document).ready(function() {
+        $('#storyThumbLink').click(function(e) {
+            e.preventDefault();
+            $('#storyModal').modal('show');
+        });
+    });
+</script>
 
         @foreach($ads as $row)
         <div class="supertop show-in-related-free-list">

@@ -8,7 +8,12 @@ Dashboard
         <hr class="my-3">
         <div class="my-4 personal">
             <h6 class="text-uppercase">
-                <strong>bienvenido</strong>
+                <strong>bienvenido
+                    @if (!empty($user_session->name))
+                        {{ $user_session->name }}
+                    @endif
+
+                </strong>
             </h6>
             <p>
                 <i> {{$user_session->email}}</i>
