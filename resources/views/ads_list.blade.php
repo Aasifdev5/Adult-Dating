@@ -168,20 +168,27 @@ Ads List
                   <div id="inner">
                     @foreach ($story as $index => $row)
                     @php
-                        $tadsPhoto = App\Models\Image::where('user_id', $row->user_id)->where('ad_id', $row->ad_id)->first();
-                        @endphp
-                    <div class="stories_thumb">
-                        <!-- Add id="storyThumbLink" to the anchor tag -->
-                        <a href="#" id="storyThumbLink{{ $index }}" data-toggle="modal" data-target="#storyModal{{ $index }}">
-                            <picture class="stories_thumb-media">
+                    $tadsPhoto = App\Models\Image::where('user_id', $row->user_id)->where('ad_id', $row->ad_id)->first();
+                @endphp
+
+                <div class="stories_thumb">
+                    <!-- Add id="storyThumbLink" to the anchor tag -->
+                    <a href="#" id="storyThumbLink{{ $index }}" data-toggle="modal" data-target="#storyModal{{ $index }}">
+                        <picture class="stories_thumb-media">
+                            @if ($tadsPhoto)
                                 <img src="{{ asset('storage/' . $tadsPhoto->path) }}" alt="{{ $row->title }}" draggable="false">
-                            </picture>
-                            <span class="badge badge-supertop mt-3">
-                                <i class="icon-supertop mr-1"></i>
-                            </span>
-                            <div class="user-username">{{ $row->title }}</div>
-                        </a>
-                    </div>
+                            @else
+                                <!-- Provide a default image or handle the case where $tadsPhoto is null -->
+                                <img src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image" draggable="false">
+                            @endif
+                        </picture>
+                        <span class="badge badge-supertop mt-3">
+                            <i class="icon-supertop mr-1"></i>
+                        </span>
+                        <div class="user-username">{{ $row->title }}</div>
+                    </a>
+                </div>
+
                     <!-- Story Modal -->
 <div class="modal fade" id="storyModal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="storyModalLabel{{ $index }}" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
