@@ -351,6 +351,19 @@ class UserController extends AppBaseController
 
         return view('ads_list', compact('ads', 'category', 'id', 'countries', 'cities', 'states','story', 'user_session'));
     }
+    public function list($lcategory,$city)
+    {
+        // dd($city);
+        $ads = PostingAds::where('category', $lcategory)->where('city',$city)->paginate(10);
+        $category = Course::all();
+        $countries = Country::all();
+        $states = States::all();
+        $user_session = User::where('id', Session::get('LoggedIn'))->first();
+        $cities = City::all();
+        $story=ScheduledAd::all();
+
+        return view('list', compact('ads', 'category', 'lcategory', 'countries', 'cities', 'states','story', 'user_session'));
+    }
     public function Userlogin()
     {
         return view('login');

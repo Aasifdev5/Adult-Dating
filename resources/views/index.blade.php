@@ -69,27 +69,27 @@ Home
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <a href="call-girls/bangalore/" title="Call Girls Bangalore">
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/La Paz'; ?>" title="Call Girls Bangalore">
                             <button class="button-pill">
                                 <span class="notranslate">La Paz</span>
                             </button>
                         </a>
-                        <a href="call-girls/hyderabad/" title="Call Girls Hyderabad">
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Santa Cruz'; ?>" title="Call Girls Hyderabad">
                             <button class="button-pill">
                                 <span class="notranslate">Santa Cruz</span>
                             </button>
                         </a>
-                        <a href="call-girls/delhi/" title="Call Girls Delhi">
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Cochabamba'; ?>" title="Call Girls Delhi">
                             <button class="button-pill">
                                 <span class="notranslate">Cochabamba</span>
                             </button>
                         </a>
-                        <a href="call-girls/pune/" title="Call Girls Pune">
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Sucre'; ?>" title="Call Girls Pune">
                             <button class="button-pill">
                                 <span class="notranslate">Sucre</span>
                             </button>
                         </a>
-                        <a href="call-girls/mumbai/" title="Call Girls Mumbai">
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/El Alto'; ?>" title="Call Girls Mumbai">
                             <button class="button-pill">
                                 <span class="notranslate">El Alto</span>
                             </button>

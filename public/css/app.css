@@ -4365,9 +4365,9 @@
     border-radius: 4px;
   }
   .service-detail .badge-pill {
-    background-color: #fff;
-    border: 1px solid #d6d6d6;
-    color: #1c1c1c !important;
+    background-color: #7b2ba6 !important;
+    border: 1px solid #fff;
+    color: #fff !important;
     font-size: 14px;
     font-weight: 500;
     margin: 5px 5px 5px 0;
@@ -6576,17 +6576,17 @@
     }
   }
   footer.page-footer {
-    color: #666;
+    color: #7b2ba6 !important;
     font-size: 11px;
   }
   footer.page-footer a {
-    color: #666;
+    color: #7b2ba6 !important;
     font-size: 12px;
     font-weight: 400;
   }
   footer.page-footer a span {
     border-right: 1px solid;
-    color: #666;
+    color: #7b2ba6 !important;
     line-height: 32px;
     padding-left: 5px;
     padding-right: 8px;
@@ -6736,7 +6736,8 @@
     color: #7b2ba6 !important;
   }
   .text-muted.light {
-    color: #a8a8a8 !important;
+    color:    #7b2ba6 !important
+    ;
   }
   .hero-header {
     background-color: #7b2ba6;
@@ -8526,7 +8527,7 @@
     font-weight: 600;
   }
   .detail.tagcard .badge-pill {
-    background-color: #fff;
+    background-color: #7b2ba6 !important;
     border: 2px solid #eef0f5;
     font-size: 0.8rem;
     margin-bottom: 10px;
@@ -8755,7 +8756,7 @@
   }
   .service-detail h5,
   .service-detail p {
-    color: #10172a;
+    color: #7b2ba6 !important;
     word-break: break-word;
   }
   .main-title {
