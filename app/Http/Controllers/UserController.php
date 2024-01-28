@@ -806,7 +806,7 @@ class UserController extends AppBaseController
         $category = Course::all();
         $countries = Country::all();
         $states = States::all();
-
+        $story=ScheduledAd::all();
         $cities = City::all();
         if ($request->filled('keyword')) {
             $query->where('title', 'LIKE', '%' . $request->input('keyword') . '%');
@@ -829,7 +829,7 @@ class UserController extends AppBaseController
         $results = $query->paginate(10);
         // dd($results);
         $id = $request->input('category');
-        return view('search_results', compact('results', 'id', 'category', 'countries', 'states', 'cities'));
+        return view('search_results', compact('results', 'id','story', 'category', 'countries', 'states', 'cities'));
     }
     public function Ad_insert(Request $request)
     {

@@ -159,37 +159,116 @@ Ads List
             </div>
         </div>
         <div class="title-story small font-weight-bold pb-2">SUPERTOP STORIES</div>
+
         <div class="supertop-stories-container">
-            <div>
-                <div class="skokka-stories-list">
-                    <div id="stories-right-button" style="visibility: hidden; display: none;">
-                        <a href="#"></a>
-                    </div>
-                    <div id="outer">
-                        <div id="inner">
-                            <div class="stories_thumb">
-                                <a href="#">
-                                    <picture class="stories_thumb-media">
-                                        <img src="" draggable="false">
-                                    </picture>
-                                    <span class="badge badge-supertop mt-3">
-                                        <i class="icon-supertop mr-1"></i>
-                                    </span>
-                                    <div class="user-username"> FULL NUDE BODY MASSAGEHAPPY ENDING/BLOWJOB/FINGRNG/NURU/SHOWER </div>
-                                </a>
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div id="stories-left-button" style="visibility: hidden;">
-                        <a href="#"></a>
-                    </div>
+            <div class="skokka-stories-list">
+                <div id="stories-right-button" style="visibility: visible;">
+                  <a href="#"></a>
                 </div>
-                <!---->
+                <div id="outer">
+                  <div id="inner">
+                    @foreach ($story as $index => $row)
+                    @php
+                    $tadsPhoto = App\Models\Image::where('user_id', $row->user_id)->where('ad_id', $row->ad_id)->first();
+                @endphp
+
+                <div class="stories_thumb">
+                    <!-- Add id="storyThumbLink" to the anchor tag -->
+                    <a href="#" id="storyThumbLink{{ $index }}" data-toggle="modal" data-target="#storyModal{{ $index }}">
+                        <picture class="stories_thumb-media">
+                            @if ($tadsPhoto)
+                                <img src="{{ asset('storage/' . $tadsPhoto->path) }}" alt="{{ $row->title }}" draggable="false">
+                            @else
+                                <!-- Provide a default image or handle the case where $tadsPhoto is null -->
+                                <img src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image" draggable="false">
+                            @endif
+                        </picture>
+                        <span class="badge badge-supertop mt-3">
+                            <i class="icon-supertop mr-1"></i>
+                        </span>
+                        <div class="user-username">{{ $row->title }}</div>
+                    </a>
+                </div>
+
+                    <!-- Story Modal -->
+<div class="modal fade" id="storyModal{{ $index }}" tabindex="-1" role="dialog" aria-labelledby="storyModalLabel{{ $index }}" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark">
+          <div class="modal-header border-0">
+            <a href="{{url('ad_details/')}}<?php echo '/' . $row->ad_id; ?>" target="_self"><h5 class="modal-title text-title cursor-pointer onlydk"> {{ $row->title }} <div class="tagcard"></a>
+                <span class="badge-pill">
+                  <b> {{ $row->age }} years </b>
+                </span>
+                <span class="badge-pill">
+                  <b> {{ $row->category }} </b>
+                </span>
+                <span translate="no" class="badge-pill">
+                  <i class="icon icon-map-pin mr-1"></i>
+                  <b> {{ $row->city }} </b> / {{ $row->city }} City </span>
+              </div>
+            </h5>
+            <button type="button" data-dismiss="modal" class="close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="storiesModalCarousel" data-interval="5000" data-ride="carousel" class="carousel slide">
+                <ol class="carousel-indicators stories">
+                    @php
+                        $tadsPhotos = App\Models\Image::where('user_id', $row->user_id)->where('ad_id', $row->ad_id)->get();
+                    @endphp
+
+                    @foreach ($tadsPhotos as $index => $topadsPhoto)
+                        <li data-target="#storiesModalCarousel" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+                    @endforeach
+                </ol>
+
+                <div role="listbox" class="carousel-inner modalstories">
+                    @foreach ($tadsPhotos as $index => $topadsPhoto)
+                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                            @if ($topadsPhoto)
+                                <img src="{{ asset('storage/' . $topadsPhoto->path) }}" class="d-block w-100" alt="Image {{ $index + 1 }}">
+                            @else
+                                <!-- Handle the case where $topadsPhoto is null (no image found) -->
+                                <img src="{{ asset('path-to-default-image.jpg') }}" class="d-block w-100" alt="Default Image">
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+
+                <a role="button" class="carousel-control-prev" href="#storiesModalCarousel" role="button" data-slide="prev">
+                    <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <a role="button" class="carousel-control-next" href="#storiesModalCarousel" role="button" data-slide="next">
+                    <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
+
+
+
+          </div>
+          <div class="modal-footer justify-content-center border-0 w-100">
+
+            <a href="{{url('ad_details/')}}<?php echo '/' . $row->ad_id; ?>" target="_self" class="btn btn-primary">Find out more</a>
+          </div>
         </div>
+      </div>
+</div>
+                    @endforeach
+                   <!-- Story Thumb -->
+
+
+
+
+                  </div>
+                </div>
+                <div id="stories-left-button" style="visibility: visible;">
+                  <a href="#"></a>
+                </div>
+              </div>
 
         @foreach($results as $row)
         <div class="supertop show-in-related-free-list">
