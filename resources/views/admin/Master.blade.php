@@ -439,81 +439,7 @@
             </div>
             <!-- Page Sidebar Ends-->
             <!-- Right sidebar Start-->
-            <div class="right-sidebar" id="right_side_bar">
-                <div class="container p-0">
-                    <div class="modal-header p-l-20 p-r-20">
-                        <div class="col-sm-8 p-0">
-                            <h6 class="modal-title fw-bold">FRIEND LIST</h6>
-                        </div>
-                        <div class="col-sm-4 text-end p-0"><i class="mr-2" data-feather="settings"></i></div>
-                    </div>
-                </div>
-                <div class="friend-list-search mt-0">
-                    <input type="text" placeholder="search friend"><i class="fa fa-search"></i>
-                </div>
-                <div class="chat-box">
-                    <div class="people-list friend-list">
-                        <ul class="list">
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/1.jpg') }}" alt="">
-                                <div class="status-circle online"></div>
-                                <div class="about">
-                                    <div class="name">Vincent Porter</div>
-                                    <div class="status"> Online</div>
-                                </div>
-                            </li>
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/2.png') }}" alt="">
-                                <div class="status-circle away"></div>
-                                <div class="about">
-                                    <div class="name">Ain Chavez</div>
-                                    <div class="status"> 28 minutes ago</div>
-                                </div>
-                            </li>
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/8.jpg') }}" alt="">
-                                <div class="status-circle online"></div>
-                                <div class="about">
-                                    <div class="name">Kori Thomas</div>
-                                    <div class="status"> Online</div>
-                                </div>
-                            </li>
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/4.jpg') }}" alt="">
-                                <div class="status-circle online"></div>
-                                <div class="about">
-                                    <div class="name">Erica Hughes</div>
-                                    <div class="status"> Online</div>
-                                </div>
-                            </li>
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/5.jpg') }}" alt="">
-                                <div class="status-circle offline"></div>
-                                <div class="about">
-                                    <div class="name">Ginger Johnston</div>
-                                    <div class="status"> 2 minutes ago</div>
-                                </div>
-                            </li>
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/6.jpg') }}" alt="">
-                                <div class="status-circle away"></div>
-                                <div class="about">
-                                    <div class="name">Prasanth Anand</div>
-                                    <div class="status"> 2 hour ago</div>
-                                </div>
-                            </li>
-                            <li class="clearfix"><img class="rounded-circle user-image"
-                                    src="{{ asset('assets/images/7.jpg') }}" alt="">
-                                <div class="status-circle online"></div>
-                                <div class="about">
-                                    <div class="name">Hileri Jecno</div>
-                                    <div class="status"> Online</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
             <!-- Right sidebar Ends-->
             @yield('content')
             <!-- footer start-->
@@ -521,7 +447,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 footer-copyright">
-                <p class="mb-0">Copyright 2023 © Aasif All rights reserved.</p>
+                <p class="mb-0">Copyright 2024 © Aasif All rights reserved.</p>
               </div>
               <div class="col-md-6">
                 <p class="pull-right mb-0">Hand crafted & made with<i class="fa fa-heart"></i></p>

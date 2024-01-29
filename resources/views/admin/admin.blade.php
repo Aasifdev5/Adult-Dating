@@ -78,12 +78,12 @@
                         <div class="mb-3">
                            <label class="col-form-label pt-0">Email</label>
                            <input class="form-control" type="email" name="email">
-                           <span class="text-danger">@error('email'){{$message}}@enderror</span>
+                           <p class="text-danger" style="color: red">@error('email'){{$message}}@enderror</p>
                         </div>
                         <div class="mb-3">
                            <label class="col-form-label">Password</label>
                            <input class="form-control" type="password" name="pass">
-                           <span class="text-danger">@error('pass'){{$message}}@enderror</span>
+                           <p class="text-danger">@error('pass'){{$message}}@enderror</p>
                         </div>
                         <div class="checkbox p-0">
                            <input id="checkbox1" type="checkbox">

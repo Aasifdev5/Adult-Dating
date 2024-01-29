@@ -2,38 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PostingAds;
-use App\Models\User;
-use Dotenv\Dotenv;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash as FacadesHash;
-use Illuminate\Support\Facades\Session;
-use DateTimeZone;
-use DateTime;
-use Illuminate\Support\Facades\DB;
-use App\Models\Transactions;
 use App\Exports\TransactionsExport;
-use Maatwebsite\Excel\Facades\Excel;
-use Carbon\Carbon;
-use App\Models\CourseCategory;
-use App\Models\Course;
-use App\Models\Settings;
-use App\Mail\SendMailreset;
-use App\Models\PaymentGateway;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\URL;
 use App\Http\helper;
+use App\Mail\SendMailreset;
+use App\Models\Ad;
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CreditReload;
 use App\Models\GeneralSetting;
 use App\Models\Order;
 use App\Models\PasswordReset;
-use App\Notifications\VerifyEmailNotification;
 use App\Models\Payment;
+use App\Models\PaymentGateway;
+use App\Models\PostingAds;
+use App\Models\Settings;
 use App\Models\Task;
+use App\Models\Transactions;
+use App\Models\User;
+use App\Notifications\VerifyEmailNotification;
+use Carbon\Carbon;
+use DateTime;
+use DateTimeZone;
+use Dotenv\Dotenv;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 function generateTimezoneList()
 {
@@ -504,12 +506,16 @@ class Admin extends Controller
     {
         if (Session::has('LoggedIn')) {
             $total_sale = Payment::all();
-            $total_earning = Payment::sum('amount');
-
+            $total_earning = CreditReload::sum('amount');
+            $ads =PostingAds::all();
             $usersData = DB::table("users")->where('is_super_admin', '0')->orderby('id', 'desc')->get();
-            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $total_users = User::where('is_super_admin', 0)
+            ->whereNot('account_type', 'admin')
+            ->get();
 
-            return view('admin/dashboard', compact('user_session', 'usersData', 'total_sale', 'total_earning'));
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $top_ad=Ad::all();
+            return view('admin/dashboard', compact('user_session', 'total_users','top_ad','ads','usersData', 'total_sale', 'total_earning'));
         }
     }
     public function users(Request $request)
