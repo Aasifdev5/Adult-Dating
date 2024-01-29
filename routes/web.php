@@ -172,8 +172,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments.index');
         Route::get('appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
         Route::post('appointments/store', [AppointmentController::class, 'store'])->name('appointments.store');
-
         Route::get('login', [Admin::class, 'admin'])->name('admin')->middleware('AdminAlreadyLoggedIn');
+        Route::get('ads_list', [Admin::class, 'ads_list'])->name('ads_list')->middleware('AdminAlreadyLoggedIn');
+        Route::delete('ads_destroy/{id}', [Admin::class, 'ads_destroy']);
         Route::get('country', [Admin::class, 'country'])->name('country')->middleware('alreadyLoggedIn');
         Route::get('city', [Admin::class, 'city'])->name('city')->middleware('alreadyLoggedIn');
         Route::get('dashboard', [Admin::class, 'dashboard'])->name('dashboard')->middleware('AdminIsLoggedIn');

@@ -9,7 +9,7 @@ User List
          <div class="row">
             <div class="col">
                <div class="page-header-left">
-                  <h3>Adult Dating</h3>
+                  <h3>Social Citas</h3>
                   <ol class="breadcrumb">
                      <li class="breadcrumb-item"><a href="https://laravel.pixelstrap.com/endless" data-bs-original-title="" title=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
                               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -70,6 +70,7 @@ User List
                                           </thead>
                                           <tbody>
                                              @foreach($usersData as $i => $data)
+                                             @if($data->account_type!="admin")
                                              <tr>
                                                 <td class="text-center">{{$i+1}}</td>
                                                 <td><img class="img-radius img-70 align-top m-r-15 rounded-circle" src="{{asset('profile_photo/')}}<?php echo '/' . $data->profile_photo; ?>" height="70px" alt="">{{ stripslashes($data->name) }}</td>
@@ -95,6 +96,7 @@ User List
 
                                                 </td>
                                              </tr>
+                                             @endif
                                              @endforeach
 
 

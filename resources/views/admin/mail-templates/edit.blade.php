@@ -10,12 +10,12 @@ Mail Templates
          <div class="row">
             <div class="col">
                <div class="page-header-left">
-                  <h3>Sky Forecasting</h3>
+                  <h3>Social Citas</h3>
                   <ol class="breadcrumb">
                      <li class="breadcrumb-item"><a href="dashboard"><i
                               data-feather="home"></i></a></li>
                      <li class="breadcrumb-item">Mail Templates</li>
-                    
+
                   </ol>
                </div>
             </div>
@@ -39,7 +39,7 @@ Mail Templates
                      <p>{{session::get('fail')}}</p>
                   </div>
                   @endif
-               
+
                <form id="vironeer-submited-form" action="{{ url('admin/mail-templates/update', $mailTemplate->id) }}"
         method="POST">
         @csrf
@@ -78,7 +78,7 @@ Mail Templates
 
                   </div>
                </div>
-           
+
          <!-- DOM / jQuery  Ends-->
 
          </div>

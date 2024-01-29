@@ -10,7 +10,7 @@ Transactions Report
             <div class="row">
                 <div class="col">
                     <div class="page-header-left">
-                        <h3>Adult Dating</h3>
+                        <h3>Social Citas</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
                             <li class="breadcrumb-item">Transactions Report</li>

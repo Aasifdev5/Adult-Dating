@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PostingAds;
 use App\Models\User;
 use Dotenv\Dotenv;
 use Illuminate\Http\Request;
@@ -519,6 +520,24 @@ class Admin extends Controller
 
             return view('admin/users', compact('user_session', 'usersData'));
         }
+    }
+    public function ads_list(Request $request)
+    {
+        if (Session::has('LoggedIn')) {
+            $ads =PostingAds::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+
+            return view('admin/ads_list', compact('user_session', 'ads'));
+        }
+    }
+    public function ads_destroy($id)
+    {
+        $promotion = PostingAds::find($id);
+        $promotion->delete();
+
+
+        // Optionally, you may want to return a response or redirect after the delete
+        return redirect('admin/ads_list')->with('success', 'Deleted successfully');
     }
     public function country(Request $request)
     {

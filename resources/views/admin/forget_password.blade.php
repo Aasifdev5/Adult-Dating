@@ -11,7 +11,7 @@
    <meta name="author" content="pixelstrap">
    <link rel="icon" href="admin/images/favicon.png" type="image/x-icon">
    <link rel="shortcut icon" href="admin/images/favicon.png" type="image/x-icon">
-   <title>Adult Dating - Forget Password</title>
+   <title>Social Citas - Forget Password</title>
    <!-- Google font-->
    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
    <link
