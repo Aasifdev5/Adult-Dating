@@ -482,7 +482,7 @@ class Admin extends Controller
 
         ]);
 
-        $data = user::where('email', $request->email)->where('is_super_admin', '1')->first();
+        $data = user::where('email', $request->email)->where('account_type', 'admin')->first();
         // print_r($data->password);
 
         // die;
