@@ -1051,27 +1051,52 @@ class UserController extends AppBaseController
             return back()->with('fail', 'Your selected package credits more than your Credits balance');
         }
         $user_balance = $user->balance - $price;
-        if ($request->schedule == "9 a.m. - 12 p.m.") {
-            $start_time = "9:00";
+        if ($request->schedule == "00:00 AM - 2:00 AM") {
+            $start_time = "00:00";
+            $end_time = "2:00";
+        }
+        if ($request->schedule == "2:00 AM - 4:00 AM") {
+            $start_time = "2:00";
+            $end_time = "4:00";
+        }
+        if ($request->schedule == "4:00 AM - 6:00 AM") {
+            $start_time = "4:00";
+            $end_time = "6:00";
+        }
+        if ($request->schedule == "6:00 AM - 8:00 AM") {
+            $start_time = "6:00";
+            $end_time = "8:00";
+        }
+        if ($request->schedule == "08:00 AM - 10:00 AM") {
+            $start_time = "8:00";
+            $end_time = "10:00";
+        }
+        if ($request->schedule == "10:00 AM - 12:00 PM") {
+            $start_time = "10:00";
             $end_time = "12:00";
         }
-        if ($request->schedule == "12 p.m. - 3 p.m.") {
+
+        if ($request->schedule == "12:00 - 14:00") {
             $start_time = "12:00";
-            $end_time = "15:00";
+            $end_time = "14:00";
         }
-        if ($request->schedule == "3 p.m. - 6 p.m.") {
-            $start_time = "15:00";
+        if ($request->schedule == "14:00 - 16:00") {
+            $start_time = "14:00";
+            $end_time = "16:00";
+        }
+        if ($request->schedule == "16:00 - 18:00") {
+            $start_time = "16:00";
             $end_time = "18:00";
         }
-        if ($request->schedule == "6 p.m. - 8 p.m.") {
+        if ($request->schedule == "18:00 - 20:00") {
             $start_time = "18:00";
             $end_time = "20:00";
         }
-        if ($request->schedule == "8 p.m. - 10 p.m.") {
+        if ($request->schedule == "20:00 - 22:00") {
             $start_time = "20:00";
             $end_time = "22:00";
         }
-        if ($request->schedule == "10 p.m. - 12 a.m.") {
+        if ($request->schedule == "22:00 - 00:00") {
             $start_time = "22:00";
             $end_time = "00:00";
         }

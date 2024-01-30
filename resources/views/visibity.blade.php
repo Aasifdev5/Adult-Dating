@@ -96,12 +96,18 @@ Visibility
                                                 <label for="schedule" class="form-label">Schedule</label>
                                                 <select class="form-control" id="schedule_{{ $index }}" name="schedule">
                                                     <option value="">Select time slot</option>
-                                                    <option value="9 a.m. - 12 p.m.">9 a.m. - 12 p.m. </option>
-                                                    <option value="12 p.m. - 3 p.m.">12 p.m. - 3 p.m. </option>
-                                                    <option value="3 p.m. - 6 p.m.">3 p.m. - 6 p.m. </option>
-                                                    <option value="6 p.m. - 8 p.m.">6 p.m. - 8 p.m. </option>
-                                                    <option value="8 p.m. - 10 p.m.">8 p.m. - 10 p.m. </option>
-                                                    <option value="10 p.m. - 12 a.m.">10 p.m. - 12 a.m. </option>
+                                                    <option value="00:00 AM - 2:00 AM">00:00 AM - 2:00 AM </option>
+                                                    <option value="2:00 AM - 4:00 AM">2:00 AM - 4:00 AM </option>
+                                                    <option value="4:00 AM - 6:00 AM">4:00 AM - 6:00 AM </option>
+                                                    <option value="6:00 AM - 8:00 AM">6:00 AM - 8:00 AM </option>
+                                                    <option value="08:00 AM - 10:00 AM">08:00 AM - 10:00 AM </option>
+                                                    <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM </option>
+                                                    <option value="12:00 - 14:00">12:00 - 14:00  </option>
+                                                    <option value="14:00 - 16:00">14:00  - 16:00  </option>
+                                                    <option value="16:00 - 18:00">16:00  - 18:00  </option>
+                                                    <option value="18:00 - 20:00">18:00  - 20:00  </option>
+                                                    <option value="20:00 - 22:00">20:00  - 22:00  </option>
+                                                    <option value="22:00 - 00:00">22:00  - 00:00  </option>
                                                 </select>
                                                 <span class="text-danger">@error('schedule') {{ $message }} @enderror</span>
                                             </div>
