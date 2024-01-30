@@ -337,8 +337,8 @@ class UserController extends AppBaseController
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $category = Course::all();
         $services = CourseCategory::all();
-        $pages=Page::all();
-        return view('index', compact('category', 'user_session','pages'));
+        $pages = Page::all();
+        return view('index', compact('category', 'user_session', 'pages'));
     }
     public function ads_list($id)
     {
@@ -349,26 +349,27 @@ class UserController extends AppBaseController
         $states = States::all();
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $cities = City::all();
-        $story=ScheduledAd::all();
-
-        return view('ads_list', compact('ads', 'category', 'id', 'countries', 'cities', 'states','story', 'user_session'));
+        $story = ScheduledAd::all();
+        $pages = Page::all();
+        return view('ads_list', compact('ads', 'category', 'id', 'countries', 'cities', 'states', 'story', 'user_session', 'pages'));
     }
-    public function list($lcategory,$city)
+    public function list($lcategory, $city)
     {
         // dd($city);
-        $ads = PostingAds::where('category', $lcategory)->where('city',$city)->paginate(10);
+        $ads = PostingAds::where('category', $lcategory)->where('city', $city)->paginate(10);
         $category = Course::all();
         $countries = Country::all();
         $states = States::all();
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $cities = City::all();
-        $story=ScheduledAd::all();
-
-        return view('list', compact('ads', 'category', 'lcategory', 'countries', 'cities', 'states','story', 'user_session'));
+        $story = ScheduledAd::all();
+        $pages = Page::all();
+        return view('list', compact('ads', 'category', 'lcategory', 'countries', 'cities', 'states', 'story', 'user_session', 'pages'));
     }
     public function Userlogin()
     {
-        return view('login');
+        $pages = Page::all();
+        return view('login', compact('pages'));
     }
     public function admin()
     {
@@ -376,7 +377,8 @@ class UserController extends AppBaseController
     }
     public function signup()
     {
-        return view('register');
+        $pages = Page::all();
+        return view('register', compact('pages'));
     }
 
 
@@ -447,11 +449,11 @@ class UserController extends AppBaseController
     public function appointment()
     {
         if (Session::has('LoggedIn')) {
-
+            $pages = Page::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $appointments = Appointment::where('profile_id', Session::get('LoggedIn'))->get();
-            $user_appoinment=Appointment::where('user_id', Session::get('LoggedIn'))->get();
-            return view('appointment', compact('appointments', 'user_session','user_appoinment'));
+            $user_appoinment = Appointment::where('user_id', Session::get('LoggedIn'))->get();
+            return view('appointment', compact('appointments', 'user_session', 'user_appoinment', 'pages'));
         }
     }
     public function sendResetPasswordLink(Request $request)
@@ -664,9 +666,9 @@ class UserController extends AppBaseController
             $task = Task::where('user_id', Session::get('LoggedIn'))->first();
             $ads = PostingAds::where('user_id', Session::get('LoggedIn'))->get();
             $isverified = VerificationDocument::where('user_id', Session::get('LoggedIn'))->first();
-
+            $pages = Page::all();
             $completed = Order::where('status', 'Completed')->where('user_id', Session::get('LoggedIn'))->get();
-            return view('dashboard', compact('user_session', 'ads', 'completed', 'isverified', 'task'));
+            return view('dashboard', compact('user_session', 'ads', 'completed', 'isverified', 'task', 'pages'));
         }
     }
     public function DataAnalysis()
@@ -720,9 +722,10 @@ class UserController extends AppBaseController
     public function ads()
     {
         if (Session::has('LoggedIn')) {
+            $pages = Page::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $ads = PostingAds::where('user_id', Session::get('LoggedIn'))->get();
-            return view('ads', compact('user_session', 'ads'));
+            return view('ads', compact('user_session', 'ads', 'pages'));
         }
     }
     public function post_ad()
@@ -732,10 +735,10 @@ class UserController extends AppBaseController
             $category = Course::all();
             $countries = Country::all();
             $states = States::all();
-
+            $pages = Page::all();
             $cities = City::all();
             $services = CourseCategory::all();
-            return view('Post_add', compact('user_session', 'category', 'services', 'countries', 'states', 'cities'));
+            return view('Post_add', compact('user_session', 'category', 'services', 'countries', 'states', 'cities', 'pages'));
         }
     }
     public function getStates(Request $request)
@@ -780,8 +783,8 @@ class UserController extends AppBaseController
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-
-            return view('ad_photo', compact('user_session'));
+            $pages = Page::all();
+            return view('ad_photo', compact('user_session', 'pages'));
         }
     }
     public function visibity()
@@ -789,15 +792,16 @@ class UserController extends AppBaseController
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $top_ad = Ad::all();
-            return view('visibity', compact('user_session', 'top_ad'));
+            $pages = Page::all();
+            return view('visibity', compact('user_session', 'top_ad', 'pages'));
         }
     }
     public function finish()
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-
-            return view('finish', compact('user_session'));
+            $pages = Page::all();
+            return view('finish', compact('user_session', 'pages'));
         }
     }
     public function ad_details($id)
@@ -806,14 +810,15 @@ class UserController extends AppBaseController
         $id = $ads_details->category;
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $service_time = ServiceSchedule::where('user_id', $ads_details->user_id)->get();
-
-        return view('ad_details', compact('ads_details', 'id', 'user_session', 'service_time'));
+        $pages = Page::all();
+        return view('ad_details', compact('ads_details', 'id', 'user_session', 'service_time', 'pages'));
     }
     public function post_list()
     {
         $ads = PostingAds::orderBy('id', 'DESC')->paginate(2);
         $category = Course::all();
-        return view('post', compact('ads', 'category'));
+        $pages = Page::all();
+        return view('post', compact('ads', 'category', 'pages'));
     }
     public function search(Request $request)
     {
@@ -821,8 +826,9 @@ class UserController extends AppBaseController
         $category = Course::all();
         $countries = Country::all();
         $states = States::all();
-        $story=ScheduledAd::all();
+        $story = ScheduledAd::all();
         $cities = City::all();
+        $pages = Page::all();
         if ($request->filled('keyword')) {
             $query->where('title', 'LIKE', '%' . $request->input('keyword') . '%');
         }
@@ -844,7 +850,7 @@ class UserController extends AppBaseController
         $results = $query->paginate(10);
         // dd($results);
         $id = $request->input('category');
-        return view('search_results', compact('results', 'id','story', 'category', 'countries', 'states', 'cities'));
+        return view('search_results', compact('results', 'id', 'story', 'category', 'countries', 'states', 'cities', 'pages'));
     }
     public function Ad_insert(Request $request)
     {
@@ -1017,7 +1023,8 @@ class UserController extends AppBaseController
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             $Appointment = Appointment::where('id', $id)->first();
-            return view('edit_appointment', compact('user_session', 'Appointment'));
+            $pages = Page::all();
+            return view('edit_appointment', compact('user_session', 'Appointment', 'pages'));
         }
     }
     public function UpdateAppointment(Request $request)
@@ -1104,9 +1111,9 @@ class UserController extends AppBaseController
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-
+            $pages = Page::all();
             $credits =  CreditReloadPromotion::all();
-            return view('credit', compact('user_session', 'credits'));
+            return view('credit', compact('user_session', 'credits', 'pages'));
         }
     }
     public function credit_buy_post()
@@ -1116,9 +1123,9 @@ class UserController extends AppBaseController
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-
+$pages=Page::all();
             $credit =  CreditReloadPromotion::find($id);
-            return view('credit_buy', compact('user_session', 'credit'));
+            return view('credit_buy', compact('user_session', 'credit','pages'));
         }
     }
     public function ActivityOrder()
@@ -1238,8 +1245,8 @@ class UserController extends AppBaseController
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-
-            return view('edit_profile', compact('user_session'));
+            $pages=Page::all();
+            return view('edit_profile', compact('user_session','pages'));
         }
     }
     public function update_profile(Request $request)
@@ -1285,8 +1292,8 @@ class UserController extends AppBaseController
 
     public function forget_password()
     {
-
-        return view('forget_password');
+        $pages=Page::all();
+        return view('forget_password',compact('pages'));
     }
     public function forget_mail(Request $request)
     {
@@ -1340,8 +1347,8 @@ class UserController extends AppBaseController
         $resetData =  PasswordReset::where('token', $request->token)->get();
         if (isset($request->token) && count($resetData) > 0) {
             $customer = User::where('email', $resetData[0]['email'])->get();
-
-            return view('ResetPasswordLoad', ['customer' => $customer]);
+            $pages=Page::all();
+            return view('ResetPasswordLoad', ['customer' => $customer],compact('pages'));
         }
     }
 
