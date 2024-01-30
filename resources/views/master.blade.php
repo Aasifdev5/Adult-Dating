@@ -676,15 +676,23 @@
 
 
                             <ul style="list-style-type: none;">
+
                                 <li>
                                     <h5>Principal</h5>
                                 </li>
-                                <li> <a data-href="{{url('about')}}">
-                                        <span>Sobre nosotros</span>
-                                    </a></li>
-                                <li> <a data-href="/contact-us/">
-                                        <span>Contacta con nosotros</span>
-                                    </a></li>
+                                @foreach ($pages as $page)
+
+                                @if ($page->page_title == "About Us" || $page->page_title == "Contact Us")
+                                    <li>
+                                        <a href="{{ url('page/' . $page->page_slug) }}">
+                                            <span>{{ $page->page_title }}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+
+
+
 
                             </ul>
                         </div>
@@ -694,13 +702,16 @@
                                 <li>
                                     <h5>Información</h5>
                                 </li>
-                                <li><a data-href="/terms-and-conditions/">
-                                        <span>Términos y condiciones</span>
-                                    </a>
-                                </li>
-                                <li> <a data-href="/privacy-policy/">
-                                        <span>Política de privacidad</span>
-                                    </a></li>
+                                @foreach ($pages as $page)
+
+                                @if ($page->page_title == "Terms Of Use" || $page->page_title == "Privacy Policy")
+                                    <li>
+                                        <a href="{{ url('page/' . $page->page_slug) }}">
+                                            <span>{{ $page->page_title }}</span>
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
                             </ul>
                         </div>
                         <div class="col-sm-3">

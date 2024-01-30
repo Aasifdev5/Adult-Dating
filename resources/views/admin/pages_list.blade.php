@@ -89,7 +89,7 @@ Pages
                                                    </td>
 
                                                    <td>
-                                                      <a target="_blank" href="{{ URL::to('admin/page/'.$page->page_slug) }}" class="btn btn-icon waves-effect waves-light btn-success m-b-5 m-r-5" data-toggle="tooltip" title="View"> <i class="fa fa-eye"></i>
+                                                      <a target="_blank" href="{{ URL::to('page/'.$page->page_slug) }}" class="btn btn-icon waves-effect waves-light btn-success m-b-5 m-r-5" data-toggle="tooltip" title="View"> <i class="fa fa-eye"></i>
                                                       </a>
 
                                                       <a href="{{ URL::to('admin/edit/'.$page->id) }}" class="btn btn-icon waves-effect waves-light btn-success m-b-5 m-r-5" data-toggle="tooltip" title="{{trans('edit')}}"> <i class="fa fa-edit"></i>

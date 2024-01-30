@@ -47,18 +47,19 @@ class Pages extends Controller
     }
     public function get_page($slug)
     {
-        if (Session::has('LoggedIn')) {
+
 
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
             $page_info = Page::where('page_slug', $slug)->first();
-
+            $pages=Page::all();
             if ($page_info->id == 5) {
-                return view('admin.pages.pages_contact', compact('user_session', 'page_info'));
+                $pages=Page::all();
+                return view('admin.pages.pages_contact', compact('user_session', 'pages','page_info'));
             } else {
-                return view('admin.pages.pages', compact('user_session', 'page_info'));
+                return view('admin.pages.pages', compact('user_session','pages', 'page_info'));
             }
-        }
+
     }
 
     public function contact_send(Request $request)
@@ -108,7 +109,7 @@ class Pages extends Controller
 
     public function addnew(Request $request)
     {
-
+// dd($request->all());
 
         $inputs = $request->all();
 

@@ -2,18 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Registered;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\Role;
-use App\Models\User;
-use App\Queries\UserDataTable;
-use Illuminate\Support\Facades\DB;
+use App\Mail\SendMailreset;
+use App\Models\Ad;
+use App\Models\Appointment;
 use App\Models\Balance;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\Course;
+use App\Models\CourseCategory;
+use App\Models\CreditReloadPromotion;
+use App\Models\Image;
+use App\Models\Order;
+use App\Models\Page;
+use App\Models\PaidTopAd;
+use App\Models\PasswordReset;
+use App\Models\PaymentGateway;
+use App\Models\PostingAds;
+use App\Models\Role;
+use App\Models\ScheduledAd;
+use App\Models\ServiceSchedule;
+use App\Models\Settings;
+use App\Models\States;
+use App\Models\Task;
+use App\Models\Transactions;
+use App\Models\User;
+use App\Models\VerificationDocument;
+use App\Notifications\ResetPasswordNotification;
+use App\Notifications\VerifyEmailNotification;
+use App\Notifications\WelcomeNotification;
+use App\Queries\UserDataTable;
 use App\Repositories\UserRepository;
 use Carbon\Carbon;
-use App\Models\Ad;
 use Exception;
-use App\Models\Image;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -21,38 +44,16 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash as FacadesHash;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Response;
-use Illuminate\Support\Facades\Hash as FacadesHash;
-use Illuminate\Support\Facades\Session;
-use App\Models\Country;
-use App\Models\City;
-use App\Models\CourseCategory;
-use App\Models\Course;
-use App\Models\ServiceSchedule;
-use App\Models\Settings;
-use App\Models\CreditReloadPromotion;
-use App\Mail\SendMailreset;
-use Illuminate\Support\Facades\Hash;
-use App\Models\PaymentGateway;
-use App\Notifications\WelcomeNotification;
-use App\Models\Transactions;
-use Illuminate\Support\Str;
-use App\Events\Registered;
-use App\Models\Appointment;
-use App\Models\Order;
-use Illuminate\Support\Facades\URL;
-use App\Notifications\ResetPasswordNotification;
-use Illuminate\Support\Facades\Password;
-use App\Models\PaidTopAd;
-use App\Models\PasswordReset;
-use App\Models\PostingAds;
-use App\Models\States;
-use App\Models\Task;
-use App\Models\VerificationDocument;
-use Illuminate\Support\Facades\Mail;
-use App\Models\ScheduledAd;
-use App\Notifications\VerifyEmailNotification;
 
 function getIp()
 {
@@ -336,7 +337,8 @@ class UserController extends AppBaseController
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $category = Course::all();
         $services = CourseCategory::all();
-        return view('index', compact('category', 'user_session'));
+        $pages=Page::all();
+        return view('index', compact('category', 'user_session','pages'));
     }
     public function ads_list($id)
     {

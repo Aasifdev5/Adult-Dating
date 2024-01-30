@@ -81,8 +81,8 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/credits', [UserController::class, 'credits'])->name('credits')->middleware('isLoggedIn');
     Route::get('/credit_buy_details/{id}', [UserController::class, 'credit_buy_details'])->name('credit_buy_details')->middleware('isLoggedIn');
     Route::post('pay_credit/{id}', [UserController::class, 'pay_credit'])->name('pay_credit')->middleware('isLoggedIn');
-    Route::get('/Hybrid', [UserController::class, 'Hybrid'])->name('Hybrid')->middleware('isLoggedIn');
-    Route::get('/TimeSeries', [UserController::class, 'TimeSeries'])->name('TimeSeries')->middleware('isLoggedIn');
+    Route::get('page/{slug}', [Pages::class, 'get_page']);
+    Route::post('contact_send', [Pages::class, 'contact_send']);
     Route::get('/PurchaseHybrid/{id}', [UserController::class, 'PurchaseHybrid'])->name('PurchaseHybrid')->middleware('isLoggedIn');
     Route::get('/PurchaseDeep/{id}', [UserController::class, 'PurchaseDeep'])->name('PurchaseDeep')->middleware('isLoggedIn');
     Route::get('/PurchaseMachine/{id}', [UserController::class, 'PurchaseMachine'])->name('PurchaseMachine')->middleware('isLoggedIn');
@@ -217,8 +217,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('edit/{id}', [Pages::class, 'edit'])->middleware('AdminIsLoggedIn');
         Route::post('pages/add_edit', [Pages::class, 'addnew'])->middleware('AdminIsLoggedIn');
         Route::get('pages/delete/{id}', [Pages::class, 'delete'])->middleware('AdminIsLoggedIn');
-        Route::get('page/{slug}', [Pages::class, 'get_page'])->middleware('AdminIsLoggedIn');
-        Route::post('contact_send', [Pages::class, 'contact_send'])->middleware('AdminIsLoggedIn');
+
         Route::get('languages', [LanguageTranslationController::class, 'index'])->name('languages')->middleware('AdminIsLoggedIn');
         Route::post('translations/update', [LanguageTranslationController::class, 'transUpdate'])->name('translation.update.json');
         Route::post('translations/updateKey', [LanguageTranslationController::class, 'transUpdateKey'])->name('translation.update.json.key');

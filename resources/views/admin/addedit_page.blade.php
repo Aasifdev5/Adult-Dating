@@ -61,7 +61,7 @@ Edit Page
                     <div class="col-12">
 
 
-                      <form action="{{url('pages/add_edit')}}" method="post">
+                      <form action="{{url('admin/pages/add_edit')}}" method="post">
                         @csrf
                         <input type="hidden" name="id" value="{{ isset($page_info->id) ? $page_info->id : null }}">
 
