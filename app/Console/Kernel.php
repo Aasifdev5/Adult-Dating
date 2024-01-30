@@ -49,7 +49,7 @@ class Kernel extends ConsoleKernel
                         'end_time' => $ad->end_time,
                     ]);
                 }
-            })->everyThreeHours()->timezone('Asia/Kolkata');  // Moved timezone setting outside the everyThreeHours method
+            })->everyTwoHours()->timezone('Asia/Kolkata');  // Moved timezone setting outside the everyThreeHours method
         }
     }
 }
