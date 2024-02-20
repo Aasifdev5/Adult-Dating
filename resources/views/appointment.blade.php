@@ -34,17 +34,17 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Profile Photos</th>
-                                            <th>Profile</th>
+                                            <th>Fotos de perfil</th>
+                                            <th>Perfil</th>
                                             @if ($user_session->account_type != 'user')
-                                                <th>Client Name</th>
+                                                <th>nombre del cliente</th>
                                             @endif
-                                            <th>Date</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Status</th>
+                                            <th>Fecha</th>
+                                            <th>Hora de inicio</th>
+                                            <th>Hora de finalización</th>
+                                            <th>Estado</th>
                                             @if ($user_session->account_type != 'user')
-                                                <th>Action</th>
+                                                <th>Acción</th>
                                             @endif
                                         </tr>
                                     </thead>
@@ -68,7 +68,7 @@
                                                                     <div
                                                                         class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                                                         <div class="item-image-supertop">
-                                                                            <img src="{{ asset('storage/' . $adsPhoto->path) }}"
+                                                                            <img src="{{ asset($adsPhoto->path) }}"
                                                                                 alt="Image {{ $index + 1 }}"
                                                                                 class="rounded-circle" width="120"
                                                                                 height="100">
@@ -98,19 +98,19 @@
                                                     <td>{{ $appointment->end_time }}</td>
                                                     <td>
                                                         @if ($appointment->status == 'pending')
-                                                            <a class="btn btn-sm btn-warning">Pending</a>
+                                                            <a class="btn btn-sm btn-warning">Pendiente</a>
                                                         @endif
                                                         @if ($appointment->status == 'scheduled')
-                                                            <a class="btn btn-sm btn-success">Scheduled</a>
+                                                            <a class="btn btn-sm btn-success">Programado</a>
                                                         @endif
                                                         @if ($appointment->status == 'rejected')
-                                                            <a class="btn btn-sm btn-danger">Rejected</a>
+                                                            <a class="btn btn-sm btn-danger">Rechazado</a>
                                                         @endif
                                                     </td>
 
                                                     <td>
                                                         <a href="{{ url('edit_appointment', ['id' => $appointment->id]) }}"
-                                                            class="btn btn-sm btn-success" type="submit">Edit</a>
+                                                            class="btn btn-sm btn-success" type="submit">Editar</a>
 
                                                     </td>
                                                 </tr>
@@ -138,7 +138,7 @@
                                                                     <div
                                                                         class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                                                         <div class="item-image-supertop">
-                                                                            <img src="{{ asset('storage/' . $adsPhoto->path) }}"
+                                                                            <img src="{{ asset($adsPhoto->path) }}"
                                                                                 alt="Image {{ $index + 1 }}"
                                                                                 class="rounded-circle" width="120"
                                                                                 height="100">
@@ -172,14 +172,14 @@
                                                     <td>{{ $appointment->end_time }}</td>
                                                     <td>
                                                         @if ($appointment->status == 'pending')
-                                                            <a class="btn btn-sm btn-warning">Pending</a>
+                                                            <a class="btn btn-sm btn-warning">Pendiente</a>
                                                         @endif
                                                         @if ($appointment->status == 'scheduled')
 
-                                                            <a class="btn btn-sm btn-success">Scheduled</a>
+                                                            <a class="btn btn-sm btn-success">Programado</a>
                                                         @endif
                                                         @if ($appointment->status == 'rejected')
-                                                            <a class="btn btn-sm btn-danger">Rejected</a>
+                                                            <a class="btn btn-sm btn-danger">Rechazado</a>
                                                         @endif
                                                     </td>
 

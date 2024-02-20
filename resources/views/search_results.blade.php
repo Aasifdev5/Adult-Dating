@@ -177,7 +177,7 @@ Ads List
                     <a href="#" id="storyThumbLink{{ $index }}" data-toggle="modal" data-target="#storyModal{{ $index }}">
                         <picture class="stories_thumb-media">
                             @if ($tadsPhoto)
-                                <img src="{{ asset('storage/' . $tadsPhoto->path) }}" alt="{{ $row->title }}" draggable="false">
+                                <img src="{{ asset($tadsPhoto->path) }}" alt="{{ $row->title }}" draggable="false">
                             @else
                                 <!-- Provide a default image or handle the case where $tadsPhoto is null -->
                                 <img src="{{ asset('path-to-default-image.jpg') }}" alt="Default Image" draggable="false">
@@ -227,7 +227,7 @@ Ads List
                     @foreach ($tadsPhotos as $index => $topadsPhoto)
                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                             @if ($topadsPhoto)
-                                <img src="{{ asset('storage/' . $topadsPhoto->path) }}" class="d-block w-100" alt="Image {{ $index + 1 }}">
+                                <img src="{{ asset($topadsPhoto->path) }}" class="d-block w-100" alt="Image {{ $index + 1 }}">
                             @else
                                 <!-- Handle the case where $topadsPhoto is null (no image found) -->
                                 <img src="{{ asset('path-to-default-image.jpg') }}" class="d-block w-100" alt="Default Image">
@@ -287,7 +287,7 @@ Ads List
                         @foreach ($adsPhotos as $index => $adsPhoto)
                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                             <div class="item-image-supertop">
-                                <img src="{{ asset('storage/' . $adsPhoto->path) }}" alt="Image {{ $index + 1 }}">
+                                <img src="{{ asset($adsPhoto->path) }}" alt="Image {{ $index + 1 }}">
                             </div>
                         </div>
                         @endforeach

@@ -40,9 +40,13 @@ class CreditReloadController extends Controller
         ]);
 
         if ($request->hasFile('payment_receipt')) {
-            $imagePath = $request->file('payment_receipt')->store('payment_receipts');
-            $creditReload->payment_receipt = $imagePath;
-        }
+    $payment_receipt = $request->file('payment_receipt');
+    $imageName = $payment_receipt->getClientOriginalName();
+    $payment_receipt->move(public_path('payment_receipt'), $imageName);
+
+    $creditReload->payment_receipt = 'payment_receipt/' . $imageName;
+}
+
 
         $creditReload->save();
 

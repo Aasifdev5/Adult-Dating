@@ -65,8 +65,18 @@ Ad Details
                     <h1 class="main-title">{{$ads_details->title}}</h1>
                 </div>
                 <div class="col-md-3 contactdk">
+                    <style>
+                        .button-no-border {
+    border: none;
+    background: none; /* optional: remove background color */
+    padding: 0; /* optional: remove padding */
+}
+
+                    </style>
                     @if(!empty($user_session))
-                    <button class="btn btn-primary btn-phone btn-block mt-1" onclick="getModal()">Programar una cita</button>
+
+<button class="" onclick="getModal()" style="border: none; background: none; padding: 0;"><img src="{{asset('101.png')}}"></button>
+
                     <!-- Modal for Schedule Appointment -->
                     <div class="modal" id="appointmentModal">
                         <div class="modal-dialog">
@@ -114,24 +124,98 @@ Ad Details
                                             </table>
                                         </div>
 
+                                        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+                                        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+                                        <div id='calendar'></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            events: {!! json_encode($appointments) !!}
+        });
+
+        calendar.render();
+    });
+</script>
 
                                     </div>
                                     <form id="appointmentForm" action="{{url('ScheduleAppointment')}}" method="post">
                                         @csrf
+
                                         <input type="hidden" name="ad_id" id="" value="{{$ads_details->id}}">
                                         <input type="hidden" name="user_id" id="" value="{{$user_session->id}}">
                                         <div class="form-group">
                                             <label for="appointmentDate">Seleccione una fecha:</label>
                                             <input type="date" class="form-control" name="date" value="{{ date('Y-m-d') }}" id="appointmentDate" min="{{ date('Y-m-d') }}" required>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="appointmentTime">Seleccione una hora de inicio:</label>
-                                            <input type="time" class="form-control" name="start_time" id="appointmentTime" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="appointmentTime">Seleccione una hora de finalización:</label>
-                                            <input type="time" class="form-control" name="end_time" id="appointmentTime" required>
-                                        </div>
+                             <div class="form-group">
+    <label for="appointmentStartTime">Seleccione una hora de inicio:</label>
+    <input type="datetime-local" class="form-control" name="start_time" id="appointmentStartTime" required>
+    <span id="startTimeError" class="text-danger" style="display: none;">La hora seleccionada ya está reservada. Elija otra.</span>
+</div>
+<div class="form-group">
+    <label for="appointmentEndTime">Seleccione una hora de finalización:</label>
+    <input type="datetime-local" class="form-control" name="end_time" id="appointmentEndTime" required>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var appointments = {!! $appointments->toJson() !!}; // Parse appointments data from PHP to JavaScript
+
+        // Function to check if a given start time exists in appointments
+        function isStartTimeOccupied(selectedTime) {
+            var selectedTimeValue = Date.parse(selectedTime);
+
+            for (var i = 0; i < appointments.length; i++) {
+                var appointmentStartTime = Date.parse(appointments[i].start_time);
+
+                if (appointmentStartTime === selectedTimeValue) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // Function to display an error message if start time is occupied
+        function displayStartTimeError() {
+            var startTimeInput = document.getElementById('appointmentStartTime');
+            var startTimeError = document.getElementById('startTimeError');
+
+            if (isStartTimeOccupied(startTimeInput.value)) {
+                startTimeError.style.display = 'block';
+                return true; // Error occurred
+            } else {
+                startTimeError.style.display = 'none';
+                return false; // No error
+            }
+        }
+
+        // Listen for changes in the start_time input
+        document.getElementById('appointmentStartTime').addEventListener('change', function() {
+            displayStartTimeError();
+        });
+
+        // Form submission handler
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            if (displayStartTimeError()) {
+                event.preventDefault(); // Prevent form submission if start time error occurs
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
                                         <button type="submit" class="btn btn-primary">Cronograma</button>
                                     </form>
                                 </div>
@@ -146,7 +230,7 @@ Ad Details
                         }
                     </script>
                     @else
-                    <button class="btn btn-primary btn-phone btn-block mt-1" data-toggle="modal" data-target="#signup">Schedule Appointment</button>
+                    <button class="button-no-border" data-toggle="modal" style="border: none; background: none; padding: 0;" data-target="#signup"><img src="{{asset('101.png')}}"></button>
                     @endif
                 </div>
             </div>
@@ -241,8 +325,8 @@ Ad Details
                 @foreach ($adsPhotos as $index => $adsPhoto)
                 <div class="mySlider__item slider-item">
                     <div class="brick">
-                        <a href="{{ asset('storage/' . $adsPhoto->path) }}">
-                            <img src="{{ asset('storage/' . $adsPhoto->path) }}" class="v-lazy-image">
+                        <a href="{{ asset($adsPhoto->path) }}">
+                            <img src="{{ asset($adsPhoto->path) }}" class="v-lazy-image">
                         </a>
                     </div>
                 </div>

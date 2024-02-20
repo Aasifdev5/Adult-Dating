@@ -58,19 +58,17 @@ Credits Buy Details
                         <hr>
                         <h6>Total: ${{ $credit->discounted_amount }}</h6>
 
-                        <!-- Dummy Bank Details -->
-                        <div class="mt-3">
-                            <h6>Bank Details</h6>
-                            <p>Bank: Dummy Bank</p>
-                            <p>Account Number: 1234567890</p>
-                            <p>IFSC Code: DUMMY123</p>
-                        </div>
 
-                        <!-- Dummy QR Code -->
-                        <div class="mt-3">
-                            <h6>Scan QR Code</h6>
-                            <img src="path/to/dummy_qr_code.png" alt="QR Code" class="img-fluid">
-                        </div>
+<!-- Dummy QR Code -->
+<div class="mt-3">
+    <h6>Download & Scan QR Code</h6>
+    @if(!empty($qrcode))
+    <a href="{{ asset('qrcode/' . $qrcode->qrcode_path) }}" class="btn btn-block btn-primary" download="qr_code.png">
+        <i class="fa fa-download"></i> <h4>Download QR Code</h4>
+    </a>
+    @endif
+</div>
+
 
                         <!-- Checkout button -->
 

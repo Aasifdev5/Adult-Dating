@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
                 }
 
                 // Check if the current time is within the scheduled time range
-                if ($currentTime == $startTime || $currentTime < $endTime) {
+                if ($currentTime == $startTime) {
                     // Insert into the scheduled_ads table
                     ScheduledAd::create([
                         'ad_id' => $ad->ad_id,

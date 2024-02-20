@@ -39,7 +39,7 @@ Dashboard
                             <div class="media d-flex">
                                 <div class="media-body">
                                     <h5 class="card-title pb-0 mb-1">
-                                        <i aria-hidden="true" class="fa fa-id-card-o mr-2"></i> Verify your age!
+                                        <i aria-hidden="true" class="fa fa-id-card-o mr-2"></i> Verifique su edad!
                                     </h5>
                                     <div class="row small no-gutters mt-3">
                                         <div class="col">

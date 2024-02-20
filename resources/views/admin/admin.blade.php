@@ -73,6 +73,7 @@
                            <p>{{session::get('fail')}}</p>
                         </div>
                         @endif
+                        
                         @csrf
 
                         <div class="mb-3">

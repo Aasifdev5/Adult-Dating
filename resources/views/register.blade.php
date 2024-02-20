@@ -41,19 +41,27 @@ SignUp
             </div>
             @endif
             @csrf
+              <div class="form-row">
+                <div class="form-group col">
+                                <label class=""><i class="fa fa-asterisk"></i>Nombre de perfil</label>
+                                <input name="name" type="text" value="{{old('name')}}" class="form-control" >
+                                <span class="text-danger">@error ('name'){{$message}}@enderror</span>
+                                <!---->
+                            </div>
+                            </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label class="">Correo electrónico</label>
-                    <input name="email" type="email" placeholder="Correo electrónico" autocomplete="off" value="{{old('email')}}" class="form-control">
-                    <span class="text-danger" style="color:red;">@error ('email'){{$message}}@enderror</span>
+                    <input name="email" type="email" placeholder="Correo electrónico" autocomplete="off" value="{{old('email')}}" class="form-control" >
+                    <span class="text-danger">@error ('email'){{$message}}@enderror</span>
 
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label class="">Número de teléfono móvil</label>
-                    <input name="mobile_number" type="text" placeholder="Número de teléfono móvil" autocomplete="off" value="{{old('mobile_number')}}" class="form-control">
-                    <span class="text-danger" style="color:red;">@error ('mobile_number'){{$message}}@enderror</span>
+                    <input name="mobile_number" type="text" placeholder="Número de teléfono móvil" autocomplete="off" value="{{old('mobile_number')}}" class="form-control" >
+                    <span class="text-danger" >@error ('mobile_number'){{$message}}@enderror</span>
 
                 </div>
             </div>
@@ -68,7 +76,7 @@ SignUp
                         <option value="user">Consumidor (Usuario)</option>
 
                     </select>
-                    <span class="text-danger" style="color:red;">@error ('account_type'){{$message}}@enderror</span>
+                    <span class="text-danger" >@error ('account_type'){{$message}}@enderror</span>
 
                 </div>
             </div>

@@ -9,7 +9,7 @@
     --indigo: #6610f2;
     --purple: #6f42c1;
     --pink: #e83e8c;
-    --red: #7b2ba6;
+    --red: #dc3545;
     --orange: #fd7e14;
     --yellow: #ffc107;
     --green: #28a745;
@@ -3955,7 +3955,7 @@
     color: #ba8b00 !important;
   }
   .text-danger {
-    color: #7b2ba6 !important;
+    color: #dc3545 !important;
   }
   a.text-danger:focus,
   a.text-danger:hover {
@@ -5092,7 +5092,7 @@
     margin: 20px;
   }
   .skokka-text {
-    color: #7b2ba6 !important;
+    color: #dc3545 !important;
   }
   .lock-img {
     left: 50%;
@@ -5525,13 +5525,13 @@
   .alert-danger2,
   .alert-error {
     border-color: #f5c6cb;
-    color: #721c24;
+    color: #dc3545;
   }
   .alert-error {
     background-color: #f8d7da;
   }
   .alert-skokka {
-    border-color: #7b2ba6;
+    border-color: #dc3545;
   }
   .animated-icon3 {
     cursor: pointer;
@@ -7264,7 +7264,7 @@
   .badge-danger,
   .badge-success,
   .badge-warning {
-    color: #fff !important;
+    color: #dc3545 !important;
   }
   .blue {
     background-color: #2196f3 !important;
@@ -9451,8 +9451,8 @@
     font-size: 20px;
   }
   .nav-icons i {
-    color: #2b2b2b;
-    margin: 0 13px;
+    color: #7b2ba6 !important;
+    margin: 4 13px;
   }
   .nav-icons-container i:hover {
     opacity: 0.7;

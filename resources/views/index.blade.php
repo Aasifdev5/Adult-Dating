@@ -84,14 +84,39 @@ Home
                                 <span class="notranslate">Cochabamba</span>
                             </button>
                         </a>
-                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Sucre'; ?>" title="Call Girls Pune">
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Pando'; ?>" title="Call Girls Pune">
                             <button class="button-pill">
-                                <span class="notranslate">Sucre</span>
+                                <span class="notranslate">Pando</span>
                             </button>
                         </a>
                         <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/El Alto'; ?>" title="Call Girls Mumbai">
                             <button class="button-pill">
                                 <span class="notranslate">El Alto</span>
+                            </button>
+                        </a>
+                         <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Tarija'; ?>" title="Call Girls Hyderabad">
+                            <button class="button-pill">
+                                <span class="notranslate">Tarija</span>
+                            </button>
+                        </a>
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Beni'; ?>" title="Call Girls Delhi">
+                            <button class="button-pill">
+                                <span class="notranslate">Beni</span>
+                            </button>
+                        </a>
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Oruro'; ?>" title="Call Girls Pune">
+                            <button class="button-pill">
+                                <span class="notranslate">Oruro</span>
+                            </button>
+                        </a>
+                        <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Potosi'; ?>" title="Call Girls Mumbai">
+                            <button class="button-pill">
+                                <span class="notranslate">Potosi</span>
+                            </button>
+                        </a>
+                         <a href="{{url('list/')}}<?php echo '/' . $row->category_id.'/Chuquisaca'; ?>" title="Call Girls Mumbai">
+                            <button class="button-pill">
+                                <span class="notranslate">Chuquisaca</span>
                             </button>
                         </a>
                     </div>
@@ -105,10 +130,14 @@ Home
             <div class="container mt-5">
                 <div class="row">
                     @foreach($ads as $ad)
+                    @php
+                                                                    $adsPhoto = App\Models\Image::where('ad_id', $ad->id)->first();
+                                                                    $user = App\Models\User::where('id', $ad->user_id)->first();
+                                                                @endphp
                     <div class="col-sm-3 text-center">
-                        <img src="{{ asset('avatar.jpg') }}" style="height: 180px; width: 220px;border-radius: 50%!important;" alt="Profile Image" class="profile-image rounded-circle">
+                        <img src="{{ asset($adsPhoto->path) }}" style="height: 180px; width: 220px;border-radius: 50%!important;" alt="Profile Image" class="profile-image rounded-circle">
                         <p class="mb-1 text-center">{{ $ad->title }}</p>
-                        <a href="{{url('ad_details/')}}<?php echo '/' . $ad->id; ?>" target="_self" data-pck="272144">   <h3 class="mb-3 text-center">{{$ad->name}}</h3></a>
+                        <a href="{{url('ad_details/')}}<?php echo '/' . $ad->id; ?>" target="_self" data-pck="272144">   <h3 class="mb-3 text-center">{{$user->name}}</h3></a>
                         <p class="mb-3 text-center">{{$ad->age}} Years</p>
                         <p class="text-muted text-center"><i class="icon icon-map-pin mr-1"></i>{{ $ad->city }}</p>
                     </div>

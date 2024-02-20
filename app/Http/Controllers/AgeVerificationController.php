@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\VerificationDocument;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Page;
 class AgeVerificationController extends Controller
 {
     public function showVerificationForm()
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            return view('verification_form',compact('user_session'));
+             $pages = Page::all();
+            return view('verification_form',compact('user_session', 'pages'));
         }
     }
 

@@ -16,6 +16,7 @@ use App\Models\CourseCategory;
 use App\Models\CreditReloadPromotion;
 use App\Models\Image;
 use App\Models\Order;
+use App\Models\BankDetails;
 use App\Models\Page;
 use App\Models\PaidTopAd;
 use App\Models\PasswordReset;
@@ -47,6 +48,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
@@ -332,6 +334,78 @@ class UserController extends AppBaseController
 
 
 
+
+// public function sendMessageToFacebook()
+// {
+//     $response = Http::withHeaders([
+//         'Authorization' => 'Bearer EAAM6vGg9kGoBO1cdP81yr1AEN5OQbRYG964jpoChcKefZAHHmn7C2xNXXepR314zwM7ovtdfhX3HVKVMC8V9TZCNglPTS6phykuZC0rFsIFSW0DoZAYy623mbfQCgxDZA6Kz80nHifq9zf74RkXZBWnLRbMxyt0gbuoiZA9VANsZB8dkaaPsQClpNvhrd622qJy0aNE7rPWTSkl3G7A3RWrne8pzwlFMxASPZC9YZD',
+//         'Content-Type' => 'application/json',
+//     ])->post('https://graph.facebook.com/v18.0/208828725650930/messages', [
+//         'messaging_type' => 'UPDATE',
+//         'recipient' => [
+//             'phone_number' => '918817016704'
+//         ],
+//         'message' => [
+//             'text' => 'Your message here', // Include the text parameter
+//             'attachment' => [
+//                 'type' => 'template',
+//                 'payload' => [
+//                     'template_type' => 'generic',
+//                     'elements' => [
+//                         [
+//                             'title' => 'Updated Title',
+//                             'image_url' => 'https://example.com/image.jpg',
+//                             'subtitle' => 'Updated Subtitle',
+//                             'default_action' => [
+//                                 'type' => 'web_url',
+//                                 'url' => 'https://example.com',
+//                                 'webview_height_ratio' => 'tall',
+//                             ],
+//                             'buttons' => [
+//                                 [
+//                                     'type' => 'web_url',
+//                                     'url' => 'https://example.com',
+//                                     'title' => 'Updated Button Title',
+//                                 ],
+//                             ],
+//                         ],
+//                     ],
+//                 ],
+//             ],
+//         ],
+//         'messaging_product' => 'whatsapp', // Include messaging_product parameter
+//         'to' => '918817016704' // Include recipient's phone number
+//     ]);
+
+//     return response()->json([
+//         'status_code' => $response->status(),
+//         'response_body' => $response->json(),
+//     ]);
+// }
+public function sendMessageToFacebook()
+{
+    $response = Http::withHeaders([
+        'Authorization' => 'Bearer EAAM6vGg9kGoBO1cdP81yr1AEN5OQbRYG964jpoChcKefZAHHmn7C2xNXXepR314zwM7ovtdfhX3HVKVMC8V9TZCNglPTS6phykuZC0rFsIFSW0DoZAYy623mbfQCgxDZA6Kz80nHifq9zf74RkXZBWnLRbMxyt0gbuoiZA9VANsZB8dkaaPsQClpNvhrd622qJy0aNE7rPWTSkl3G7A3RWrne8pzwlFMxASPZC9YZD',
+        'Content-Type' => 'application/json',
+    ])->post('https://graph.facebook.com/v18.0/208828725650930/messages', [
+        'messaging_product' => 'whatsapp',
+        'to' => '918817016704',
+        'type' => 'template',
+        'template' => [
+            'name' => 'hello_world',
+            'language' => [
+                'code' => 'en_US'
+            ]
+        ]
+    ]);
+
+    return response()->json([
+        'status_code' => $response->status(),
+        'response_body' => $response->json(),
+    ]);
+}
+
+
     public function index()
     {
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
@@ -386,28 +460,31 @@ class UserController extends AppBaseController
     {
         $user = new User();
         $request->validate([
-
+'name' => 'required',
             'email' => 'required|unique:users',
             'password' => ['required', 'string', 'min:8', 'max:30'],
             'account_type' => 'required',
             'mobile_number' => 'required'
         ]);
+        $mobileNumber = $request->mobile_number;
+$prefixedMobileNumber = "591" . $mobileNumber;
+
         // Create a new user instance
         $user = User::create([
-
+'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'account_type' => $request->account_type,
-            'mobile_number' => $request->mobile_number,
+            'mobile_number' =>$prefixedMobileNumber,
             'ip_address' => getIp(),
         ]);
 
         // Send email verification notification
         $user->notify(new VerifyEmailNotification($user));
 
-
+$pages = Page::all();
         if ($user) {
-            return view('feedback', compact('user'));
+            return view('feedback', compact('user', 'pages'));
         } else {
             return back()->with('fail', 'failed');
         }
@@ -804,6 +881,14 @@ class UserController extends AppBaseController
             return view('finish', compact('user_session', 'pages'));
         }
     }
+    public function thanks()
+    {
+        if (Session::has('LoggedIn')) {
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $pages = Page::all();
+            return view('thanks', compact('user_session', 'pages'));
+        }
+    }
     public function ad_details($id)
     {
         $ads_details = PostingAds::where('id', $id)->first();
@@ -811,7 +896,8 @@ class UserController extends AppBaseController
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $service_time = ServiceSchedule::where('user_id', $ads_details->user_id)->get();
         $pages = Page::all();
-        return view('ad_details', compact('ads_details', 'id', 'user_session', 'service_time', 'pages'));
+        $appointments = Appointment::all(); // Fetch all appointments from the database
+        return view('ad_details', compact('ads_details', 'id', 'user_session', 'service_time', 'pages','appointments'));
     }
     public function post_list()
     {
@@ -855,8 +941,7 @@ class UserController extends AppBaseController
     public function Ad_insert(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'availability_hours' => 'required',
+           
             'title' => 'required',
             'description' => 'required'
         ]);
@@ -889,7 +974,7 @@ class UserController extends AppBaseController
         session()->put('country', $country);
         session()->put('state', $state);
         session()->put('city', $city);
-        session()->put('name', $request->name);
+       
         session()->put('address', $request->address);
         session()->put('postal_code', $request->postal_code);
         session()->put('place', $request->place);
@@ -941,7 +1026,7 @@ class UserController extends AppBaseController
         }
 
         session()->put('hourly_price', $request->hourly_price);
-        session()->put('availability_hours', $request->availability_hours);
+        
         session()->put('email', $request->email);
         session()->put('telephone', $request->telephone);
         // dd($request->all());
@@ -958,7 +1043,7 @@ class UserController extends AppBaseController
             $ads->state = session()->get('state');
             $ads->city = session()->get('city');
             $ads->availability = session()->get('availability_hours');
-            $ads->name = session()->get('name');
+           
             $ads->category = session()->get('category');
             $ads->user_id = $request->user_id;
             $ads->address = session()->get('address');
@@ -987,13 +1072,16 @@ class UserController extends AppBaseController
             // dd($ads->id);
             // Check if 'ads_photos' is present in the request
             if ($request->hasFile('ads_photos')) {
-                // Move each file in the 'ads_photos' array to the 'ads_photos' directory
                 foreach ($request->file('ads_photos') as $adsPhoto) {
-                    $adsPhotoPath = $adsPhoto->store('ads_photos', 'public');
+    // Move each file to the 'ads_photos' directory
+    $imageName = $adsPhoto->getClientOriginalName();
+    $adsPhoto->move(public_path('ads_photos'), $imageName);
 
-                    // Save the ads_photos path in the database
-                    Image::create(['path' => $adsPhotoPath, 'user_id' => $request->user_id, 'ad_id' => $ads->id]);
-                }
+    // Save the ads_photos path in the database
+    $adsPhotoPath = 'ads_photos/' . $imageName; // Adjust this based on your directory structure
+    Image::create(['path' => $adsPhotoPath, 'user_id' => $request->user_id, 'ad_id' => $ads->id]);
+}
+
             }
         }
 
@@ -1002,8 +1090,14 @@ class UserController extends AppBaseController
     public function ScheduleAppointment(Request $request)
     {
         // dd($request->all());
+        $request->validate([
+            'start_time'=>'required'
+            ]);
         $profile_id = PostingAds::where('id', $request->ad_id)->first();
         $profile_id = $profile_id->user_id;
+        $advertiser_mobile=User::where('id',$profile_id)->first();
+        
+         
         $appointment = new Appointment();
         $appointment->date = $request->input("date");
         $appointment->start_time = $request->input("start_time");
@@ -1012,8 +1106,31 @@ class UserController extends AppBaseController
         $appointment->profile_id = $profile_id;
         $appointment->ad_id = $request->ad_id;
         $data = $appointment->save();
+        //  dd($appointment);
         if ($data) {
-            return back()->with('success', 'Appointment Scheduled Successfully');
+            $pages = Page::all();
+            if(!empty($advertiser_mobile->mobile_number)){
+            $response = Http::withHeaders([
+        'Authorization' => 'Bearer EAAM6vGg9kGoBO1cdP81yr1AEN5OQbRYG964jpoChcKefZAHHmn7C2xNXXepR314zwM7ovtdfhX3HVKVMC8V9TZCNglPTS6phykuZC0rFsIFSW0DoZAYy623mbfQCgxDZA6Kz80nHifq9zf74RkXZBWnLRbMxyt0gbuoiZA9VANsZB8dkaaPsQClpNvhrd622qJy0aNE7rPWTSkl3G7A3RWrne8pzwlFMxASPZC9YZD',
+        'Content-Type' => 'application/json',
+    ])->post('https://graph.facebook.com/v18.0/208828725650930/messages', [
+        'messaging_product' => 'whatsapp',
+        'from' => '919669557098',
+        'to' => $advertiser_mobile->mobile_number,
+        'type' => 'template',
+        'template' => [
+            'name' => 'hello_world',
+            'language' => [
+                'code' => 'en_US'
+            ]
+        ]
+    ]);
+   
+    $advertiser=$advertiser_mobile->mobile_number;
+    return view('thanks', compact('advertiser', 'pages','appointment'));
+        }
+            
+            
         } else {
             return back()->with('fail', 'Error In scheduling appointment. Please try again later!');
         }
@@ -1042,7 +1159,7 @@ class UserController extends AppBaseController
     }
     public function pay_credit(Request $request, $id)
     {
-        // dd($request->all());
+        
         $top_ad_details = Ad::find($id);
         $price = str_replace(array("(", ")", "credits"), "", $top_ad_details->price);
 
@@ -1051,52 +1168,52 @@ class UserController extends AppBaseController
             return back()->with('fail', 'Your selected package credits more than your Credits balance');
         }
         $user_balance = $user->balance - $price;
-        if ($request->schedule == "00:00 AM - 2:00 AM") {
+        if ($request->schedule == "00:00-2:00") {
             $start_time = "00:00";
             $end_time = "2:00";
         }
-        if ($request->schedule == "2:00 AM - 4:00 AM") {
+        if ($request->schedule == "2:00- 4:00") {
             $start_time = "2:00";
             $end_time = "4:00";
         }
-        if ($request->schedule == "4:00 AM - 6:00 AM") {
+        if ($request->schedule == "4:00-6:00") {
             $start_time = "4:00";
             $end_time = "6:00";
         }
-        if ($request->schedule == "6:00 AM - 8:00 AM") {
+        if ($request->schedule == "6:00-8:00") {
             $start_time = "6:00";
             $end_time = "8:00";
         }
-        if ($request->schedule == "08:00 AM - 10:00 AM") {
+        if ($request->schedule == "08:00-10:00") {
             $start_time = "8:00";
             $end_time = "10:00";
         }
-        if ($request->schedule == "10:00 AM - 12:00 PM") {
+        if ($request->schedule == "10:00-12:00") {
             $start_time = "10:00";
             $end_time = "12:00";
         }
 
-        if ($request->schedule == "12:00 - 14:00") {
+        if ($request->schedule == "12:00-14:00") {
             $start_time = "12:00";
             $end_time = "14:00";
         }
-        if ($request->schedule == "14:00 - 16:00") {
+        if ($request->schedule == "14:00-16:00") {
             $start_time = "14:00";
             $end_time = "16:00";
         }
-        if ($request->schedule == "16:00 - 18:00") {
+        if ($request->schedule == "16:00-18:00") {
             $start_time = "16:00";
             $end_time = "18:00";
         }
-        if ($request->schedule == "18:00 - 20:00") {
+        if ($request->schedule == "18:00-20:00") {
             $start_time = "18:00";
             $end_time = "20:00";
         }
-        if ($request->schedule == "20:00 - 22:00") {
+        if ($request->schedule == "20:00-22:00") {
             $start_time = "20:00";
             $end_time = "22:00";
         }
-        if ($request->schedule == "22:00 - 00:00") {
+        if ($request->schedule == "22:00-00:00") {
             $start_time = "22:00";
             $end_time = "00:00";
         }
@@ -1122,6 +1239,7 @@ class UserController extends AppBaseController
 
         // Save the new record to the database
         $topAdBalance->save();
+        // dd($topAdBalance);
         return redirect('finish');
     }
     public function PurchaseAnalysis($id)
@@ -1150,7 +1268,8 @@ class UserController extends AppBaseController
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 $pages=Page::all();
             $credit =  CreditReloadPromotion::find($id);
-            return view('credit_buy', compact('user_session', 'credit','pages'));
+             $qrcode =  BankDetails::orderby('id','desc')->first();
+            return view('credit_buy', compact('user_session', 'credit','pages','qrcode'));
         }
     }
     public function ActivityOrder()
@@ -1280,6 +1399,7 @@ $pages=Page::all();
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
+            'mobile_number'=>'required',
             'email' => 'required|email|max:255',
             'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'user_id' => 'required|exists:users,id',
@@ -1300,10 +1420,13 @@ $pages=Page::all();
             $user = User::find($request->user_id);
             $profile = $user->profile_photo;
         }
+$mobileNumber = $request->mobile_number;
+$prefixedMobileNumber = "591" . $mobileNumber;
 
         // Update user data in the database
         $userUpdate = User::where('id', $request->user_id)->update([
             'name' => $request->name,
+             'mobile_number' => $prefixedMobileNumber,
             'email' => $request->email,
             'profile_photo' => $profile,
         ]);

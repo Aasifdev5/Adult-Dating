@@ -21,6 +21,7 @@
         "doctrine/dbal": "^3.1",
         "embed/embed": "^3.4",
         "firebase/php-jwt": "^5.4",
+        "fullcalendar/fullcalendar": "^3.10",
         "guzzlehttp/guzzle": "^7.2",
         "infyomlabs/coreui-templates": "dev-develop",
         "infyomlabs/laravel-generator": "^5.0",
@@ -59,7 +60,12 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "robloach/component-installer": true,
+            "oomphinc/composer-installers-extender": true
+        }
     },
     "extra": {
         "laravel": {

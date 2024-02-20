@@ -24,12 +24,15 @@ Age Verification
             @csrf
             <input type="hidden" name="user_id" value="{{$user_session->id}}">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Nombre</label>
                 <input type="text" class="form-control" name="name" value="{{ old('name', $user_session->name) }}">
             </div>
-
+<div class="form-group">
+                <label for="email">Número de teléfono móvil</label>
+                <input type="text" class="form-control" name="mobile_number" value="{{ old('mobile_number', $user_session->mobile_number) }}">
+            </div>
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">Correo electrónico</label>
                 <input type="email" class="form-control" name="email" value="{{ old('email', $user_session->email) }}">
             </div>
 
@@ -77,7 +80,7 @@ Age Verification
 
             <!-- Add other fields as needed -->
 
-            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <button type="submit" class="btn btn-primary">Actualización del perfil</button>
         </form>
     </div>
 

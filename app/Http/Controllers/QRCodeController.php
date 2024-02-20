@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Response;
 use App\Models\User;
+use App\Models\BankDetails;
 use Illuminate\Support\Facades\Session;
 
 
@@ -15,22 +16,73 @@ class QRCodeController extends Controller
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            return view('admin.qrcode.index', compact('user_session'));
+            $qrcode=BankDetails::all();
+            return view('admin.qrcode.index', compact('user_session','qrcode'));
         }
     }
 
-    public function generateQrCode(Request $request)
-    {
-        if (Session::has('LoggedIn')) {
-            $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $qrCodes = [];
-            $data = $request->input('data', 'Default QR Code Data');
-            $qrCodes['simple']        = QrCode::size(150)->generate($data);
+   public function generateQrCode(Request $request)
+{
+   
+        // Validate the form data
+        $request->validate([
+            'qrcode' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
+        // Create a new BankDetails instance
+        $qrcode = new BankDetails();
 
-            return view('admin.qrcode.generate', $qrCodes,compact('user_session','data'));
+        // Check if a new QR code is provided
+        if ($request->hasFile('qrcode')) {
+            $uploadedFile = $request->file('qrcode');
+            $imageName = $uploadedFile->getClientOriginalName();
+
+            // Move the uploaded file to the 'qrcodes' directory in the public path
+            $uploadedFile->move(public_path('qrcode'), $imageName);
+
+            // Update the qrcode_path variable in the BankDetails instance
+            $qrcode->qrcode_path = $imageName;
+        } else {
+            return redirect()->back()->with('fail', 'No QR code file provided.');
         }
+
+        // Save the BankDetails instance
+        $qrcode->save();
+
+       return back()->with('success','Uploaded Successfully');
+}
+
+public function destroy($id)
+{
+    // Find the user by ID
+    $user = BankDetails::find($id);
+
+    if (!$user) {
+        return redirect()->back()->with('fail', 'User not found.');
     }
+
+    // Get the QR code filename
+    $qrcodeFilename = $user->qrcode_path;
+
+    // Check if the QR code file exists
+    $filePath = public_path('qrcode/' . $qrcodeFilename);
+    if ($qrcodeFilename && file_exists($filePath)) {
+        // Delete the file using the file_exists function and unlink
+        unlink($filePath);
+
+        // Update the user record to remove the QR code filename
+        $user->update([
+            'qrcode_path' => null,
+        ]);
+
+        // Delete the user record
+        $user->delete();
+
+        return redirect()->back()->with('success', 'QR code file and user record deleted successfully.');
+    }
+
+    return redirect()->back()->with('fail', 'QR code file not found.');
+}
 
 
     public function downloadQrCode($data)

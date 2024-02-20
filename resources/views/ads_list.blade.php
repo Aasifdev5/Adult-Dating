@@ -13,7 +13,7 @@
                             <span class="">
                                 <span class="icon-map-pin mr-2"></span>
 
-                                Search by city, Category...
+                                Buscar por ciudad, Categoría...
 
                             </span>
                             <i class="fas fa-search text-clipped d-flex justify-content-end"></i>
@@ -31,7 +31,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="searchModalLabel">Search Modal</h5>
+                    <h5 class="modal-title" id="searchModalLabel">Buscar</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -55,7 +55,7 @@
                                         <div class="category-select">
                                             <select name="category" class="browser-default custom-select"
                                                 autocomplete="off">
-                                                <option value="">Please Category</option>
+                                                <option value="">Por favor categoría</option>
                                                 @foreach ($category as $row)
                                                     <option value="{{ $row->category_id }}">{{ $row->category_id }}</option>
                                                 @endforeach
@@ -66,7 +66,7 @@
                                         <div class="region-select">
                                             @if ($countries->isNotEmpty())
                                                 <select class="form-control select2" id="countrySelect" name="country">
-                                                    <option value="">Please Select Country</option>
+                                                    <option value="">Por favor seleccione país</option>
                                                     @foreach ($countries as $country)
                                                         @php
                                                             $countryData = json_decode($country['name'], true);
@@ -88,7 +88,7 @@
 
                                             <select class="browser-default custom-select select2" id="states"
                                                 name="state">
-                                                <option value="">Please Select State</option>
+                                                <option value="">Por favor seleccione estado</option>
                                                 @foreach ($states as $state)
                                                     @php
                                                         $stateData = json_decode($state['name'], true);
@@ -102,7 +102,7 @@
                                     <div class="col-6 form-group">
 
                                         <select class="form-control select2" id="city" name="city">
-                                            <option value="">Please Select City</option>
+                                            <option value="">Por favor seleccione ciudad</option>
                                             @foreach ($cities as $city)
                                                 @php
                                                     $cityData = json_decode($city['name'], true);
@@ -123,7 +123,7 @@
                 <div class="modal-footer filters position-sticky fixed-bottom bg-white" style="padding-right: 10px;">
                     <button type="button" class="btn btn-link skokka-text col"> Delete all </button>
                     <button form="vue-search" type="submit" class="btn btn-primary col">
-                        <i class="fa fa-search mr-1"></i> Search
+                        <i class="fa fa-search mr-1"></i> Buscar
                     </button>
                 </div>
             </div>
@@ -164,7 +164,7 @@
                     <h1 class="item-title d-inline text-dark"></h1>
                 </div>
             </div>
-            <div class="title-story small font-weight-bold pb-2">SUPERTOP STORIES</div>
+            <div class="title-story small font-weight-bold pb-2">SUPER HISTORIAS</div>
 
             <div class="supertop-stories-container">
                 <div class="skokka-stories-list">
@@ -186,7 +186,7 @@
                                         data-target="#storyModal{{ $index }}">
                                         <picture class="stories_thumb-media">
                                             @if ($tadsPhoto)
-                                                <img src="{{ asset('storage/' . $tadsPhoto->path) }}"
+                                                <img src="{{asset($tadsPhoto->path) }}"
                                                     alt="{{ $row->title }}" draggable="false">
                                             @else
                                                 <!-- Provide a default image or handle the case where $tadsPhoto is null -->
@@ -248,7 +248,7 @@
                                                     @foreach ($tadsPhotos as $index => $topadsPhoto)
                                                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                                             @if ($topadsPhoto)
-                                                                <img src="{{ asset('storage/' . $topadsPhoto->path) }}"
+                                                                <img src="{{ asset($topadsPhoto->path) }}"
                                                                     class="d-block w-100"
                                                                     alt="Image {{ $index + 1 }}">
                                                             @else
@@ -279,7 +279,7 @@
                                         <div class="modal-footer justify-content-center border-0 w-100">
 
                                             <a href="{{ url('ad_details/') }}<?php echo '/' . $row->ad_id; ?>" target="_self"
-                                                class="btn btn-primary">Find out more</a>
+                                                class="btn btn-primary">Saber más</a>
                                         </div>
                                     </div>
                                 </div>
@@ -333,7 +333,7 @@
                             @foreach ($adsPhotos as $index => $adsPhoto)
                                 <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                     <div class="item-image-supertop">
-                                        <img src="{{ asset('storage/' . $adsPhoto->path) }}"
+                                        <img src="{{ asset($adsPhoto->path) }}"
                                             alt="Image {{ $index + 1 }}">
                                     </div>
                                 </div>

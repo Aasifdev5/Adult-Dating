@@ -9,7 +9,7 @@ class PaidTopAd extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['top_ad_id', 'user_id', 'amount', 'ad_id','schedule'];
+    protected $fillable = ['top_ad_id', 'user_id', 'amount', 'ad_id','start_time','end_time'];
 
     public function topAd()
     {

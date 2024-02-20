@@ -11,8 +11,6 @@
 
     <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" crossorigin="">
 
-    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
-    <link rel="preload" as="script" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js">
     <link rel="preload" href="{{asset('css/app.css')}}" as="style">
 
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('icon-removebg-preview.png')}}">
@@ -500,7 +498,7 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel"><img  src="{{asset('icon-removebg-preview.png')}}">Your Private Area</h5>
+                                            <h5 class="modal-title" id="staticBackdropLabel"><img  src="{{asset('icon-removebg-preview.png')}}">Tu Área Privada</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -547,18 +545,19 @@
                                 </button>
 
                                 <div class="collapse navbar-collapse" id="navbarNav">
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/">Hogar</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Chicas de compañía')}}">Escort femenina</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Escorts masculinos')}}">Escorts masculinos</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url('ads_list/Transexuales')}}">Transexuales</a>
+                                    <ul class="navbar-nav">
+                                       
+                                     
+                                        <li class="nav-item" style="margin-right:15px;margin-top:13px">
+                                            
+                                <div class="dropdown sign">
+                                    <a href="{{url('Userlogin')}}"  class="signup">
+                                        <i class="fas fa-user-tag"></i>
+                                        
+                                    </a>
+                               
+                            </div>
+                                            
                                         </li>
 
                                         <li class="nav-item  d-lg-block">
@@ -682,7 +681,7 @@
                                 </li>
                                 @foreach ($pages as $page)
 
-                                @if ($page->page_title == "About Us" || $page->page_title == "Contact Us")
+                                @if ($page->page_title == "Sobre nosotros" || $page->page_title == "Contacta con nosotros")
                                     <li>
                                         <a href="{{ url('page/' . $page->page_slug) }}">
                                             <span>{{ $page->page_title }}</span>
@@ -704,7 +703,7 @@
                                 </li>
                                 @foreach ($pages as $page)
 
-                                @if ($page->page_title == "Terms Of Use" || $page->page_title == "Privacy Policy")
+                                @if ($page->page_title == "Términos y condiciones" || $page->page_title == "política de privacidad")
                                     <li>
                                         <a href="{{ url('page/' . $page->page_slug) }}">
                                             <span>{{ $page->page_title }}</span>

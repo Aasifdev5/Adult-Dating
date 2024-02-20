@@ -80,7 +80,9 @@ Credit Reload
                                         <td>{{ $creditReload->amount }}</td>
                                         <td>
                                             @if ($creditReload->payment_receipt)
-                                            <img src="{{ asset('uploads/payment_receipts/' . $creditReload->payment_receipt) }}" alt="Payment Receipt" style="max-width: 100px;">
+                                          <a href="{{ asset($creditReload->payment_receipt) }}" target="_blank">
+    <img src="{{ asset($creditReload->payment_receipt) }}" alt="Payment Receipt" style="max-width: 100px;">
+</a>
 
                                             @else
                                             No receipt uploaded

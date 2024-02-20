@@ -89,7 +89,7 @@
                                                                                        ->get() as $index => $adsPhoto)
                                                                                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
                                                                                            <div class="item-image-supertop">
-                                                                                               <img src="{{ asset('storage/' . $adsPhoto->path) }}"
+                                                                                               <img src="{{ asset($adsPhoto->path) }}"
                                                                                                    alt="Image {{ $index + 1 }}"
                                                                                                    class="rounded-circle" width="120" height="100">
                                                                                            </div>

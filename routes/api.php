@@ -11,7 +11,7 @@ use App\Http\Controllers\API\UserAPIController;
 use Illuminate\Broadcasting\BroadcastController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// routes/web.php
+
+
+
+Route::post('/send-message-to-facebook', [UserController::class, 'sendMessageToFacebook'])->name('sendMessageToFacebook');
 
 // User Login API
 Route::post('/login', [AuthAPIController::class, 'login']);

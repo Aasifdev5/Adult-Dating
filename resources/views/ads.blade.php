@@ -9,10 +9,10 @@ Ads
         <tr class="table-secondary">
             <thead>
                 <th class="text-center">#</th>
-                <th>City</th>
-                <th>Category</th>
-                <th>Service</th>
-                <th>Hourly Price</th>
+                <th>Ciudad</th>
+                <th>Categoría</th>
+                <th>Servicio</th>
+                <th>Precio por hora</th>
 
             </thead>
             <tbody>

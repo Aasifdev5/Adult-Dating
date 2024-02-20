@@ -328,6 +328,8 @@
                                         data-feather="book"></i><span>Banner</span></a></li>
                             <li><a class="sidebar-header" href="{{ url('admin/ads') }}"><i
                                         data-feather="book"></i><span>Top Ads</span></a></li>
+                                         <li><a class="sidebar-header" href="{{ url('admin/paid_ads') }}"><i
+                                        data-feather="book"></i><span>Paid Top Ads List</span></a></li>
                                         <li><a class="sidebar-header" href="{{ url('admin/ads_list') }}"><i
                                             data-feather="book"></i><span> Ads List</span></a></li>
                             <li><a class="sidebar-header" href="#"><i

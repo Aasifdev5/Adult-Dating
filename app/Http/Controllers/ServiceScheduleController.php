@@ -8,6 +8,7 @@ use App\Models\ServiceSchedule;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use App\Models\Page;
 
 class ServiceScheduleController extends Controller
 {
@@ -16,7 +17,8 @@ class ServiceScheduleController extends Controller
         if (Session::has('LoggedIn')) {
             $user_session = User::find(Session::get('LoggedIn'));
             $schedules = ServiceSchedule::where('user_id',Session::get('LoggedIn'))->get();
-            return view('service_schedule.index', compact('schedules', 'user_session'));
+             $pages = Page::all();
+            return view('service_schedule.index', compact('schedules', 'user_session', 'pages'));
         }
     }
 
@@ -24,7 +26,8 @@ class ServiceScheduleController extends Controller
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::find(Session::get('LoggedIn'));
-            return view('service_schedule.create', compact('user_session'));
+             $pages = Page::all();
+            return view('service_schedule.create', compact('user_session', 'pages'));
         }
     }
 
@@ -50,7 +53,8 @@ class ServiceScheduleController extends Controller
     {
         if (Session::has('LoggedIn')) {
             $user_session = User::find(Session::get('LoggedIn'));
-            return view('service_schedule.edit', compact('serviceSchedule', 'user_session'));
+             $pages = Page::all();
+            return view('service_schedule.edit', compact('serviceSchedule', 'user_session', 'pages'));
         }
     }
 

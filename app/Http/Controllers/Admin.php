@@ -19,6 +19,7 @@ use App\Models\PaymentGateway;
 use App\Models\PostingAds;
 use App\Models\Settings;
 use App\Models\Task;
+use App\Models\PaidTopAd;
 use App\Models\Transactions;
 use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
@@ -508,7 +509,7 @@ class Admin extends Controller
             $total_sale = Payment::all();
             $total_earning = CreditReload::sum('amount');
             $ads =PostingAds::all();
-            $usersData = DB::table("users")->where('is_super_admin', '0')->orderby('id', 'desc')->get();
+            $usersData = DB::table("users")->where('is_super_admin', '0')->orderby('id', 'desc')->limit('5')->get();
             $total_users = User::where('is_super_admin', 0)
             ->whereNot('account_type', 'admin')
             ->get();
@@ -536,6 +537,15 @@ class Admin extends Controller
             return view('admin/ads_list', compact('user_session', 'ads'));
         }
     }
+    public function paid_ads(Request $request)
+    {
+        if (Session::has('LoggedIn')) {
+            $ads =PaidTopAd::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+
+            return view('admin/paid_ads', compact('user_session', 'ads'));
+        }
+    }
     public function ads_destroy($id)
     {
         $promotion = PostingAds::find($id);
@@ -544,6 +554,15 @@ class Admin extends Controller
 
         // Optionally, you may want to return a response or redirect after the delete
         return redirect('admin/ads_list')->with('success', 'Deleted successfully');
+    }
+    public function paid_ads_destroy($id)
+    {
+        $promotion = PaidTopAd::find($id);
+        $promotion->delete();
+
+
+        // Optionally, you may want to return a response or redirect after the delete
+        return redirect('admin/paid_ads')->with('success', 'Deleted successfully');
     }
     public function country(Request $request)
     {

@@ -56,11 +56,11 @@ Login
                     <label class="control-label">Contraseña</label>
                     <input name="password" type="password" placeholder="Contraseña"  value="{{old('password')}}" autocomplete="new-password" class="form-control" id="password-input">
         <span class="fa fa-fw field-icon toggle-password fa-eye-slash" onclick="togglePassword()"></span>
-        <span class="text-danger" style="color:red;">@error('password'){{$message}}@enderror</span>
+        <span class="text-danger">@error('password'){{$message}}@enderror</span>
                 </div>
             </div>
 
-            <!---->
+           
             <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Iniciar sesión</button>
         </form>
         <hr>

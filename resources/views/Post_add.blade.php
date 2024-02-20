@@ -178,11 +178,7 @@ POST AD
                     </h5>
                     <div class="panelar">
                         <div class="form-row">
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                <label class=""><i class="fa fa-asterisk"></i>Nombre de perfil</label>
-                                <input name="name" type="text" class="form-control">
-                                <!---->
-                            </div>
+                          
                             <div class="col-md-4 col-xs-12 form-group">
                                 <label class="">
                                     <i class="fa fa-asterisk"></i>
@@ -570,14 +566,8 @@ POST AD
                     </h5>
 
                     <div class="panelar">
-                        <div class="col-sm-12">
-
-                            <label for="availability_hours">Availability Hours:</label>
-                            <input type="text" name="availability_hours" class="form-control" value="{{ old('availability_hours') }}" placeholder="Enter available hours (comma-separated)">
-
-
-                        </div>
-                        <br>
+                       
+                        
                         <h6 class="mb-4">
                             <strong>¿Cómo te gustaría ser contactado?</strong>
                         </h6>

@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\SocialAuthController;
@@ -12,7 +12,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FrontCMSController;
-use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\EmailAppController;
 use App\Http\Controllers\MailTemplateController;
@@ -78,6 +78,7 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('update_profile', [UserController::class, 'update_profile']);
     Route::get('/Payment', [UserController::class, 'Payment'])->name('Payment')->middleware('isLoggedIn');
     Route::get('/finish', [UserController::class, 'finish'])->name('finish')->middleware('isLoggedIn');
+    Route::get('/thanks', [UserController::class, 'thanks'])->name('thanks')->middleware('isLoggedIn');
     Route::get('/credits', [UserController::class, 'credits'])->name('credits')->middleware('isLoggedIn');
     Route::get('/credit_buy_details/{id}', [UserController::class, 'credit_buy_details'])->name('credit_buy_details')->middleware('isLoggedIn');
     Route::post('pay_credit/{id}', [UserController::class, 'pay_credit'])->name('pay_credit')->middleware('isLoggedIn');
@@ -151,6 +152,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('ads', AdController::class)->names('admin.ads');
 
         Route::get('/qrcode', [QRCodeController::class, 'index'])->name('qrcode.index');
+        Route::get('/destroy_qrcode/{id}', [QRCodeController::class, 'destroy'])->name('destroy');
         Route::post('/qrcode/generate', [QRCodeController::class, 'generateQrCode'])->name('qrcode.generate');
         Route::get('/qrcode/download/{data}', [QRCodeController::class, 'downloadQrCode'])->name('qrcode.download');
         Route::get('credit_reload', [CreditReloadController::class, 'index'])->name('credit_reloads.index');
@@ -175,6 +177,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('login', [Admin::class, 'admin'])->name('admin')->middleware('AdminAlreadyLoggedIn');
         Route::get('ads_list', [Admin::class, 'ads_list'])->name('ads_list')->middleware('AdminAlreadyLoggedIn');
         Route::delete('ads_destroy/{id}', [Admin::class, 'ads_destroy']);
+         Route::get('paid_ads', [Admin::class, 'paid_ads'])->name('paid_ads')->middleware('AdminAlreadyLoggedIn');
+        Route::delete('paid_ads_destroy/{id}', [Admin::class, 'paid_ads_destroy']);
         Route::get('country', [Admin::class, 'country'])->name('country')->middleware('alreadyLoggedIn');
         Route::get('city', [Admin::class, 'city'])->name('city')->middleware('alreadyLoggedIn');
         Route::get('dashboard', [Admin::class, 'dashboard'])->name('dashboard')->middleware('AdminIsLoggedIn');
